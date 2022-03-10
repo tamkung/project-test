@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 import Login from './pages/Login';
-
+import { GoogleLogin, GoogleLogout } from './pages/Login';
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -43,7 +43,7 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/collection'
+                to='/AdManageThesis'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
@@ -52,23 +52,26 @@ function Navbar() {
             </li>
             <li className='nav-item'>
               <Link
-                to='/help'
+                to='/report'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
                 Report
               </Link>
             </li>
-
+           
             <li>
               <Link
-                className='nav-links-mobile'
-              >
-                <Login/>
-              </Link>
+              className='nav-links'
+              
+              style={{ border:'0px' }}
+              ><Login/>
+              
+               </Link>
             </li>
+          
+            
           </ul>
-          <Login />
         </div>
       </nav>
     </>

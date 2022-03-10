@@ -44,10 +44,12 @@
   width: 60vw;
   justify-content: end;
   margin-right: 2rem;
+  
 }
 
 .nav-item {
   height: 80px;
+  
 }
 
 .nav-links {
@@ -60,6 +62,7 @@
 }
 
 .nav-links:hover {
+  color: #000000;
   border-bottom: 4px solid #ff9900;
   transition: all 0.2s ease-out;
 }
@@ -75,6 +78,7 @@
 .menu-icon {
   display: none;
   color: rgb(0, 0, 0);
+  
 }
 
 @media screen and (max-width: 960px) {
@@ -120,6 +124,7 @@
     top: 0;
     left: 0;
     transform: translate(25%, 50%);
+
     
   }
 

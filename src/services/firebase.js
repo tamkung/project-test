@@ -1,5 +1,7 @@
-import firebase from "firebase/app"
-import "firebase/auth"
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/database';
+import 'firebase/compat/storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAZ9v7gpcC9Y3Bm1m6sWb1FWnUT3LicCjY",
@@ -9,15 +11,21 @@ const firebaseConfig = {
   storageBucket: "collector-project-c1445.appspot.com",
   messagingSenderId: "834177565770",
   appId: "1:834177565770:web:22d775bcb910756b2e92b3"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
+};
+// Initialize Firebase
 
-  export const auth = firebase.auth();
 
-  const provider = new firebase.auth.GoogleAuthProvider();
-  provider.setCustomParameters({ prompt: 'select_account' });
+firebase.initializeApp(firebaseConfig);
+const firebaseDB = firebase.database().ref();
+export const auth = firebase.auth();
 
-  export const signInWithGoogle = () => auth.signInWithPopup(provider);
+const provider = new firebase.auth.GoogleAuthProvider();
+provider.setCustomParameters({ prompt: 'select_account' });
 
-  export default firebase;
+export const signInWithGoogle = () => auth.signInWithPopup(provider);
+
+const firebaseStorage = firebase.storage();
+
+export { firebaseDB, firebase, firebaseStorage };
+// export default firebase;
+

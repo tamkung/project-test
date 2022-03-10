@@ -7,7 +7,7 @@ import Footer from '../Footer';
 function SignUp () {
   return (
     <>
-      <img src='../image/SignInWithGoogle' />
+      
       <Footer />
     </>
   );

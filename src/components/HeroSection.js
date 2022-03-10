@@ -1,8 +1,10 @@
 import React from 'react';
 import '../App.css';
 import { Button } from './Button';
+import { ButtonCol } from './Button-Collect';
 import './HeroSection.css';
 import Login from './pages/Login';
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
 function HeroSection() {
   
 
@@ -21,14 +23,16 @@ function HeroSection() {
         >
           เข้าสู่ระบบ
         </Button>
-        <Button
+
+        <ButtonCol
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          to='#'
         
         >
           ผลงานปริญญานิพนธ์
-        </Button>
+        </ButtonCol>
       </div>
     </div>
   );

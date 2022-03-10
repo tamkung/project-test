@@ -7,11 +7,9 @@ import { Route, Switch } from 'react-router-dom';
 function Home() {
   return (
     <>
-     
-          <HeroSection />
-          <Cards />
-          <Footer />
-        
+      <HeroSection />
+      {/* <Cards /> */}
+      <Footer />
     </>
   );
 }
