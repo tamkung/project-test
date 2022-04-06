@@ -17,7 +17,7 @@ export default function Login() {
     }
 
     const onSignoutSuccess = (res) => {
-        alert("You have been signed out out successfully")
+        alert("ออกจากระบบเรียบร้อย")
         setShowLoginButton(true);
         setShowLogoutButton(false);
     }
