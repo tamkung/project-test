@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 import ViewThesis from './components/User_Crud/ViewThesis';
 import ListThesis from './components/User_Crud/ListThesis';
 import AddThesis from './components/admin_CRUD/AddThesis';
+import AdminThesis from './components/admin_CRUD/AdminThesis';
 import AdminList from './components/admin_CRUD/AdminList';;
 
 
@@ -33,6 +34,7 @@ function App() {
           <Route path='/ListThesis' component={ListThesis} />
           <Route path='/login' component={Login} />
           <Route path='/AddCollection' component={AddThesis} />
+          <Route path='/admin-add' component={AdminThesis} />
           <Route path={'/EditThesis/:id'} component={EditThesis} />
           <Route path='/viewcollection/:id' component={ViewThesis} />
           <Route path='/report' component={Report} />

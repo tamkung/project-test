@@ -46,26 +46,20 @@ function AdminList() {
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Type</th>
-            <th scope="col">Dev.</th>
-            <th scope="col"><Link to={'/AddCollection'}>
-              <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
-            </Link></th>
+            <th scope="col">
+              <Link to={'/admin-add'}>
+                <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
+              </Link>
+            </th>
           </tr>
         </thead>
-      </table>
-
-
-      {Object.keys(values).map((id, index) => {
+        {Object.keys(values).map((id, index) => {
         return (
-
-          <table class="table table-hover">
             <tbody>
               <tr>
-                <td >{values[id].ThesisName}</td>
-                <td >{values[id].ThesisType}</td>
-                <td >{values[id].DevName1}</td>
+                <td scope="col">{values[id].ThesisName}</td>
+                <td scope="col">{values[id].ThesisType}</td>
+                <td scope="col">{values[id].DevName1}</td>
                 <td>
                   <button
                     className="btn btn-danger"
@@ -73,15 +67,22 @@ function AdminList() {
                   >
                     Delete
                   </button>
-                </td>
+                  <Link to={`/EditThesis/${id}`}>
+                    <button className="btn btn-view" style={{ background: "orange", color: "white" }}>Edit</button>
+                  </Link>
+                  </td>
               </tr>
 
             </tbody>
 
 
-          </table>
+
         );
       })}
+      </table>
+
+
+      
     </div>
   )
 }

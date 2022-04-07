@@ -59,7 +59,7 @@ function EditThesis() {
             <div className="container">
                 <hr />
                 <br />
-                <h3>Edit New Product</h3>
+                <h3>Edit Thesis</h3>
                 <br />
                 <div className="container">
                     <form>
@@ -127,7 +127,7 @@ function EditThesis() {
 
                             </Link>
                             <button className="btn btn-success col mx-3" onClick={updateThesis} to='/ListThesis'>
-                                <Link className="btn" to='/ListThesis' style={{ color: "white" }}>Submit</Link>
+                                <Link className="btn" to='/adminlist' style={{ color: "white" }}>Submit</Link>
 
                             </button>
 

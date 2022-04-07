@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
 import { Card, CardImg } from 'react-bootstrap';
 import CardHeader from "react-bootstrap/esm/CardHeader";
+import { AiOutlineLike } from "react-icons/ai";
+import { AiOutlineEye } from "react-icons/ai";
 
 function ListThesis() {
   const [values, setValues] = useState({});
@@ -44,7 +46,7 @@ function ListThesis() {
       <div className="row">
         <div className="col-lg">
           <Link to={'/AddCollection'}>
-            <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
+            <button className="btn" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
           </Link>
         </div>
       </div>
@@ -53,35 +55,20 @@ function ListThesis() {
         <div className="row">
           {Object.keys(values).map((id) => {
             return (
-
-              <div key={id} className="col" >
-                <div className="container">
-                <img style={{ height: "20%" }} src={values[id].ThesisImg} />
-                </div>
-                <Card
-
-                // style={{
-                //   width: "300px",
-                //   backgrounds: "white",
-                //   margin: "10%",
-                //   padding: "5%",
-                // }}
-                >
-                  
+              <div key={id} className="col-lg-3" >
+                <Card>
                   <CardHeader>
-
+                  <AiOutlineEye/> {values[id].Share}
                     <Card.Title>{values[id].ThesisName}</Card.Title>
                   </CardHeader>
                   <Card.Body>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
-                    {/* <Card.Text style={{align:'right'}} >{values[id].productPrice} บาท</Card.Text> */}
+                    <AiOutlineLike/> {values[id].Like}
                   </Card.Body>
                 </Card>
-
+                <br />
               </div>
-
             );
-
           })}
         </div>
       </div>
