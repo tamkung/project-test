@@ -61,11 +61,7 @@ function Navbar(user) {
             </li>
            
             <li>
-              <Link to=''
-              className='nav-links'
-              
-              style={{ border:'0px' }}
-              >
+              <Link to='' className='nav-links' style={{ border:'0px' }} >
                 <Login/>
                 
                </Link>

@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
-import { Card } from 'react-bootstrap';
+import { Card, CardImg } from 'react-bootstrap';
 import CardItem from '../CardItem';
+import CardHeader from "react-bootstrap/esm/CardHeader";
 
 function ListThesis() {
   const [values, setValues] = useState({});
@@ -42,41 +43,62 @@ function ListThesis() {
   return (
     <div className="container">
       <div className="row">
-
         <div className="col-lg">
           <Link to={'/AddCollection'}>
             <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
           </Link>
         </div>
       </div>
-
       <hr />
-      <div className="row">
+      <div className="container">
+        <div className="row">
+          {Object.keys(values).map((id) => {
+            return (
 
-
-        {Object.keys(values).map((id) => {
-          return (
-            <div className="col-lg-3">
-              <img className="card-img-top" src={values[id].ThesisImg} style={{ width: '15%' }} alt="Card image cap" />
-              <div className="card mb-4 box-shadow">
-                <div className="card-body">
-                  <h5 className="card-title">{values[id].ThesisName}</h5>
-                  <p className="card-text">{values[id].ThesisType}</p>
-                  <div className="row">
-                    <a href={`/EditThesis/${id}`} className="col btn btn-primary mx-1">Edit</a>
-                    <a href="" onClick={() => onDelete(id)} className="col btn btn-danger mx-1">Delete</a>
-                  </div>
-                </div>
+                 <div key={id} className="col-md-4" >
+                  
+                <Card
+                  // style={{
+                  //   width: "300px",
+                  //   backgrounds: "white",
+                  //   margin: "10%",
+                  //   padding: "5%",
+                  // }}
+                >
+              
+                  <CardHeader>
+                  {/* <img
+                    id="imgShow"
+                    className="img-thumbnail"
+                    // style="height:200px;"
+                    // style={{height:"300px"}}
+                    alt="Product Images"
+                    src={values[id].ThesisImg[0]}
+                  /> */}
+                      {/* <CardImg src={values[id].ThesisImg[0]}/> */}
+                  </CardHeader>
+                  <Card.Body>
+                    <Card.Title>{values[id].ThesisName}</Card.Title>
+                    <Card.Text>{values[id].ThesisType}</Card.Text>
+                    {/* <Card.Text style={{align:'right'}} >{values[id].productPrice} บาท</Card.Text> */}
+                  </Card.Body>
+                </Card>
+                
               </div>
+     
+            );
 
-            </div>
-
-          );
-
-        })}
+          })}
+        </div>
       </div>
 
-      {/* <table className="table table-sm table-hover">
+
+    </div>
+  );
+}
+export default ListThesis;
+
+{/* <table className="table table-sm table-hover">
         <thead>
 
           <tr>
@@ -126,8 +148,3 @@ function ListThesis() {
         </tbody>
 
       </table> */}
-
-    </div>
-  );
-}
-export default ListThesis;

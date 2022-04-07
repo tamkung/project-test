@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { firebaseDB, firebaseStorage } from "../../services/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 // import { AiOutlineLike } from "react-icons/ai";
-// import { AiFillLike } from "react-icons/ai";
+import { IoIosArrowBack } from "react-icons/io";
 // import { Toast } from "bootstrap";;
 // import {dateKey} from '../dataKey';
 import Footer from '../Footer';
+import { Link } from 'react-router-dom';
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
@@ -86,7 +87,7 @@ function AddThesis() {
   };
 
   const uploadImage = (targetFilesObject) => {
-const dowUrls =[];
+    const dowUrls = [];
     targetFilesObject.forEach((files) => {
       const storageRef = ref(
         firebaseStorage,
@@ -100,25 +101,24 @@ const dowUrls =[];
 
         },
         (error) => console.log(error),
-       async () => {
-         await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+        async () => {
+          await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("File available at", downloadURL);
-           
+
             return dowUrls.push(downloadURL)
           });
         }
       );
 
-      
+
 
 
     }
     );
-    setValues({...values,ThesisImg:dowUrls});
+    setValues({ ...values, ThesisImg: dowUrls });
   }
 
   const uploadFiles = (targetFilesObject) => {
-
     targetFilesObject.forEach((files) => {
       const storageRef = ref(
         firebaseStorage,
@@ -141,7 +141,7 @@ const dowUrls =[];
         }
       );
 
-      
+
 
 
     }
@@ -246,9 +246,8 @@ const dowUrls =[];
                 <input className="form-control"
                   type="file"
                   id="formFileMultiple"
-                  accept="application/pdf"
+                  accept=".pdf"
                   onChange={FileOnChange}
-                  multiple
                 />
 
                 {/* {Images.map((url, i) => (
@@ -267,8 +266,14 @@ const dowUrls =[];
             <br />
 
             <div className="row mt-3">
+              <Link className="btn col mx-3" to='/ListThesis' style={{color:"gray", fontSize:"24px"}}>
+                <IoIosArrowBack
+
+                />
+
+              </Link>
               <button className="btn btn-success col mx-3" onClick={createThesis} to='/ListThesis'>
-                Submit
+                <Link className="btn" to='/ListThesis' style={{color:"white"}}>Submit</Link>
 
               </button>
 
@@ -276,10 +281,11 @@ const dowUrls =[];
               Cancel
             </button> */}
 
-              <button type="reset "className="btn btn-warning col mx-3" >
+              <button type="reset " className="btn btn-warning col mx-3" style={{color:"white"}}>
                 Clear
-
               </button>
+
+
 
             </div>
           </form>

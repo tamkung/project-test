@@ -7,6 +7,7 @@ export default function Login() {
 
     const onLoginSuccess = (res) => {
         console.log('Login Success', res.profileObj);
+        // console.log('email',res.googleId);
         setShowLoginButton(false);
         setShowLogoutButton(true);
     }
