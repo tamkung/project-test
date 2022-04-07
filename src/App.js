@@ -12,9 +12,9 @@ import { firebase } from "../src/services/firebase";
 import EditThesis from '../src/components/admin_CRUD/EditThesis';
 import { useState, useEffect } from 'react';
 import ViewThesis from './components/User_Crud/ViewThesis';
-import ListThesis from './components/admin_CRUD/ListThesis';
+import ListThesis from './components/User_Crud/ListThesis';
 import AddThesis from './components/admin_CRUD/AddThesis';
-import Footer from './components/Footer';
+import AdminList from './components/admin_CRUD/AdminList';;
 
 
 function App() {
@@ -36,7 +36,7 @@ function App() {
           <Route path={'/EditThesis/:id'} component={EditThesis} />
           <Route path='/viewcollection/:id' component={ViewThesis} />
           <Route path='/report' component={Report} />
-          
+          <Route path='/adminlist' component={AdminList} />
         </Switch>
       </Router>
       {/* <Footer /> */}

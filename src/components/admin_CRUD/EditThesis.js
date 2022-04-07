@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
 import Footer from '../Footer';
-
+import { Link } from 'react-router-dom';
+import { IoIosArrowBack } from "react-icons/io";
 
 function EditThesis() {
     const [values, setValues] = useState({
@@ -118,18 +119,24 @@ function EditThesis() {
                             </div>
                         </div>
 
-                        <div className="form-group mt-3">
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1" />
-                            
-                        </div>
+                        <div className="row mt-3">
+                            <Link className="btn col mx-3" to='/ListThesis' style={{ color: "gray", fontSize: "24px" }}>
+                                <IoIosArrowBack
 
-                        <div className="row mt-3 ">
-                            <button type="button" className="btn btn-success col mx-3" onClick={updateThesis} >
-                                Submit
+                                />
+
+                            </Link>
+                            <button className="btn btn-success col mx-3" onClick={updateThesis} to='/ListThesis'>
+                                <Link className="btn" to='/ListThesis' style={{ color: "white" }}>Submit</Link>
+
                             </button>
-                            <button type="reset " className="btn btn-warning col mx-3" >
+
+                            <button type="reset " className="btn btn-warning col mx-3" style={{ color: "white" }}>
                                 Clear
                             </button>
+
+
+
                         </div>
                     </form>
 

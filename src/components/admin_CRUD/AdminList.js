@@ -6,7 +6,7 @@ import { Card, CardImg } from 'react-bootstrap';
 import CardItem from '../CardItem';
 import CardHeader from "react-bootstrap/esm/CardHeader";
 
-function ListThesis() {
+function AdminList() {
   const [values, setValues] = useState({});
   // const [sortedData, setSortedData] = useState([]);
   // const [sort, setSort] = useState(false);
@@ -42,61 +42,50 @@ function ListThesis() {
   };
   return (
     <div className="container">
-      <div className="row">
-        <div className="col-lg">
-          <Link to={'/AddCollection'}>
-            <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
-          </Link>
-        </div>
-      </div>
-      <hr />
-      <div className="container">
-        <div className="row">
-          {Object.keys(values).map((id) => {
-            return (
 
-                 <div key={id} className="col-md-4" >
-                  
-                <Card
-                  // style={{
-                  //   width: "300px",
-                  //   backgrounds: "white",
-                  //   margin: "10%",
-                  //   padding: "5%",
-                  // }}
-                >
-              
-                  <CardHeader>
-                  {/* <img
-                    id="imgShow"
-                    className="img-thumbnail"
-                    // style="height:200px;"
-                    // style={{height:"300px"}}
-                    alt="Product Images"
-                    src={values[id].ThesisImg[0]}
-                  /> */}
-                      {/* <CardImg src={values[id].ThesisImg[0]}/> */}
-                  </CardHeader>
-                  <Card.Body>
-                    <Card.Title>{values[id].ThesisName}</Card.Title>
-                    <Card.Text>{values[id].ThesisType}</Card.Text>
-                    {/* <Card.Text style={{align:'right'}} >{values[id].productPrice} บาท</Card.Text> */}
-                  </Card.Body>
-                </Card>
-                
-              </div>
-     
-            );
-
-          })}
-        </div>
-      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Dev.</th>
+            <th scope="col"><Link to={'/AddCollection'}>
+              <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
+            </Link></th>
+          </tr>
+        </thead>
+      </table>
 
 
+      {Object.keys(values).map((id, index) => {
+        return (
+
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <td >{values[id].ThesisName}</td>
+                <td >{values[id].ThesisType}</td>
+                <td >{values[id].DevName1}</td>
+                <td>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => onDelete(id)}
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+
+
+          </table>
+        );
+      })}
     </div>
-  );
+  )
 }
-export default ListThesis;
+export default AdminList;
 
 {/* <table className="table table-sm table-hover">
         <thead>

@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { firebaseDB, firebaseStorage } from "../../services/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 // import { AiOutlineLike } from "react-icons/ai";
-import { IoIosArrowBack } from "react-icons/io";
+
 // import { Toast } from "bootstrap";;
 // import {dateKey} from '../dataKey';
 import Footer from '../Footer';
 import { Link } from 'react-router-dom';
+import { IoIosArrowBack } from "react-icons/io";
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
@@ -279,7 +280,7 @@ function AddThesis() {
 
               {/* <button className="btn btn-danger col mx-3" onclick={{javascript:history.back(1)}}>
               Cancel
-            </button> */}
+             </button> */}
 
               <button type="reset " className="btn btn-warning col mx-3" style={{color:"white"}}>
                 Clear
