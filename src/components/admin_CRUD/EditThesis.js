@@ -7,7 +7,6 @@ import { IoIosArrowBack } from "react-icons/io";
 
 function EditThesis() {
     const [values, setValues] = useState({
-
         ThesisName: "",
         ThesisType: "",
         DevName1: "",

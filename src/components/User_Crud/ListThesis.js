@@ -6,6 +6,7 @@ import { Card, CardImg } from 'react-bootstrap';
 import CardHeader from "react-bootstrap/esm/CardHeader";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
+import { ImBooks } from "react-icons/im";
 
 function ListThesis() {
   const [values, setValues] = useState({});
@@ -43,23 +44,30 @@ function ListThesis() {
   };
   return (
     <div className="container">
+      <hr />
       <div className="row">
-        <div className="col-lg">
+        <div className="col-lg" style={{textAlign:'right'}}>
           <Link to={'/AddCollection'}>
-            <button className="btn" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
+            <button className="btn btn-success" style={{ color: 'white' }}><i className="fas fa-plus-circle"></i> &nbsp; Add</button>
+          </Link>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <Link to={'/AddCollection'}>
+            <button className="btn btn-warning" style={{ color: 'white' }}><ImBooks style={{fontSize:'150%'}} />&nbsp; My Thesis</button>
           </Link>
         </div>
       </div>
-      <hr />
+      <br/>
+      
       <div className="container">
         <div className="row">
           {Object.keys(values).map((id) => {
             return (
               <div key={id} className="col-lg-3" >
-                <Card>
-                  <CardHeader>
+                <Card style={{height:'200px'}}> 
+                  <CardHeader style={{height:'150px'}}>
                   <AiOutlineEye/> {values[id].Share}
-                    <Card.Title>{values[id].ThesisName}</Card.Title>
+                    <Card.Title>{values[id].ThesisName}
+                    </Card.Title>
                   </CardHeader>
                   <Card.Body>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
@@ -72,8 +80,6 @@ function ListThesis() {
           })}
         </div>
       </div>
-
-
     </div>
   );
 }

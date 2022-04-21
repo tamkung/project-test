@@ -37,7 +37,7 @@
 
 .nav-menu {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
   grid-gap: 10px;
   list-style: none;
   text-align: center;
@@ -62,13 +62,14 @@
 }
 
 .nav-links:hover {
-  color: #000000;
+  color: #138d13;
   border-bottom: 4px solid #ff9900;
   transition: all 0.2s ease-out;
 }
 
 .fa-bars {
   color: rgb(255, 123, 0);
+  
 }
 
 .nav-links-mobile {
@@ -97,7 +98,7 @@
     opacity: 1;
     transition: all 0.5s ease;
   }
-
+  
   .nav-menu.active {
     background: #ffffff;
     left: 0;

@@ -10,7 +10,8 @@ const firebaseConfig = {
   projectId: "collector-project-c1445",
   storageBucket: "collector-project-c1445.appspot.com",
   messagingSenderId: "834177565770",
-  appId: "1:834177565770:web:22d775bcb910756b2e92b3"
+  appId: "1:834177565770:web:22d775bcb910756b2e92b3",
+  measurementId: "G-EMW2L1G3HE"
 };
 // Initialize Firebase
 

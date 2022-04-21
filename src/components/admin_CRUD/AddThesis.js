@@ -168,6 +168,8 @@ function AddThesis() {
                 className="form-control"
                 placeholder="Thesis Name"
                 onChange={handleOnChange}
+                pattren="[A-Za-zก-๏]{1,250}"
+                title="ใส่เป็นตัวอักษรเท่านั้น"
               />
             </div>
 
@@ -197,6 +199,7 @@ function AddThesis() {
               placeholder="ThesisDetails"
               // value={values.name}
               onChange={handleOnChange}
+              pattren="{1,250}"
             />
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">ผู้พัฒนา</label>
@@ -209,7 +212,8 @@ function AddThesis() {
                 placeholder="Dev Name 1"
                 // value={values.name}
                 onChange={handleOnChange}
-
+                pattren="[A-Za-zก-๏]{1,250}"
+                title="ใส่เป็นตัวอักษรเท่านั้น"
               />
               <div className="form-group mt-3">
                 <input
@@ -220,6 +224,8 @@ function AddThesis() {
                   placeholder="Dev Name 2"
                   // value={values.name}
                   onChange={handleOnChange}
+                  pattren="[A-Za-zก-๏]{1,250}"
+                  title="ใส่เป็นตัวอักษรเท่านั้น"
                 />
               </div>
 
@@ -267,14 +273,14 @@ function AddThesis() {
             <br />
 
             <div className="row mt-3">
-              <Link className="btn col mx-3" to='/ListThesis' style={{color:"gray", fontSize:"24px"}}>
+              <Link className="btn col mx-3" to='/ListThesis' style={{ color: "gray", fontSize: "24px" }}>
                 <IoIosArrowBack
 
                 />
 
               </Link>
-              <button className="btn btn-success col mx-3" onClick={createThesis} to='/ListThesis'>
-                <Link className="btn" to='/ListThesis' style={{color:"white"}}>Submit</Link>
+              <button className="btn btn-success col mx-3" onClick={createThesis} type="submit" to='/ListThesis'>
+                <Link className="btn" to='/ListThesis' style={{ color: "white" }}>Submit</Link>
 
               </button>
 
@@ -282,7 +288,7 @@ function AddThesis() {
               Cancel
              </button> */}
 
-              <button type="reset " className="btn btn-warning col mx-3" style={{color:"white"}}>
+              <button type="reset " className="btn btn-warning col mx-3" style={{ color: "white" }}>
                 Clear
               </button>
 
