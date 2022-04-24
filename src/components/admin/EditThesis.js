@@ -54,7 +54,7 @@ function EditThesis() {
     }
 
     return (
-        <>
+        <div>
             <div className="container">
                 <hr />
                 <br />
@@ -143,7 +143,7 @@ function EditThesis() {
             </div>
             <br /><br /><br /><br /><br />
             <Footer />
-        </>
+            </div>
     );
 }
 export default EditThesis;

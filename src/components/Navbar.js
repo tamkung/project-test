@@ -2,7 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Navbar.css';
 import Login from './pages/Login';
+import { firebase, firebaseDB } from '../services/firebase';
+import Logout from './pages/Logout';
+import GoogleLogin from 'react-google-login';
+
 function Navbar() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user);
+    })
+  }, [])
+
+  console.log(user);
   
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -24,6 +38,11 @@ function Navbar() {
   }, []);
 
   window.addEventListener('resize', showButton);
+
+  const AddUser =()=>{
+    firebaseDB.child('User').child(user.uId)
+
+  }
 
   return (
     <>
@@ -66,7 +85,8 @@ function Navbar() {
             </li> */}
             <li>
               <Link to='' className='nav-links' style={{ border:'0px' }} >
-                <Login/>
+                {/* <Login/> */}
+               {user ? <Logout user={user}/>:<Login />} 
                 
                </Link>
             </li>
