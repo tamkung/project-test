@@ -26,8 +26,8 @@ import AdminThesis from './components/admin/AdminThesis';
 import AdminList from './components/admin/AdminList';
 import AdminAddThesis from './components/admin/AddThesis';
 import AdminEditThesis from './components/admin/EditThesis'
-import SingInAdmin from './components/admin/SignInAdmin';
-import SingUpAdmin from './components/admin/SignUpAdmin';
+import SignInAdmin from './components/admin/SignInAdmin';
+import SignUpAdmin from './components/admin/SignUpAdmin';
 
 
 import Login from './components/pages/Login';
@@ -59,8 +59,8 @@ function App() {
        <Route path={'/report'} element={<Report/>} />
 
 
-       <Route path={'/admin/sign-in'} element={<SingInAdmin/>} />
-       <Route path={'/admin/sign-up'} element={<SingUpAdmin/>} />
+       <Route path={'/admin/sign-in'} element={<SignInAdmin/>} />
+       <Route path={'/admin/sign-up'} element={<SignUpAdmin/>} />
        <Route path={'/adminreport'} element={<AdminReport/>} />
        <Route path={'/adminlist'} element={<AdminList/>} />
        <Route path={'/EditThesis/:id'} element={<AdminEditThesis/>} />

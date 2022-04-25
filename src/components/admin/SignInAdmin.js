@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { firebase } from "../../services/firebase";
 
-function SingInAdmin() {
+function SignInAdmin() {
   const [value, setValue] = useState({
     email: "",
     password: "",
@@ -82,4 +82,4 @@ function SingInAdmin() {
   );
 }
 
-export default SingInAdmin;
+export default SignInAdmin;

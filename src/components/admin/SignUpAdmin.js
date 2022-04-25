@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { firebase, firebaseDB } from "../../services/firebase";
 
-function SingUpAdmin() {
+function SignUpAdmin() {
   const [value, setValue] = useState({
     email: "",
     password: "",
@@ -98,4 +98,4 @@ function SingUpAdmin() {
     </div>
   );
 }
-export default SingUpAdmin;
+export default SignUpAdmin;
