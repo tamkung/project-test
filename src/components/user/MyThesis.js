@@ -7,33 +7,53 @@ import CardHeader from "react-bootstrap/esm/CardHeader";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineEye } from "react-icons/ai";
 import { ImBooks } from "react-icons/im";
+import { colors } from "@material-ui/core";
 
 function MyThesis() {
-  const [user, setUser] = useState(null);
+  const [values, setValues] = useState({});
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      setUser(user.uid);
-    });
-  }, []);
-
-  const [values, setValues] = useState({});
-//   const [uid,setUid]=useState();
-  useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild('UserId').equalTo(user).on("value", (snapshot) => {
-        // firebaseDB.child("Thesis").on("value", (snapshot) => {
-      if (snapshot.val() != null) {
-        setValues({ ...snapshot.val() });
-
-        console.log(snapshot.val());
-      } else {
+      firebaseDB
+      .child("Thesis")
+      .orderByChild("UserId")
+      .equalTo(user.uid.toString())
+      .on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          setValues({ ...snapshot.val() });
+          console.log(user.uid);
+        } else {
+          setValues({});
+        }
+      });
+  
+      return () => {
         setValues({});
-      }
+      };
+     
     });
-    return () => {
-      setValues({});
-    };
   }, []);
+
+  
+  // //   const [uid,setUid]=useState();
+  // useEffect(() => {
+  //   firebaseDB
+  //     .child("Thesis")
+  //     .orderByChild("ThesisType")
+  //     .equalTo('เว็บไซต์')
+  //     .on("value", (snapshot) => {
+  //       if (snapshot.val() !== null) {
+  //         setValues({ ...snapshot.val() });
+  //         console.log(userId);
+  //       } else {
+  //         setValues({});
+  //       }
+  //     });
+  
+  //     return () => {
+  //       setValues({});
+  //     };
+  // }, []);
 
   const onDelete = (id) => {
     if (
@@ -49,10 +69,6 @@ function MyThesis() {
       });
     }
   };
-
-
-
-
 
   return (
     <div className="container">
@@ -71,23 +87,24 @@ function MyThesis() {
       <br />
       <div className="container">
         <div className="row">
-            {values.UserId==user ? Object.keys(values).map((id)=>{
-                return(<div key={id} className="col-lg-3">
-                <Card style={{ height: "200px" }}>
-                  <CardHeader style={{ height: "150px" }}>
-                    <AiOutlineEye /> {values[id].UserId}
-                    <Card.Title>{values[id].ThesisName}</Card.Title>
-                  </CardHeader>
-                  <Card.Body>
-                    <Card.Text>{values[id].ThesisType}</Card.Text>
-                    <AiOutlineLike /> {values[id].Like}
-                  </Card.Body>
-                </Card>
-                <br />
-              </div>);
-            }): <div className="container">
-                <h1>not thesis</h1>
-            </div>}
+          {
+            Object.keys(values).map((id) => {
+              return (
+                <div key={id} className="col-lg-3">
+                  <Card style={{ height: "200px" }}>
+                    <CardHeader style={{ height: "150px" }}>
+                      <AiOutlineEye /> {values[id].UserId}
+                      <Card.Title>{values[id].ThesisName}</Card.Title>
+                    </CardHeader>
+                    <Card.Body>
+                      <Card.Text>{values[id].ThesisType}</Card.Text>
+                      <AiOutlineLike /> {values[id].Like}
+                    </Card.Body>
+                  </Card>
+                  <br />
+                </div>
+              );
+            })}
 
           {/* {Object.keys(values).map((id) => {
             if (values[id].UserId == user) {
@@ -114,8 +131,6 @@ function MyThesis() {
               );
             }
           })} */}
-
-
         </div>
       </div>
     </div>

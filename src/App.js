@@ -30,15 +30,24 @@ import SingInAdmin from './components/admin/SingInAdmin';
 import SingUpAdmin from './components/admin/SingUpAdmin';
 
 
-
-
-
-
 import Login from './components/pages/Login';
 
 
 
 function App() {
+
+  const [user, setUser] = useState(null);
+  const [admin,setAdmmin]=useState();
+
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(user => {
+      setUser(user);
+    })
+  }, [])
+
+
+
+
   return (
     <div>
      <Navbar />
