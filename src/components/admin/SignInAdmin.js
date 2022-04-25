@@ -36,7 +36,7 @@ function SingInAdmin() {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container p-5 ">
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h1>Login Page</h1>

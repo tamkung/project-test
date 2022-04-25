@@ -1,0 +1,24 @@
+.select-btn {
+    width: auto;
+}
+
+.select-btn:hover {
+    transform: scale(1.5);
+}
+
+.auth-btn {
+    background-color: #fefefe;
+    color: gray;
+    border: 0;
+}
+
+.auth-btn:hover {
+    color: #02bd11;
+    transform: scale(1.1);
+    transition: all 0.1s ease-out;
+}
+.circle{
+    border: 0;
+    border-radius: 50%;
+    text-align: center;
+}

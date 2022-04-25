@@ -1,9 +1,20 @@
 import { colors } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import * as FcIcons from 'react-icons/fc'
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
+// import { FcDocument } from 'react-icons/fa';
 
+
+function download(url) {
+  const a = document.createElement('a')
+  a.href = url
+  a.download = url.split('/').pop()
+  document.body.appendChild(a)
+  a.click()
+  document.body.removeChild(a)
+}
 
 function ViewThesis() {
   const { id } = useParams();
@@ -57,10 +68,7 @@ function ViewThesis() {
               <th scope="row">รายละเอียด</th>
               <td>{values.ThesisDetails}</td>
             </tr>
-            <tr>
-              <th scope="row">ไฟล์</th>
-              <td>{values.ThesisFile}</td>
-            </tr>
+          <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{margin:"10%"}}><FcIcons.FcDocument size={50}/> Download</a>
           </tbody>
         </table>
       </div>

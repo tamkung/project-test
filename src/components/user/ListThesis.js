@@ -78,8 +78,8 @@ function ListThesis() {
         <div className="row">
           {Object.keys(values).map((id,index) => {
             return (
-              <div key={id} className="col-lg-3">
-                <Card
+              <div key={id} className="col-lg-3" style={{margin:"2%"}}>
+                <Card className="btn btn-outline-dark select-thesis"
                   onClick={() =>
                     (window.location.href = `/viewcollection/${id}`)
                   }
@@ -90,7 +90,7 @@ function ListThesis() {
                     padding: "5%",
                   }}
                 >
-                  <img
+                  {/* <img
                     id="imgShow"
                     className="card-img-top"
                     // style="height:200px;"
@@ -98,7 +98,7 @@ function ListThesis() {
                     alt="Product Images"
                     src={values[id].ThesisImg[0]}
                     // onClick="#"
-                  />
+                  /> */}
                   <Card.Body>
                     <Card.Title>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>

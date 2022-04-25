@@ -17,7 +17,7 @@ function Navbar() {
   }, [])
 
   console.log(user);
-  
+
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -39,7 +39,7 @@ function Navbar() {
 
   window.addEventListener('resize', showButton);
 
-  const AddUser =()=>{
+  const AddUser = () => {
     firebaseDB.child('User').child(user.uId)
 
   }
@@ -49,11 +49,11 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='btn navbar-logo' onClick={closeMobileMenu}>
-          THESIS 
+            THESIS
           </Link>
           <div className='menu-icon' onClick={handleClick} >
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
-            
+
           </div>
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
@@ -70,7 +70,7 @@ function Navbar() {
                 Collection
               </Link>
             </li>
-           
+
             <li className='nav-item'>
               <Link
                 to='/report'
@@ -84,19 +84,19 @@ function Navbar() {
              <h5>{user.DisplayName}</h5>
             </li> */}
             <li>
-              <Link to='' className='nav-links' style={{ border:'0px' }} >
+              <Link to='' className='nav-links' style={{ border: '0px' }} >
                 {/* <Login/> */}
-               {user ? <Logout user={user}/>:<Login />} 
-                
-               </Link>
+                {user ? <Logout user={user} /> : <Login />}
+
+              </Link>
             </li>
-          
-            
+
+
           </ul>
         </div>
-       
+
       </nav>
-      
+
     </>
   );
 }
