@@ -52,10 +52,10 @@ function App() {
      <Routes> 
 
        <Route path={'/'} index element={<Home />} />
-       <Route path={'/ListThesis'} element={<ListThesis/>} />
+       <Route path={'/ListThesis'} element={<ListThesis />} />
        <Route path={'/login'} element={<Login/>} />
        <Route path={'/MyThesis'} element={<MyThesis/>} />
-       <Route path={'/viewcollection/:id'} element={<ViewThesis/>} />
+       <Route path={'/viewcollection/:id'} element={<ViewThesis />} />
        <Route path={'/report'} element={<Report/>} />
 
 
