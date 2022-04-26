@@ -80,16 +80,17 @@ function Navbar() {
                 Report
               </Link>
             </li>
-            {/* <li>
-             <h5>{user.DisplayName}</h5>
-            </li> */}
-            <li>
-              <Link to='' className='nav-links' style={{ border: '0px' }} >
+            <li className='nav-item'>
+              <Link to='#' className='nav-links' style={{border:"0"}} onClick={closeMobileMenu} >
                 {/* <Login/> */}
                 {user ? <Logout user={user} /> : <Login />}
 
               </Link>
             </li>
+            {/* <li>
+             <h5>{user.DisplayName}</h5>
+            </li> */}
+            
 
 
           </ul>

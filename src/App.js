@@ -30,9 +30,10 @@ import AdminEditThesis from "./components/admin/EditThesis";
 import SignInAdmin from "./components/admin/SignInAdmin";
 import SignUpAdmin from "./components/admin/SignUpAdmin";
 import AdminHome from "./components/admin/HomeAdmin";
-
+import Footer from './components/Footer';
 import Login from "./components/pages/Login";
 import "./css/style.css";
+
 import Logout from "./components/pages/Logout";
 
 function App() {
@@ -116,6 +117,7 @@ function App() {
             {/* <------------------------Pages GATHER------------------------> */}
             <Route path={"*"} element={<NotFound />} />
           </Routes>
+          <Footer />
         </div>
       )}
     </div>

@@ -1,9 +1,15 @@
 .select-btn {
-    width: 150px;
-}
+    width: 100%;
 
+}
+.container{
+    min-height: 700px;
+}
+.set-align{
+    align-items: left;
+}
 .select-btn:hover {
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 .select-thesis {
     margin: 5;
@@ -18,10 +24,21 @@
     background-color: #fefefe;
     color: gray;
     border: 0;
+    
 }
-
+.auth-out-btn {
+    background-color: #fefefe;
+    color: gray;
+    border: 0;
+    font-size: 32px;
+}
 .auth-btn:hover {
     color: #02bd11;
+    transform: scale(1.1);
+    transition: all 0.1s ease-out;
+}
+.auth-out-btn:hover {
+    color: #ffffff;
     transform: scale(1.1);
     transition: all 0.1s ease-out;
 }
@@ -39,3 +56,4 @@
     position: fixed; /* or absolute */
    
 }
+

@@ -119,13 +119,13 @@ function EditThesis() {
                         </div>
 
                         <div className="row mt-3">
-                            <Link className="btn col mx-3" to='/ListThesis' style={{ color: "gray", fontSize: "24px" }}>
+                            <Link className="btn col mx-3" to='/adminlist' style={{ color: "gray", fontSize: "24px" }}>
                                 <IoIosArrowBack
 
                                 />
 
                             </Link>
-                            <button className="btn btn-success col mx-3" onClick={updateThesis} to='/ListThesis'>
+                            <button className="btn btn-success col mx-3" onClick={updateThesis} to='#'>
                                 <Link className="btn" to='/adminlist' style={{ color: "white" }}>Submit</Link>
 
                             </button>

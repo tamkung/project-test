@@ -8,9 +8,9 @@ const Logout = ({ user }) => {
     // <div>
     //   <button className="button" onClick={() => auth.signOut()}>Sign out</button>
     // </div>
-    <div className="btn">
+    <div>
       <button
-        className="auth-btn"
+        className="btn btn-outline-danger auth-out-btn"
         onClick={() =>
           auth
             .signOut()
@@ -21,7 +21,7 @@ const Logout = ({ user }) => {
               console.error(error);
             })
         }
-        style={{ fontSize: "100%", margin: "10px" }}
+        style={{ fontSize: "18px", margin: "10px" }}
       >
         {/* <FcIcons.FcGoogle style={{ fontSize: "150%" }} /> &nbsp; &nbsp; |
         &nbsp;&nbsp; Sign out */}Sign out

@@ -90,20 +90,31 @@ function MyThesis() {
           {
             Object.keys(values).map((id) => {
               return (
-                <div key={id} className="col-lg-3">
-                  <Card style={{ height: "200px" }}>
-                    <CardHeader style={{ height: "150px" }}>
-                      <AiOutlineEye /> {values[id].UserId}
+                <div key={id} className="btn col-md-3" style={{ margin: "0% 0% 2% 0%" , textAlign:"center" }}>
+                  <Card className="btn select-thesis "
+                    onClick={() =>
+                      (window.location.href = `/viewcollection/${id}`)
+                    }
+                    style={{ height: "350px", width: "300px", padding: "0" }}
+  
+                  >
+                    <img
+                      id="imgShow"
+                      className="card-img-top"
+                      // style="height:200px;"
+                      style={{ height: "200px", width: "100%" }}
+                      alt="Product Images"
+                      src={values[id].ThesisImg[0]}
+                    // onClick="#"
+                    />
+                    <Card.Body >
                       <Card.Title>{values[id].ThesisName}</Card.Title>
-                    </CardHeader>
-                    <Card.Body>
                       <Card.Text>{values[id].ThesisType}</Card.Text>
                       <AiOutlineLike /> {values[id].Like}
                     </Card.Body>
                   </Card>
-                  <br />
                 </div>
-              );
+             );
             })}
 
           {/* {Object.keys(values).map((id) => {

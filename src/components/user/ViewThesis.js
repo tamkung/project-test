@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import * as FcIcons from 'react-icons/fc'
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
+import * as AiIcons from "react-icons/ai"
+import "../../css/product-details.css";
 // import { FcDocument } from 'react-icons/fa';
-
 
 function download(url) {
   const a = document.createElement('a')
@@ -41,52 +42,89 @@ function ViewThesis() {
   // setImages(values.ThesisImg)
 
   return (
-    <div className="container">
-      <hr />
-      <br />
-      <div className="container">
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th colSpan="2">{values.ThesisName}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">ประเภทปริญญานิพนธ์</th>
-              <td>{values.ThesisType}</td>
-            </tr>
-            <tr>
-              <th scope="row">ผู้พัฒนา คนที่ 1</th>
-              <td>{values.DevName1}</td>
-            </tr>
-            <tr>
-              <th scope="row">ผู้พัฒนา คนที่ 2</th>
-              <td>{values.DevName2}</td>
-            </tr>
-            <tr>
-              <th scope="row">รายละเอียด</th>
-              <td>{values.ThesisDetails}</td>
-            </tr>
-            <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{ margin: "10%" }}><FcIcons.FcDocument size={50} /> Download</a>
-          </tbody>
-        </table>
-      </div>
 
+    <div>
       <div className="container">
-        <div>
-          {Images.map((url, i) => (
-            <img  className="zoom centered"
-              style={{ width: "200px", height: "200px" }}
-              src={url}
-              key={i}
-              alt="firebase-images"
-            />
-          ))}
+        <div className="card-view">
+          <div>
+            <div className="img-display" >
+              <div className="img-showcase" >
+                <img
+                  style={{ height: "390px", width: "100%", borderRadius: "5% 5% 5% 5%", padding: "1%" }}
+                  src={Images[0]}
+                  alt="firebase-images"
+
+                />
+
+              </div>
+            </div>
+            <div className="btn">
+              <div className="img-select col">
+                <div className="img-item">
+                  <a href={Images[1]} target="_blank" data-id="1">
+                    <img className="img-second" src={Images[1]} alt="" />
+
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href={Images[2]} target="_blank" data-id="2">
+                    <img className="img-second" src={Images[2]} alt="" />
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href={Images[3]} target="_blank" data-id="3">
+                    <img className="img-second" src={Images[3]} alt="" />
+                  </a>
+                </div>
+                <div className="img-item">
+                  <a href={Images[4]} target="_blank" data-id="4">
+                    <img className="img-second" src={Images[4]} alt="" />
+                  </a>
+                </div>
+              </div>
+              <div>
+                <div className="btn btn-outline-primary space">
+                  <AiIcons.AiOutlineEye /> {values.View}
+                  {/* //AiFillLike */}
+                </div>
+                <div className="btn btn-outline-primary space">
+                  <AiIcons.AiOutlineLike /> {values.View}
+                  {/* //AiFillLike */}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div className="product-content">
+            <h2 className="product-title">{values.ThesisName}</h2>
+            <a href="#" className="product-link">{values.ThesisType}</a>
+
+
+            <div className="product-price">
+              <p> <span>ผู้พัฒนา</span></p>
+              <p className="new-price"> <span> {values.DevName1}</span></p>
+              <p className="new-price"> <span> {values.DevName2}</span></p>
+            </div>
+            <div className="product-price">
+              <p> <span>Email : {values.Email}</span></p>
+
+            </div>
+
+            <div className="product-detail">
+              {values.ThesisDetails}
+            </div>
+
+            <div>
+              <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{ margin: "10%" }}><FcIcons.FcDocument size={50} /> Download</a>
+            </div>
+
+          </div>
         </div>
-        {/* <h3>{values.ThesisName}</h3> */}
       </div>
     </div>
+
   );
+
 }
 export default ViewThesis;
