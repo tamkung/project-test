@@ -26,6 +26,7 @@ function SignInAdmin() {
           console.log(user);
           console.log(user.uid);
           console.log(user.email);
+          window.location.href='/';
         }).catch((error)=>{
             console.error(error);
         });
