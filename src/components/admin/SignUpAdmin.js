@@ -56,10 +56,10 @@ function SignUpAdmin() {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>E-Mail</label>
+              <label>E-mail</label>
               <input
                 className="form-control"
-                type="text"
+                type="email"
                 name="email"
                 onChange={handleChange}
               />

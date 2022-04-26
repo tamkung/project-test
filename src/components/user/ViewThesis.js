@@ -68,22 +68,22 @@ function ViewThesis() {
               <th scope="row">รายละเอียด</th>
               <td>{values.ThesisDetails}</td>
             </tr>
-          <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{margin:"10%"}}><FcIcons.FcDocument size={50}/> Download</a>
+            <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{ margin: "10%" }}><FcIcons.FcDocument size={50} /> Download</a>
           </tbody>
         </table>
       </div>
 
       <div className="container">
-   
-        {Images.map((url, i) => (
-          <img
-            style={{ width: "200px" ,height:"200px" }}
-            src={url}
-            key={i}
-            alt="firebase-images"
-          />
-        ))}
-
+        <div>
+          {Images.map((url, i) => (
+            <img  className="zoom centered"
+              style={{ width: "200px", height: "200px" }}
+              src={url}
+              key={i}
+              alt="firebase-images"
+            />
+          ))}
+        </div>
         {/* <h3>{values.ThesisName}</h3> */}
       </div>
     </div>

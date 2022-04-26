@@ -27,6 +27,7 @@ function AddThesis() {
     UserId: "",
     Email: "",
     ThesisImg: "[]",
+    ThesisAllow: false,
     ThesisFile: "[]",
     ThesisDetails: "",
     ThesisName: "",

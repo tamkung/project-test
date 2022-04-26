@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 
 // ----------@Css---------
 import "../src/css/App.css";
-
+import "../src/css/admin.css";
 // ----------@Pages--------
 import Home from "./components/pages/Home";
 import NotFound from "./error_404";
@@ -59,7 +59,7 @@ function App() {
       }
     });
   }, []);
-  
+
 
   return (
     <div>
@@ -88,7 +88,9 @@ function App() {
             {/* <------------------------Pages GATHER------------------------> */}
             <Route path={"*"} element={<NotFound />} />
           </Routes>
-          <Logout/>
+          
+            <Logout style={{ fontSize: "150%" }} />
+         
         </div>
       ) : (
         <div>

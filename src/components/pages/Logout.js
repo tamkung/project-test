@@ -23,8 +23,8 @@ const Logout = ({ user }) => {
         }
         style={{ fontSize: "100%", margin: "10px" }}
       >
-        <FcIcons.FcGoogle style={{ fontSize: "150%" }} /> &nbsp; &nbsp; |
-        &nbsp;&nbsp; Sign out
+        {/* <FcIcons.FcGoogle style={{ fontSize: "150%" }} /> &nbsp; &nbsp; |
+        &nbsp;&nbsp; Sign out */}Sign out
       </button>
     </div>
   );
