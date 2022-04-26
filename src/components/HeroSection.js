@@ -7,7 +7,7 @@ function HeroSection() {
     <div className='hero-container'>
       <h1>Thesis Collection</h1>
       <p>For KMUTNB Students</p>
-     <img src='/images/bg-home.jpg' alt='not images' />
+      <img className="home-img" src='/images/bg-home.jpg' alt='not images' />
     </div>
   );
 }

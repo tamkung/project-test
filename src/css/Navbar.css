@@ -29,6 +29,12 @@
   align-items: center;
 
 }
+.navbar-logo:hover {
+  color: rgb(255, 123, 0);
+  transition: all 0.3s ease-out;
+  transform: scale(1.2);
+
+}
 
 .fa-typo3 {
   margin-left: 0.5rem;

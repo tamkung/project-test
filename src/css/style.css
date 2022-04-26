@@ -1,11 +1,19 @@
 .select-btn {
-    width: auto;
+    width: 150px;
 }
 
 .select-btn:hover {
     transform: scale(1.5);
 }
+.select-thesis {
+    margin: 5;
+    align-items: center;
+}
 
+.select-thesis:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 1px 10px rgb(121, 121, 121);
+}
 .auth-btn {
     background-color: #fefefe;
     color: gray;
@@ -19,6 +27,8 @@
 }
 .circle{
     border: 0;
+    margin: 10px;
     border-radius: 50%;
     text-align: center;
 }
+

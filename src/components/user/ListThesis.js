@@ -76,33 +76,29 @@ function ListThesis() {
 
       <div className="container">
         <div className="row">
-          {Object.keys(values).map((id,index) => {
+          {Object.keys(values).map((id, index) => {
             return (
-              <div key={id} className="col-lg-3" style={{margin:"2%"}}>
-                <Card className="btn btn-outline-dark select-thesis"
+              <div key={id} className="btn col-lg-2" style={{textAlign:"center", margin:"5%"}}>
+                <Card className="btn select-thesis"
                   onClick={() =>
                     (window.location.href = `/viewcollection/${id}`)
                   }
-                  style={{
-                    width: "350px",
-                    backgrounds: "white",
-                    margin: "10%",
-                    padding: "5%",
-                  }}
+                  style={{ height: "350px", width: "300px" , padding:"0"}}
+
                 >
-                  {/* <img
+                  <img
                     id="imgShow"
                     className="card-img-top"
                     // style="height:200px;"
-                    style={{ height: "350px" }}
+                    style={{ height: "200px", width: "100%" }}
                     alt="Product Images"
                     src={values[id].ThesisImg[0]}
-                    // onClick="#"
-                  /> */}
-                  <Card.Body>
+                  // onClick="#"
+                  />
+                  <Card.Body >
                     <Card.Title>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
-                      <AiOutlineLike /> {values[id].Like}
+                    <AiOutlineLike /> {values[id].Like}
                   </Card.Body>
                 </Card>
                 {/* <Card style={{ height: "200px" }} onClick={() =>  window.location.href=`/viewcollection/${id}`}> */}
