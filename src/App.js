@@ -49,9 +49,9 @@ function App() {
           .equalTo(users.uid.toString())
           .on("value", (snapshot) => {
             if (snapshot.val() !== null) {
-              setAdmmin(!admin);
+              setAdmmin(true);
             } else {
-              setAdmmin(!admin);
+              setAdmmin(false);
             }
           });
       } else {

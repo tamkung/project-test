@@ -49,7 +49,7 @@ function ListThesis() {
   //   }
   // };
   return (
-    <div className="container">
+    <div className="container" style={{ textAlign: "ricenterght" }}>
       <hr />
       {user ? (
         <div className="row">
@@ -74,11 +74,11 @@ function ListThesis() {
 
       <br />
 
-      <div className="container">
+      <div className="container" style={{textAlign:"center"}}>
         <div className="row">
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={id} className="btn col-lg-2" style={{textAlign:"center", margin:"5%"}}>
+              <div key={id} className="col-md-2" style={{textAlign:"center", margin:"0 4% 2% 4%"}}>
                 <Card className="btn select-thesis"
                   onClick={() =>
                     (window.location.href = `/viewcollection/${id}`)
