@@ -4,24 +4,8 @@ import { firebaseDB } from "../../services/firebase";
 import { Link } from 'react-router-dom';
 
 function DownloadButton() {
-    const CountOne = () =>{
-        values.Download++
 
-        
-    }
     const [values, setValues] = useState({
-        UserId: "",
-        Email: "",
-        ThesisImg: "[]",
-        ThesisAllow: "",
-        ThesisFile: "[]",
-        ThesisDetails: "",
-        ThesisName: "",
-        ThesisType: "",
-        DevName1: "",
-        DevName2: "",
-        Like: "",
-        View: "",
         Download: "",
     });
 
@@ -40,10 +24,7 @@ function DownloadButton() {
         };
     }, [id]);
 
-    const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        setValues({ ...values, [name]: value });
-    };
+
 
     const CountDownload = (e) => {
         e.preventDefault();
@@ -59,7 +40,7 @@ function DownloadButton() {
                     alert.error(error);
                 }
                 else {
-                    
+
                     console.log("edit data success");
                 }
             });
@@ -69,13 +50,9 @@ function DownloadButton() {
     return (
         <div>
             <div className="container">
-
-
-
                 <div className="form-group mt-3">
-
-                    <button id="Download" value={CountOne} className="btn btn-success col mx-3" onClick={CountDownload} to='#'>
-                        Download : {values.Download}
+                    <button id="Download" className="btn col mx-3" to='#' >
+                        <a className="btn btn-success" href={values.ThesisFile} target="_blank"> Download : {values.Download}</a>
                     </button>
                 </div>
             </div>

@@ -20,6 +20,7 @@ import Report from "./components/pages/Report";
 import ViewThesis from "./components/user/ViewThesis";
 import ListThesis from "./components/user/ListThesis";
 import MyThesis from "./components/user/MyThesis";
+import WebType from "./components/user/WebType";
 // ------------------------------------------admin
 import NavbarAdmin from './components/layout/AdminNavbar'
 import AdminReport from "./components/admin/AdminReport";
@@ -103,6 +104,7 @@ function App() {
             <Route path={"/ListThesis"} element={<ListThesis />} />
             <Route path={"/login"} element={<Login />} />
             <Route path={"/MyThesis"} element={<MyThesis />} />
+            <Route path={"/webtype"} element={<WebType />} />
             <Route path={"/viewcollection/:id"} element={<ViewThesis />} />
             <Route path={"/report"} element={<Report />} />
 

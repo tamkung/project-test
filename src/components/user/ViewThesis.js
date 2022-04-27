@@ -109,12 +109,12 @@ function ViewThesis() {
 
             </div>
 
-            <div className="product-detail"> 
+            <div className="product-detail">
               {values.ThesisDetails}
             </div>
 
-            <DownloadButton />
-       
+             <DownloadButton /> 
+            
           </div>
         </div>
       </div>

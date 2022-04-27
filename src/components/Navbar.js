@@ -47,7 +47,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className='navbar' style={{ boxShadow: "0px 0px 2px black" }}>
+      <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             THESIS

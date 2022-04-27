@@ -41,7 +41,7 @@ function Report() {
         .child("Report")
         .push(values)
         .then(() => {
-          alert("add data success");
+          alert("ส่งรายงานปัญหาเรียบร้อย");
         })
         .catch((error) => {
           alert(error);
@@ -94,8 +94,8 @@ function Report() {
 
               >
                 <option defaultValue="">Choose...</option>
-                <option value="เว็บไซต์">แจ้ง ลบ/แก้ไข ผลงาน</option>
-                <option value="แอปพลิเคชัน">ระบบมีปัญหา</option>
+                <option value="แจ้ง ลบ/แก้ไข ผลงาน">แจ้ง ลบ/แก้ไข ผลงาน</option>
+                <option value="ระบบมีปัญหา">ระบบมีปัญหา</option>
                 <option value="อื่นๆ">อื่นๆ</option>
               </select>
             </div>

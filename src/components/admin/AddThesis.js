@@ -18,7 +18,7 @@ function AddThesis() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       // setValues({...values,UserId:user.uid});
-      setValues({ ...values, Email: user.email, UserId: user.uid });
+      setValues({ ...values, Email: user.email, UserId: user.uid  ,DevPhoto:user.photoURL});
       console.log(user.uid, user.email);
     });
   }, []);
@@ -26,6 +26,7 @@ function AddThesis() {
   const [values, setValues] = useState({
     UserId: "",
     Email: "",
+    DevPhoto:"",
     ThesisImg: "[]",
     ThesisAllow: false,
     ThesisFile: "[]",
@@ -153,7 +154,6 @@ function AddThesis() {
   return (
     <>
       <div className="container">
-        <hr />
         <br />
         <h3>Add New Thesis</h3>
         <br />
@@ -185,13 +185,13 @@ function AddThesis() {
                 
               >
                 <option defaultValue="">Choose...</option>
-                <option value="เว็บไซต์">เว็บไซต์</option>
-                <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
-                <option value="อุปกรณ์ Iot">อุปกรณ์ Iot</option>
-                <option value="สื่อการสอน">สื่อการสอน</option>
-                <option value="เกม">เกม</option>
+                <option value="Website">เว็บไซต์</option>
+                <option value="Application">แอปพลิเคชัน</option>
+                <option value="Iot">อุปกรณ์ Iot</option>
+                <option value="Media">สื่อการสอน</option>
+                <option value="game">เกม</option>
                 <option value="VR AR MR">VR AR MR</option>
-                <option value="อื่นๆ">อื่นๆ</option>
+                <option value="other">อื่นๆ</option>
               </select>
             </div>
             <br />
@@ -291,7 +291,7 @@ function AddThesis() {
                 className="btn btn-success col mx-3"
                 onClick={createThesis}
                 type="submit"
-                to="/ListThesis"
+             
               >
                 <Link
                   className="btn"

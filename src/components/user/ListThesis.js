@@ -72,7 +72,7 @@ function ListThesis() {
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
-              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center" , border:"0px" , boxShadow:"0px 1px 5px black"}}>
+              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center", border: "0px", boxShadow: "0px 1px 5px black" }}>
                 <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }}>
                   <MdIcons.MdOutlineWebAsset style={{ margin: "2px" }} size={20} /> เว็บไซต์
                 </Dropdown.Item>
@@ -130,19 +130,21 @@ function ListThesis() {
                   onClick={() =>
                     (window.location.href = `/viewcollection/${id}`)
                   }
-                  style={{ minHeight: "250px", minWidth: "250px", maxWidth: "250px", padding: "0" }}
-
+                  style={{ background: "red", height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
                 >
-                  <img
-                    id="imgShow"
-                    className="card-img-top"
-                    // style="height:200px;"
-                    style={{ height: "200px", width: "100%" }}
-                    alt="Product Images"
-                    src={values[id].ThesisImg[0]}
-                  // onClick="#"
-                  />
-                  <Card.Body >
+                  <div style={{ height: "300px" }}>
+                    <img
+                      id="imgShow"
+                      className="card-img-top"
+                      // style="height:200px;"
+                      style={{ height: "200px", width: "100%" }}
+                      alt="Product Images"
+                      src={values[id].ThesisImg[0]}
+                    // onClick="#"
+                    />
+                  </div>
+
+                  <Card.Body style={{ background: "blue", height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
                     <Card.Title>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
                     <AiIcons.AiOutlineLike /> {values[id].Like}
