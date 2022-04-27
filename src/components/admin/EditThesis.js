@@ -7,10 +7,19 @@ import { IoIosArrowBack } from "react-icons/io";
 
 function EditThesis() {
     const [values, setValues] = useState({
+        UserId: "",
+        Email: "",
+        ThesisImg: "[]",
+        ThesisAllow: "",
+        ThesisFile: "[]",
+        ThesisDetails: "",
         ThesisName: "",
         ThesisType: "",
         DevName1: "",
         DevName2: "",
+        Like: "",
+        View: "",
+        Download: "",
     });
 
     const { id } = useParams();
@@ -143,7 +152,7 @@ function EditThesis() {
             </div>
             <br /><br /><br /><br /><br />
             <Footer />
-            </div>
+        </div>
     );
 }
 export default EditThesis;

@@ -101,9 +101,9 @@ function AdminReport() {
                                 <td scope="col">{values[id].FromEmail}</td>
                                 <td>
                                     <Dropdown>
-                                    More Details&nbsp;&nbsp;
+                                        More Details&nbsp;&nbsp;
                                         <Dropdown.Toggle variant="transprent" >
-                                             
+
                                         </Dropdown.Toggle>
 
                                         <Dropdown.Menu>
@@ -112,8 +112,8 @@ function AdminReport() {
                                         </Dropdown.Menu>
                                     </Dropdown></td>
                                 <td>
-                                    <AiFillMinusCircle  type="button" style={{color:'red', fontSize:'125%'}}
-                                      
+                                    <AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '125%' }}
+
                                         onClick={() => onDelete(id)}
                                     />
 

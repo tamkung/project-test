@@ -55,9 +55,7 @@ function Report() {
 
   return (
     <>
-
       <div className="container" style={{height:"700px"}}>
-        <hr />
         <br />
         <h3>รายงานปัญหา</h3>
         <br />

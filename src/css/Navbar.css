@@ -17,7 +17,14 @@
   height: 80px;
   max-width: 1500px;
 }
-
+.drop-nav{
+  transition: all 0.2s ease-out;
+}
+.drop-item:hover{
+  transform: scale(1.1);
+  background-color: #c9255c;
+  color: #ffffff;
+}
 .navbar-logo {
   color: rgb(255, 123, 0);
   justify-self: start;

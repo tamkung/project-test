@@ -9,7 +9,7 @@ function Footer() {
 
     <div className="footer-container">
       <div className="footer-logo">
-        <Link to="/" className="btn">
+        <Link to="/" className="btn" style={{color:"white"}}>
           - Thesis -
         </Link>
       </div>

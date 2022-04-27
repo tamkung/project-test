@@ -71,8 +71,7 @@ function MyThesis() {
   };
 
   return (
-    <div className="container">
-      <hr />
+    <div className="container" style={{textAlign:"center" , marginTop:"20px"}}>
 
       <div className="row">
         <div className="col-lg" style={{ textAlign: "right" }}>

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import * as FcIcons from 'react-icons/fc'
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
+import DownloadButton from "../admin/DownloadButton";
 import * as AiIcons from "react-icons/ai"
 import "../../css/product-details.css";
 // import { FcDocument } from 'react-icons/fa';
@@ -111,14 +112,12 @@ function ViewThesis() {
 
             </div>
 
-            <div className="product-detail">
+            <div className="product-detail"> 
               {values.ThesisDetails}
             </div>
 
-            <div>
-              <a className="btn select-btn" href={values.ThesisFile} target="_blank" style={{ margin: "10%" }}><FcIcons.FcDocument size={50} /> Download</a>
-            </div>
-
+            <DownloadButton />
+       
           </div>
         </div>
       </div>

@@ -114,7 +114,7 @@ function AddThesis() {
 
       uploadTask.on(
         "state_changed",
-        (snapshot) => {},
+        (snapshot) => { },
         (error) => console.log(error),
         async () => {
           await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -138,7 +138,7 @@ function AddThesis() {
 
       uploadTask.on(
         "state_changed",
-        (snapshot) => {},
+        (snapshot) => { },
         (error) => console.log(error),
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -234,14 +234,16 @@ function AddThesis() {
               </div>
 
               <div className="form-group mt-3">
-                <label htmlFor="ThesisDev">อัปโหลดรูปภาพ</label>
+                <label htmlFor="ThesisDev">อัปโหลดรูปภาพ <a style={{ color: "red" }}>( ไม่เกิน 5 รูป )</a> </label>
                 <input
-                  className="form-control"
+                  className="multi form-control"
                   type="file"
                   id="formFileMultiple"
                   accept="image/*"
                   onChange={ImgOnChange}
+                  maxlength="5"
                   multiple
+                  title="5"
                 />
 
                 {/* {Images.map((url, i) => (

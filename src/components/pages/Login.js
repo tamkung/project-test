@@ -6,7 +6,7 @@ import * as FcIcons from 'react-icons/fc'
 const Login = () => {
   return (
     <div className="btn" >
-      <button className="auth-btn" onClick={signInWithGoogle} style={{fontSize: "100%", margin: "10px"}}>
+      <button className="btn auth-btn" onClick={signInWithGoogle} style={{fontSize: "16px"}}>
         <FcIcons.FcGoogle style={{ fontSize: "150%" }} /> &nbsp; &nbsp;
        | &nbsp;&nbsp; Sign In With Google
       

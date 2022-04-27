@@ -63,7 +63,7 @@ function App() {
 
 
   return (
-    <div>
+    <div >
       {admin ? (
         <div>
           {/* <------------------------ Pages Admin ------------------------> */}
@@ -94,11 +94,11 @@ function App() {
          
         </div>
       ) : (
-        <div>
+        <div >
           {/* <------------------------ Pages User ------------------------> */}
           {/* <h1>Not Admin</h1> */}
           <Navbar />
-          <Routes>
+          <Routes >
             <Route path={"/"} index element={<Home />} />
             <Route path={"/ListThesis"} element={<ListThesis />} />
             <Route path={"/login"} element={<Login />} />

@@ -43,7 +43,7 @@ function AdminList() {
   return (
     <div className="container">
 
-      <table class="table table-hover">
+      <table className="table table-hover" >
         <thead>
           <tr>
             <th scope="col">
@@ -55,7 +55,7 @@ function AdminList() {
         </thead>
         {Object.keys(values).map((id, index) => {
         return (
-            <tbody>
+            <tbody style={{border:"0px"}}>
               <tr>
                 <td scope="col">{values[id].ThesisName}</td>
                 <td scope="col">{values[id].ThesisType}</td>
