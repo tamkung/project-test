@@ -66,13 +66,13 @@ function ListThesis() {
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
-        <div className="row" style={{ width: "100%", background: "#F5F5F5", borderRadius: "20px 20px 20px 20px", margin: "2%" }}>
+        <div className="row" style={{ width: "100%", background: "#F5F5F5", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
             <Dropdown className="btn">
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
-              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center" }}>
+              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center" , border:"0px" , boxShadow:"0px 1px 5px black"}}>
                 <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }}>
                   <MdIcons.MdOutlineWebAsset style={{ margin: "2px" }} size={20} /> เว็บไซต์
                 </Dropdown.Item>
@@ -98,13 +98,13 @@ function ListThesis() {
             </Dropdown>
 
             <Link to={"/AddCollection"}>
-              <button className="btn btn-outline-success" style={{ border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
+              <button className="btn btn-outline-success" style={{ borderRadius: "25px 25px 25px 25px", border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
                 <i className="fas fa-plus-circle"></i> &nbsp; Add
               </button>
             </Link>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Link to={"/MyThesis"}>
-              <button className="btn btn-outline-primary" style={{ border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "120px" }}>
+              <button className="btn btn-outline-primary" style={{ borderRadius: "25px 25px 25px 25px", border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "150px" }}>
                 <ImBooks style={{ fontSize: "150%" }} />
                 &nbsp; My Thesis
               </button>
@@ -122,7 +122,7 @@ function ListThesis() {
       <br />
 
       <div className="container" style={{ textAlign: "center" }} >
-        <div className="row" style={{textAlign: "center" }} >
+        <div className="row" style={{ textAlign: "center" }} >
           {Object.keys(values).map((id, index) => {
             return (
               <div key={id} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>

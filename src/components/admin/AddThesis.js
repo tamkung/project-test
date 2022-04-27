@@ -182,8 +182,9 @@ function AddThesis() {
                 name="ThesisType"
                 className="form-control"
                 onChange={handleOnChange}
+                
               >
-                <option selected>Choose...</option>
+                <option defaultValue="">Choose...</option>
                 <option value="เว็บไซต์">เว็บไซต์</option>
                 <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
                 <option value="อุปกรณ์ Iot">อุปกรณ์ Iot</option>
@@ -241,7 +242,7 @@ function AddThesis() {
                   id="formFileMultiple"
                   accept="image/*"
                   onChange={ImgOnChange}
-                  maxlength="5"
+                  maxLength="5"
                   multiple
                   title="5"
                 />

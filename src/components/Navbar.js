@@ -116,12 +116,7 @@ function Navbar() {
 
                 <Dropdown.Menu className="drop-nav" style={{ width: "100%", alignItems: "center" }}>
                   <Dropdown.Item className="btn" style={{ textAlign: "center" }}>
-                    <Link
-                      to='/mythesis'
-                      className='btn'
-
-
-                    >
+                    <Link to='/mythesis' className='btn'>
                       My Thesis
                     </Link>
                   </Dropdown.Item>

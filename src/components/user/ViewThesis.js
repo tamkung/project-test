@@ -1,7 +1,4 @@
-import { colors } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import * as FcIcons from 'react-icons/fc'
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
 import DownloadButton from "../admin/DownloadButton";
