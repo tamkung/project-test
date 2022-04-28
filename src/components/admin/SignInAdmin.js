@@ -69,7 +69,7 @@ function SignInAdmin() {
           </form>
           <div className="row mt-3">
             <p className="col-8 my-auto">
-              No account? ,<Link to={"/admin/sing-up"}>Create one</Link>
+              No account? ,<Link to={"/admin/sign-up"}>Create one</Link>
             </p>
             <div className="col-4">
               <button className="btn btn-outline-danger btn-sm">
