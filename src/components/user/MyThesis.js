@@ -4,10 +4,22 @@ import { Link } from "react-router-dom";
 import { firebaseDB, firebase } from "../../services/firebase";
 import { Card, CardImg } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
-import { AiOutlineLike } from "react-icons/ai";
-import { AiOutlineEye } from "react-icons/ai";
-import { ImBooks } from "react-icons/im";
-import { colors } from "@material-ui/core";
+import * as FaIcons from 'react-icons/fa';
+import * as FiIcons from 'react-icons/fi';
+import * as AiIcons from 'react-icons/ai';
+import * as IoIcons from 'react-icons/io';
+import * as BsIcons from 'react-icons/bs';
+import * as BiIcons from 'react-icons/bi';
+import * as ImIcons from 'react-icons/im';
+import * as GiIcons from 'react-icons/gi';
+import * as WiIcons from 'react-icons/wi';
+import * as MdIcons from 'react-icons/md';
+import * as GoIcons from 'react-icons/go';
+import * as GrIcons from 'react-icons/gr';
+import * as HiIcons from 'react-icons/hi';
+import * as RiIcons from 'react-icons/ri';
+import * as SiIcons from 'react-icons/si';
+import * as TiIcons from 'react-icons/ti';
 
 function MyThesis() {
   const [values, setValues] = useState({});
@@ -15,26 +27,26 @@ function MyThesis() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       firebaseDB
-      .child("Thesis")
-      .orderByChild("UserId")
-      .equalTo(user.uid.toString())
-      .on("value", (snapshot) => {
-        if (snapshot.val() !== null) {
-          setValues({ ...snapshot.val() });
-          console.log(user.uid);
-        } else {
-          setValues({});
-        }
-      });
-  
+        .child("Thesis")
+        .orderByChild("UserId")
+        .equalTo(user.uid.toString())
+        .on("value", (snapshot) => {
+          if (snapshot.val() !== null) {
+            setValues({ ...snapshot.val() });
+            console.log(user.uid);
+          } else {
+            setValues({});
+          }
+        });
+
       return () => {
         setValues({});
       };
-     
+
     });
   }, []);
 
-  
+
   // //   const [uid,setUid]=useState();
   // useEffect(() => {
   //   firebaseDB
@@ -49,7 +61,7 @@ function MyThesis() {
   //         setValues({});
   //       }
   //     });
-  
+
   //     return () => {
   //       setValues({});
   //     };
@@ -71,7 +83,7 @@ function MyThesis() {
   };
 
   return (
-    <div className="container" style={{textAlign:"center" , marginTop:"20px"}}>
+    <div className="container" style={{ textAlign: "center", marginTop: "20px" }}>
 
       <div className="row">
         <div className="col-lg" style={{ textAlign: "right" }}>
@@ -89,31 +101,45 @@ function MyThesis() {
           {
             Object.keys(values).map((id) => {
               return (
-                <div key={id} className="btn col-md-3" style={{ margin: "0% 0% 2% 0%" , textAlign:"center" }}>
+                <div key={id} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
                   <Card className="btn select-thesis "
                     onClick={() =>
                       (window.location.href = `/viewcollection/${id}`)
                     }
-                    style={{ height: "350px", width: "300px", padding: "0" }}
-  
+                    style={{ background: "red", height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
                   >
-                    <img
-                      id="imgShow"
-                      className="card-img-top"
-                      // style="height:200px;"
-                      style={{ height: "200px", width: "100%" }}
-                      alt="Product Images"
-                      src={values[id].ThesisImg[0]}
-                    // onClick="#"
-                    />
-                    <Card.Body >
+                    <div style={{ height: "300px" }}>
+                      <img
+                        id="imgShow"
+                        className="card-img-top"
+                        // style="height:200px;"
+                        style={{ height: "200px", width: "100%" }}
+                        alt="Product Images"
+                        src={values[id].ThesisImg[0]}
+                      // onClick="#"
+                      />
+                    </div>
+
+                    <Card.Body style={{ background: "blue", height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
                       <Card.Title>{values[id].ThesisName}</Card.Title>
                       <Card.Text>{values[id].ThesisType}</Card.Text>
-                      <AiOutlineLike /> {values[id].Like}
+                      <AiIcons.AiOutlineLike /> {values[id].Like}
                     </Card.Body>
                   </Card>
+                  {/* <Card style={{ height: "200px" }} onClick={() =>  window.location.href=`/viewcollection/${id}`}> */}
+
+                  {/* <Card.Body> */}
+
+                  {/* <AiOutlineEye /> {values[id].Share} */}
+                  {/* <Card.Title>{values[id].ThesisName}</Card.Title> */}
+
+                  {/* <Card.Text>{values[id].ThesisType}</Card.Text> */}
+                  {/* <AiOutlineLike /> {values[id].Like} */}
+                  {/* </Card.Body> */}
+
+                  {/* </Card> */}
                 </div>
-             );
+              );
             })}
 
           {/* {Object.keys(values).map((id) => {
