@@ -20,6 +20,7 @@ function Navbar() {
   console.log(user);
 
   const [click, setClick] = useState(false);
+
   const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
@@ -59,7 +60,7 @@ function Navbar() {
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
               <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
+                Home5
               </Link>
             </li>
             <li className='nav-item'>
@@ -145,24 +146,13 @@ function Navbar() {
                 </Dropdown.Menu>
               </Dropdown>
               :
-              <li style={{ margin: "5% 0% 5% 0%" , padding:"0" }} >
+              <li style={{ margin: "5% 0% 5% 0%", padding: "0" }} >
                 <Login className='nav-links' variant="transprent" />
-              </li>}
-
-
-
-
-            {/* <li>
-             <h5>{user.DisplayName}</h5>
-            </li> */}
-
-
-
+              </li>
+            }
           </ul>
-
         </div>
       </nav>
-
     </>
   );
 }

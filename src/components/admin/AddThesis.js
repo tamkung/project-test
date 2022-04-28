@@ -185,13 +185,13 @@ function AddThesis() {
                 
               >
                 <option defaultValue="">Choose...</option>
-                <option value="Website">เว็บไซต์</option>
-                <option value="Application">แอปพลิเคชัน</option>
-                <option value="Iot">อุปกรณ์ Iot</option>
-                <option value="Media">สื่อการสอน</option>
-                <option value="game">เกม</option>
+                <option value="Website">Website</option>
+                <option value="Application">Application</option>
+                <option value="Iot">Iot</option>
+                <option value="Media">Media</option>
+                <option value="Game">Game</option>
                 <option value="VR AR MR">VR AR MR</option>
-                <option value="other">อื่นๆ</option>
+                <option value="Other">Other</option>
               </select>
             </div>
             <br />

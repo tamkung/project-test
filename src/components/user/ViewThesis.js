@@ -42,7 +42,7 @@ function ViewThesis() {
   return (
 
     <div>
-      <div className="container">
+      <div className="container" style={{ width: "100%" }}>
         <div className="card-view">
           <div>
             <div className="img-display" >
@@ -56,29 +56,36 @@ function ViewThesis() {
 
               </div>
             </div>
-            <div className="btn">
-              <div className="img-select col">
-                <div className="img-item">
-                  <a href={Images[1]} target="_blank" data-id="1">
-                    <img className="img-second" src={Images[1]} alt="" />
+            <div className="btn" >
+              <div className="row">
+                <div className="col" >
 
-                  </a>
+                  <div className="img-select col-5" style={{background:"red", width: "100%", height: "100%" }}>
+                    <div className="btn img-item" style={{background:"red", width: "100%"}}>
+                      <a href={Images[1]} target="_blank" data-id="1">
+                        <img className="img-second" src={Images[1]} alt="" />
+
+                      </a>
+                    </div>
+                    <div className="btn img-item">
+                      <a href={Images[2]} target="_blank" data-id="2">
+                        <img className="img-second" src={Images[2]} alt="" />
+                      </a>
+                    </div>
+                    <div className="btn img-item">
+                      <a href={Images[3]} target="_blank" data-id="3">
+                        <img className="img-second" src={Images[3]} alt="" />
+                      </a>
+                    </div>
+                    <div className="btn img-item">
+                      <a href={Images[4]} target="_blank" data-id="4">
+                        <img className="img-second" src={Images[4]} alt="" />
+                      </a>
+                    </div>
+                  </div>
+
                 </div>
-                <div className="img-item">
-                  <a href={Images[2]} target="_blank" data-id="2">
-                    <img className="img-second" src={Images[2]} alt="" />
-                  </a>
-                </div>
-                <div className="img-item">
-                  <a href={Images[3]} target="_blank" data-id="3">
-                    <img className="img-second" src={Images[3]} alt="" />
-                  </a>
-                </div>
-                <div className="img-item">
-                  <a href={Images[4]} target="_blank" data-id="4">
-                    <img className="img-second" src={Images[4]} alt="" />
-                  </a>
-                </div>
+
               </div>
               <div>
                 <div className="btn btn-outline-primary space">
@@ -113,8 +120,8 @@ function ViewThesis() {
               {values.ThesisDetails}
             </div>
 
-             <DownloadButton /> 
-            
+            <DownloadButton />
+
           </div>
         </div>
       </div>

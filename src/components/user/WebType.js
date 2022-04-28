@@ -16,9 +16,8 @@ function WebType() {
     firebase.auth().onAuthStateChanged(() => {
       firebaseDB
       .child("Thesis")
-      .child("ThesisType")
-      .orderByChild("iot")
-      .equalTo("iot")
+      .orderByChild("ThesisType")
+      .equalTo("Iot")
       .on("value", (snapshot) => {
         if (snapshot.val() !== null) {
           setValues({ ...snapshot.val() });
