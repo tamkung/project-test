@@ -77,9 +77,8 @@ function AdminReport() {
 
     return (
         <div className="container">
+             <h1 className="mt-3" style={{ textAlign: 'center', color: 'red', border: '5px' }}><MdReport /> รายงานปัญหา <MdReport /> </h1>
             <hr />
-            <br />
-            <h3 style={{ textAlign: 'center', color: 'red', border: '5px' }}><MdReport /> รายงานปัญหา <MdReport /> </h3>
             <br />
             <table className="table table-hover">
                 {Object.keys(values).map((id, index) => {
