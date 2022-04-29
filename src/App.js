@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { firebase, firebaseDB } from "../src/services/firebase";
 
 // ----------@Layout------
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
 
 // ----------@Css---------
 import "../src/css/App.css";
