@@ -14,11 +14,14 @@
 .select-thesis {
     margin: 5;
     align-items: center;
+    
+    position: relative;
+    z-index: 98;
 }
 
 .select-thesis:hover {
     transform: scale(1.1);
-    box-shadow: 0px 1px 10px rgb(121, 121, 121);
+    box-shadow: 0px 0px 5px rgb(121, 121, 121);
 }
 .auth-btn {
     background-color: #fefefe;
@@ -56,4 +59,7 @@
     position: fixed; /* or absolute */
    
 }
-
+.report-button{
+    position: absolute;
+    z-index: 999;
+}

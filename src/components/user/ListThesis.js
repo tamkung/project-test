@@ -130,24 +130,27 @@ function ListThesis() {
                   onClick={() =>
                     (window.location.href = `/viewcollection/${id}`)
                   }
-                  style={{ background: "red", height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
+                  style={{ height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
+
                 >
+
                   <div style={{ height: "300px" }}>
                     <img
-                      id="imgShow"
-                      className="card-img-top"
+                      className="show-img card-img-top"
                       // style="height:200px;"
                       style={{ height: "200px", width: "100%" }}
                       alt="Product Images"
                       src={values[id].ThesisImg[0]}
                     // onClick="#"
+
                     />
                   </div>
 
-                  <Card.Body style={{ background: "blue", height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
+                  <Card.Body style={{ height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
                     <Card.Title>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
                     <AiIcons.AiOutlineLike /> {values[id].Like}
+                    
                   </Card.Body>
                 </Card>
                 {/* <Card style={{ height: "200px" }} onClick={() =>  window.location.href=`/viewcollection/${id}`}> */}
