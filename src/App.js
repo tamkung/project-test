@@ -6,7 +6,10 @@ import { useState, useEffect } from "react";
 import { firebase, firebaseDB } from "../src/services/firebase";
 
 // ----------@Layout------
+// import Navbar from "./components/Navbar";
 import Navbar from "./components/layout/Navbar";
+import NavbarAdmin from './components/layout/AdminNavbar'
+import Footer from './components/layout/Footer';
 
 // ----------@Css---------
 import "../src/css/App.css";
@@ -22,7 +25,7 @@ import ListThesis from "./components/user/ListThesis";
 import MyThesis from "./components/user/MyThesis";
 import WebType from "./components/user/WebType";
 // ------------------------------------------admin
-import NavbarAdmin from './components/layout/AdminNavbar'
+
 import AdminReport from "./components/admin/AdminReport";
 import AdminThesis from "./components/admin/AdminThesis";
 import AdminList from "./components/admin/AdminList";
@@ -31,7 +34,7 @@ import AdminEditThesis from "./components/admin/EditThesis";
 import SignInAdmin from "./components/admin/SignInAdmin";
 import SignUpAdmin from "./components/admin/SignUpAdmin";
 import AdminHome from "./components/admin/HomeAdmin";
-import Footer from './components/Footer';
+
 import Login from "./components/pages/Login";
 import "./css/style.css";
 

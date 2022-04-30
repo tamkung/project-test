@@ -41,7 +41,6 @@ function Navbar() {
 
   const AddUser = () => {
     firebaseDB.child('User').child(user.uId)
-
   }
 
   return (
@@ -70,7 +69,6 @@ function Navbar() {
                 Collection
               </Link>
             </li>
-
             <li className='nav-item'>
               <Link
                 to='/report'
@@ -80,39 +78,12 @@ function Navbar() {
                 Report
               </Link>
             </li>
-
             {user ?
-              // ? <li className='dropdown'>
-
-              //   <button
-              //     data-toggle="dropdown"
-              //     className='btn dropdown nav-links dropdown-toggle'
-              //     onClick={closeMobileMenu}
-              //   >
-              //     <img src={user.photoURL} style={{ borderRadius: "50%", width: "40px" }} /> &nbsp;&nbsp;
-              //     {user.displayName}
-
-              //   </button>
-              //   <ul class="dropdown-menu">
-              //     <li><a href="#"><Logout user={user} /> : <Login /></a></li>
-              //     <li><a href="#">CSS</a></li>
-              //     <li><a href="#">JavaScript</a></li>
-              //   </ul>
-
-              //   <ul className="dropdown-menu">
-              //     <li className="dropdown-item" >
-              //       <a> {user ? <Logout user={user} /> : <Login />}</a>
-              //     </li>
-              //   </ul>
-
-              // </li>
               <Dropdown >
-
                 <Dropdown.Toggle className='nav-links' variant="transprent" >
                   <img src={user.photoURL} style={{ borderRadius: "50%", width: "40px", margin: "0px 20px 0px 0px" }} />
                   {user.displayName}
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu className="drop-nav" style={{ width: "100%", alignItems: "center" }}>
                   <Dropdown.Item className="btn" style={{ textAlign: "center" }}>
                     <Link to='/mythesis' className='btn'>
@@ -132,15 +103,10 @@ function Navbar() {
                           .catch((error) => {
                             console.error(error);
                           })
-                      }
-
-                    >
+                      }>
                       Log out
                     </Link>
                   </Dropdown.Item>
-
-
-
                 </Dropdown.Menu>
               </Dropdown>
               :

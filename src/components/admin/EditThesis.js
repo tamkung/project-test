@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
-import Footer from '../Footer';
+import Footer from '../layout/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 

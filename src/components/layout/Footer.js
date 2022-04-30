@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/Footer.css";
+import "../../css/Footer.css";
 // import { Button } from './Button';
 import { Link } from "react-router-dom";
 import * as MdIcons from "react-icons/md"

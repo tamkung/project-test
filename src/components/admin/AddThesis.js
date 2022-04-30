@@ -5,7 +5,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 
 // import { Toast } from "bootstrap";;
 // import {dateKey} from '../dataKey';
-import Footer from "../Footer";
+import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 var d = new Date();
