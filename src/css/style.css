@@ -18,7 +18,16 @@
     position: relative;
     z-index: 98;
 }
-
+tr:hover{
+    background-color: rgb(221, 221, 221);
+}
+.container-report{
+    margin: 1%;
+    border-color: #02bd11;
+    padding: 1%;
+    border-radius: 2% 2% 2% 2%;
+    box-shadow: 0px 1px 3px rgb(121, 121, 121);
+}
 .select-thesis:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 5px rgb(121, 121, 121);
@@ -26,8 +35,7 @@
 .auth-btn {
     background-color: #fefefe;
     color: gray;
-    border: 0;
-    
+    text-align: center;
 }
 .auth-out-btn {
     background-color: #fefefe;

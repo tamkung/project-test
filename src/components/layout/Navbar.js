@@ -111,7 +111,7 @@ function Navbar() {
               </Dropdown>
               :
               <li style={{ margin: "5% 0% 5% 0%", padding: "0" }} >
-                <Login className='nav-links' variant="transprent" />
+                <Login className='nav-links' variant="transprent"/>
               </li>
             }
           </ul>
