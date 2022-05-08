@@ -11,6 +11,13 @@
 .select-btn:hover {
     transform: scale(1.2);
 }
+.wait-spinner { 
+   
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  
+}
 .select-thesis {
     margin: 5;
     align-items: center;

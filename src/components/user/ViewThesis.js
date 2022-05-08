@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
 import { firebaseDB } from "../../services/firebase";
 import * as AiIcons from "react-icons/ai"
 import "../../css/product-details.css";
@@ -41,55 +42,52 @@ function ViewThesis() {
     <div>
       <div className="container" style={{ width: "100%" }}>
         <div className="card-view">
-          <div>
-            <div className="img-display" >
-              <div className="img-showcase" >
-                <img
-                  style={{ height: "390px", width: "100%", borderRadius: "5% 5% 5% 5%", padding: "1%" }}
-                  src={Images[0]}
-                  alt="firebase-images"
-                />
-              </div>
-            </div>
-            <div className="btn" >
-              <div className="row">
-                <div className="col" >
-                  <div className="img-select col-5" style={{background:"red", width: "100%", height: "100%" }}>
-                    <div className="btn img-item" style={{background:"red", width: "100%"}}>
-                      <a href={Images[1]} target="_blank" data-id="1">
-                        <img className="img-second" src={Images[1]} alt="" />
-                      </a>
-                    </div>
-                    <div className="btn img-item">
-                      <a href={Images[2]} target="_blank" data-id="2">
-                        <img className="img-second" src={Images[2]} alt="" />
-                      </a>
-                    </div>
-                    <div className="btn img-item">
-                      <a href={Images[3]} target="_blank" data-id="3">
-                        <img className="img-second" src={Images[3]} alt="" />
-                      </a>
-                    </div>
-                    <div className="btn img-item">
-                      <a href={Images[4]} target="_blank" data-id="4">
-                        <img className="img-second" src={Images[4]} alt="" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div className="btn btn-outline-primary space">
-                  <AiIcons.AiOutlineEye /> {values.View}
-                  {/* //AiFillLike */}
-                </div>
-                <div className="btn btn-outline-primary space">
-                  <AiIcons.AiOutlineLike /> {values.View}
-                  {/* //AiFillLike */}
-                </div>
-              </div>
-            </div>
+          <div className="container" style={{ maxWidth: "1500px", textAlign: "center" }}>
+            <div style={{ textAlign: "center", border: "2px solid black", boxShadow: "2px 2px 3px gray" }}>
+              <Carousel variant="light" >
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Images[1]}
+                    alt="1500*500"
+                    style={{ minHeight: "200px", maxHeight: "500px", width: "1000px" }}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Images[2]}
+                    alt="1500*500"
+                    style={{ minHeight: "200px", maxHeight: "500px", width: "1000px" }}
+                  />
 
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Images[3]}
+                    alt="1500*500"
+                    style={{ minHeight: "200px", maxHeight: "500px", width: "1000px" }}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Images[4]}
+                    alt="1500*500"
+                    style={{ minHeight: "200px", maxHeight: "500px", width: "1000px" }}
+                  />
+                </Carousel.Item>
+                <Carousel.Item>
+                  <img
+                    className="d-block w-100"
+                    src={Images[5]}
+                    alt="1500*500"
+                    style={{ minHeight: "200px", maxHeight: "500px", width: "1000px" }}
+                  />
+                </Carousel.Item>
+              </Carousel>
+            </div>
           </div>
 
           <div className="product-content">

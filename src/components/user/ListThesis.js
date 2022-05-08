@@ -125,7 +125,7 @@ function ListThesis() {
         <div className="row" style={{ textAlign: "center" }} >
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={index} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
+              <div key={index} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", width: "10vw" }}>
                 <Card className="btn select-thesis "
                   onClick={() =>
                     (window.location.href = `/view-thesis/${id}`)
