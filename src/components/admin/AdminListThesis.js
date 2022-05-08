@@ -12,7 +12,7 @@ function AdminListThesis() {
   // const [sort, setSort] = useState(false);
 
   useEffect(() => {
-    firebaseDB.child("Thesis").on("value", (snapshot) => {
+    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setValues({ ...snapshot.val() });
       } else {
@@ -44,7 +44,7 @@ function AdminListThesis() {
     <div className="container">
 
       <table className="table table-hover" >
-        <thead>
+        {/* <thead>
           <tr>
             <th scope="col">
               <Link to={'/admin/add-thesis'}>
@@ -52,7 +52,7 @@ function AdminListThesis() {
               </Link>
             </th>
           </tr>
-        </thead>
+        </thead> */}
         {Object.keys(values).map((id, index) => {
         return (
             <tbody style={{border:"0px"}}>
@@ -67,9 +67,9 @@ function AdminListThesis() {
                   >
                     Delete
                   </button>
-                  <Link to={`/EditThesis/${id}`}>
-                    <button className="btn btn-view" style={{ background: "orange", color: "white" }}>Edit</button>
-                  </Link>
+                  {/* <Link to={`/EditThesis/${id}`}> */}
+                    <button className="btn btn-view" style={{ background: "orange", color: "white" }} onClick={()=>window.location.href=`/admin/edit-thesis/${id}`}>Edit</button>
+                  {/* </Link> */}
                   </td>
               </tr>
 

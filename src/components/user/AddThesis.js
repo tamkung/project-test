@@ -40,9 +40,9 @@ function AddThesis() {
     ThesisType: "",
     DevName1: "",
     DevName2: "",
-    Like: "",
-    View: "",
-    Download: "",
+    Like: 0,
+    View: 0,
+    Download: 0,
   });
 
   const handleOnChange = (e) => {
@@ -72,9 +72,6 @@ function AddThesis() {
   const [ShowImages, setShowImages] = useState([]);
   const [Images, setImages] = useState([]);
   const [Files, setFiles] = useState([]);
-
-  console.log(Images);
-  console.log(Files);
 
   const ImgOnChange = (e) => {
     const selectedFIles = [];

@@ -15,7 +15,7 @@ function AdminNavbar() {
     <div>
       <Navbar bg="secondary" expand={false}>
         <Container fluid>
-          <Navbar.Brand href="#">Admin Thesis</Navbar.Brand>
+          <Navbar.Brand href="/">Admin Thesis</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas
             id="offcanvasNavbar"

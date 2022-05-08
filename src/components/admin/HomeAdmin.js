@@ -11,14 +11,19 @@ function HomeAdmin() {
   const WebThesis = AllThesis.filter((AllThesis) => AllThesis == "Website");
   const AppThesis = AllThesis.filter((AllThesis) => AllThesis == "Application");
   const IotThesis = AllThesis.filter((AllThesis) => AllThesis == "Iot");
-  const GameThesis = AllThesis.filter((AllThesis) => AllThesis == "Media");
-  const TeachThesis = AllThesis.filter((AllThesis) => AllThesis == "VR AR MR");
+  const GameThesis = AllThesis.filter((AllThesis) => AllThesis == "Game");
+  const TeachThesis = AllThesis.filter((AllThesis) => AllThesis == "Media");
   const VrThesis = AllThesis.filter((AllThesis) => AllThesis == "VR AR MR");
   const OtherThesis = AllThesis.filter((AllThesis) => AllThesis == "other");
 
+  const AllowThesis = Object.keys(values).map((id) => values[id].ThesisAllow);
+  const ValAllowThesis = AllowThesis.filter((AllowThesis)=>AllowThesis == true);
+  const NotAllowThesis = AllowThesis.filter((AllowThesis)=>AllowThesis == false);
+
   // console.log(values);
   // console.log(AllThesis);
-  // console.log("All Thesis\t" + AllThesis.length);
+  console.log("Allow Thesis\t" + ValAllowThesis.length);
+  console.log("Not Allow Thesis\t" + NotAllowThesis.length);
   // console.log("Web Thesis\t" + WebThesis.length);
   // console.log("App Thesis\t" + AppThesis.length);
   // console.log("Iot Thesis\t" + IotThesis.length);
@@ -132,8 +137,30 @@ function HomeAdmin() {
             </Row>
           </Col>
         </Row>
+        <Row className="mt-3 p-2">
+        <Col>
+                <Card>
+                  <Card.Body className=" text-center">
+                    <Card.Title>{ValAllowThesis.length} </Card.Title>
+                  </Card.Body>
+                  <Card.Footer className="text-right">
+                    <Card.Text> อนุมัติแล้ว </Card.Text>
+                  </Card.Footer>
+                </Card>
+              </Col>
+              <Col>
+                <Card>
+                  <Card.Body className=" text-center">
+                    <Card.Title>{NotAllowThesis.length} </Card.Title>
+                  </Card.Body>
+                  <Card.Footer className="text-right">
+                    <Card.Text> ยังไม่อนุมัติ </Card.Text>
+                  </Card.Footer>
+                </Card>
+              </Col>
+        </Row>
       </Container>
-      <Container className="mt-3">
+      <Container >
         <Row>
           <h1>List Thesis</h1>
           <hr/>

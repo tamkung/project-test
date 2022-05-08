@@ -81,8 +81,8 @@ function App() {
           <Footer />
         </div>
       ) : (
-        <div>
-          <Spinner className="wait-spinner" animation="border" variant="success"/>
+        <div className="wait-spinner">
+          <Spinner animation="border" variant="success"/>
         </div>
       )}
     </div>
