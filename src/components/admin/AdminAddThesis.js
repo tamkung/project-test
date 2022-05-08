@@ -16,7 +16,7 @@ var dateKey = saveCurrentDate + "," + saveCurrentTime;
 
 
 
-function AdminThesis() {
+function AdminAddThesis() {
 
   const [values, setValues] = useState({
     // UserId:{user.googleId},
@@ -299,4 +299,4 @@ function AdminThesis() {
     </>
   );
 }
-export default AdminThesis;
+export default AdminAddThesis;

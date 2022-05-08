@@ -5,7 +5,7 @@ import Footer from '../layout/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
 
-function EditThesis() {
+function AdminEditThesis() {
     const [values, setValues] = useState({
         UserId: "",
         Email: "",
@@ -155,4 +155,4 @@ function EditThesis() {
         </div>
     );
 }
-export default EditThesis;
+export default AdminEditThesis;

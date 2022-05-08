@@ -36,7 +36,7 @@ function ListThesis() {
   // const [sort, setSort] = useState(false);
 
   useEffect(() => {
-    firebaseDB.child("Thesis").on("value", (snapshot) => {
+    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setValues({ ...snapshot.val() });
       } else {
@@ -125,10 +125,10 @@ function ListThesis() {
         <div className="row" style={{ textAlign: "center" }} >
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={id} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
+              <div key={index} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
                 <Card className="btn select-thesis "
                   onClick={() =>
-                    (window.location.href = `/viewcollection/${id}`)
+                    (window.location.href = `/view-thesis/${id}`)
                   }
                   style={{ height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
 

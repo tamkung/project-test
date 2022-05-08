@@ -27,14 +27,12 @@ function AdminAllow() {
 
 
   const onUpdateAllow = (id) => {
-    
         firebaseDB.child("Thesis").child(id)
         .update( {ThesisAllow: true,}).then(()=>{
             alert("Add Admin success");
         }).catch((error) => {
             console.error(error);
           });
-  
 }
 
 

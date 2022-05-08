@@ -6,7 +6,7 @@ import { Card, CardImg } from 'react-bootstrap';
 
 import CardHeader from "react-bootstrap/esm/CardHeader";
 
-function AdminList() {
+function AdminListThesis() {
   const [values, setValues] = useState({});
   // const [sortedData, setSortedData] = useState([]);
   // const [sort, setSort] = useState(false);
@@ -47,7 +47,7 @@ function AdminList() {
         <thead>
           <tr>
             <th scope="col">
-              <Link to={'/admin-add'}>
+              <Link to={'/admin/add-thesis'}>
                 <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
               </Link>
             </th>
@@ -86,7 +86,7 @@ function AdminList() {
     </div>
   )
 }
-export default AdminList;
+export default AdminListThesis;
 
 {/* <table className="table table-sm table-hover">
         <thead>

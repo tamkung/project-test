@@ -13,7 +13,7 @@ import "../../css/product-details.css";
 //   document.body.removeChild(a)
 // }
 
-function ViewThesis() {
+function AdminViewThesis() {
 
   const { id } = useParams();
   const [values, setValues] = useState({});
@@ -118,4 +118,4 @@ function ViewThesis() {
   );
 
 }
-export default ViewThesis;
+export default AdminViewThesis;
