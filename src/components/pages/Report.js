@@ -18,12 +18,13 @@ function Report() {
   }, []);
   const [values, setValues] = useState(
     {
+      DataTime: saveCurrentDate,
       UserId: "",
       Email: "",
       RpDetails: "",
       ReportType: "",
       RpHeader: "",
-      status: false
+      status: "false"
     });
 
   const handleOnChange = (e) => {
@@ -67,7 +68,8 @@ function Report() {
         <br />
         <h3>รายงานปัญหา</h3>
         <br />
-        <div className="container">
+
+        <div div className="container">
           <form>
             <div className="form-group">
               <label>ห้วข้อ</label>
@@ -111,23 +113,9 @@ function Report() {
               onChange={handleOnChange}
               pattren="{1,250}"
             />
-            <div className="form-group mt-3">
-              <label htmlFor="Email">อีเมล</label>
-              <input
-                type="email"
-                id="Email"
-                name="Email"
-                className="form-control"
-                placeholder="Email :"
-                // value={values.name}
-                onChange={handleOnChange}
-                title="ใส่เป็นตัวอักษรเท่านั้น"
-              />
 
-            </div>
 
             <br />
-
             <div className="row mt-3">
 
               <button
@@ -160,6 +148,8 @@ function Report() {
           </form>
           <br />
         </div>
+
+
 
         <br />
       </div>
