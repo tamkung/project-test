@@ -17,41 +17,28 @@ function AdminNavbar() {
         <Container fluid>
           <Navbar.Brand href="/">Admin Thesis</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
-          <Navbar.Offcanvas
-            id="offcanvasNavbar"
-            aria-labelledby="offcanvasNavbarLabel"
-            placement="end"
-          >
+          <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="end">
             <Offcanvas.Header closeButton>
               <Offcanvas.Title id="offcanvasNavbarLabel">
                 Manu
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="justify-content-end flex-grow-1 pe-3">
-             
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/admin/report">Report</Nav.Link>
                 <Nav.Link href="/admin/allow">Allow</Nav.Link>
+                <Nav.Link href="/admin/add-thesis">Add Thesis</Nav.Link>
+             </Offcanvas.Body>
           
-            </Offcanvas.Body>
-          
-            <Nav.Link
-                  className="m-0"
-                  href=""
-                  onClick={() =>
-                    auth
-                      .signOut()
+            <Nav.Link onClick={() =>auth.signOut()
                       .then(() => {
                         window.location.href = "/";
                       })
                       .catch((error) => {
                         console.error(error);
-                      })
-                  }
-                >
+                      })}>
                   <span className="no-icon">Log out</span>
-                </Nav.Link>
-        
+            </Nav.Link>
           </Navbar.Offcanvas>
         </Container>
       </Navbar>

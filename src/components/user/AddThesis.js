@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { firebaseDB, firebaseStorage, firebase } from "../../services/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
-// import { AiOutlineLike } from "react-icons/ai";
-
-// import { Toast } from "bootstrap";;
-// import {dateKey} from '../dataKey';
-import Footer from "../layout/Footer";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-import Carousel from "react-bootstrap/Carousel";
+
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime =
@@ -53,17 +48,17 @@ function AddThesis() {
     if (values.ThesisName === "") {
       console.log("ใส่ชื่อ ไอ้สอง");
     } else if (values.ThesisType === "") {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่ประเภท ไอ้สอง");
     } else if (values.ThesisDetails === "") {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่รายละเอียด ไอ้สอง");
     } else if (values.DevName1 === "") {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่ชื่อคนทำที่ 1 ไอ้สอง");
     } else if (values.DevName2 === "") {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่ชื่อคนทำที่ 2 ไอ้สอง");
     } else if (Images.length == 0) {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่รูป ไอ้สอง");
     } else if (Files.length == 0) {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่ไฟล์ ไอ้สอง");
     } else {
       AddThesis();
     }
@@ -91,7 +86,7 @@ function AddThesis() {
     Images.forEach((files) => {
       const storageRef = ref(
         firebaseStorage,
-        `Thesis/${dateKey}/Images/${files.name}`
+        `Thesis/Thesis-${dateKey}/Images-${files.name}`
       );
       const uploadTask = uploadBytesResumable(storageRef, files);
       uploadTask.on(
@@ -110,7 +105,7 @@ function AddThesis() {
     Files.forEach((files) => {
       const storageRef = ref(
         firebaseStorage,
-        `Thesis/${dateKey}/Files/${files.name}`
+        `Thesis/Thesis-${dateKey}/Files-${files.name}`
       );
       const uploadTask = uploadBytesResumable(storageRef, files);
       uploadTask.on(
