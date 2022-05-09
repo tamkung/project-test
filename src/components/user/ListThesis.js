@@ -5,6 +5,7 @@ import { firebaseDB, firebase } from "../../services/firebase";
 import { Card } from "react-bootstrap";
 import { ImBooks } from "react-icons/im";
 import { Dropdown } from 'react-bootstrap';
+import Search from "./Search";
 import * as FiIcons from 'react-icons/fi';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
@@ -59,13 +60,14 @@ function ListThesis() {
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
-        <div className="row" style={{ width: "100%", background: "#F5F5F5", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
+        <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
+          <Search/>
             <Dropdown className="btn">
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
-              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center", border: "0px", boxShadow: "0px 1px 5px black" }}>
+              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center", boxShadow: "0px 1px 5px black" }}>
                 <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }}>
                   <MdIcons.MdOutlineWebAsset style={{ margin: "2px" }} size={20} /> เว็บไซต์
                 </Dropdown.Item>
@@ -91,21 +93,24 @@ function ListThesis() {
             </Dropdown>
 
             <Link to={"/AddCollection"}>
-              <button className="btn btn-outline-success" style={{ borderRadius: "25px 25px 25px 25px", border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
+              <button className="btn btn-outline-success" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
                 <i className="fas fa-plus-circle"></i> &nbsp; Add
               </button>
             </Link>
             &nbsp;&nbsp;&nbsp;&nbsp;
             <Link to={"/MyThesis"}>
-              <button className="btn btn-outline-primary" style={{ borderRadius: "25px 25px 25px 25px", border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "150px" }}>
+              <button className="btn btn-outline-primary" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "150px" }}>
                 <ImBooks style={{ fontSize: "150%" }} />
                 &nbsp; My Thesis
               </button>
             </Link>
-
+            <div>
+              
+            </div>
 
 
           </div>
+          
         </div>
 
       ) : (
@@ -114,31 +119,50 @@ function ListThesis() {
 
       <br />
 
-      <div className="container" style={{ textAlign: "center" }} >
-        <div className="row" style={{ position: "relative", width: "100%" }} >
+      <div className="container" style={{ paddingLeft: "8%", paddingRight: "8%", textAlign: "center", width: "100%" }}  >
+        <div className="row">
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={index} className="btn col-sm-2" style={{ margin: "0% 5vw 4% 0%", textAlign: "center", position: "relative" }}>
+
+              <div key={index} className="col-sm-3">
                 <Card className="btn select-thesis"
                   onClick={() =>
                     (window.location.href = `/view-thesis/${id}`)
                   }
-                  style={{ maxHeight: "500px", minHeight: "200px", minWidth: "250px", maxWidth: "300px", width: "30vw", padding: "1%" }}
+                  style={{ maxHeight: "350px", minHeight: "200px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }}
                 >
-                  <div>
+                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#EA7676", position: "absolute", top: "60%", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >
+                    <div>
+                      <AiIcons.AiOutlineEye /> {values[id].View}
+                    </div>
+                  </div>
+                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#5CC7F0", position: "absolute", top: "60%", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >
+                    <div>
+                      <AiIcons.AiOutlineLike /> {values[id].Like}
+                    </div>
+                  </div>
+                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#F8DB24", position: "absolute", top: "60%", left: "37%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >
+                    <div>
+                      <AiIcons.AiOutlineComment /> {values[id].Comment}
+                    </div>
+                  </div>
+                  <div >
+
                     <img
                       className="show-img card-img-top"
                       alt="Product Images"
                       src={values[id].ThesisImg[0]}
                       style={{ height: "200px", width: "100%" }}
                     />
+
                   </div>
 
 
                   <Card.Body>
-                    <Card.Title style={{ fontSize: "2vh" }}>{values[id].ThesisName}</Card.Title>
+                    <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
-                    <AiIcons.AiOutlineLike /> {values[id].Like}
+
+
 
                   </Card.Body>
                 </Card>
@@ -154,6 +178,7 @@ function ListThesis() {
                 {/* </Card.Body> */}
 
                 {/* </Card> */}
+
               </div>
             );
           })}

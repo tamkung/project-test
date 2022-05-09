@@ -10,7 +10,6 @@ import Navbar from "./components/layout/Navbar";
 import NavbarAdmin from "./components/layout/AdminNavbar";
 import Footer from "./components/layout/Footer";
 import Spinner from "react-bootstrap/Spinner";
-
 // ----------@Css---------
 import "../src/css/App.css";
 import "../src/css/admin.css";
@@ -62,7 +61,9 @@ function App() {
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
           {/* <h1>Not Admin</h1> */}
           <Navbar />
+          
           <Routes>
+          
             {RouterUser.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
