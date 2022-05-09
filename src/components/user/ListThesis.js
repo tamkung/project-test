@@ -90,14 +90,6 @@ function ListThesis() {
                 &nbsp; My Thesis
               </button>
             </Link>
-<<<<<<< HEAD
-            <div>
-              
-            </div>
-
-
-=======
->>>>>>> 5b5105dccf0a59c68ecd1c926d8ab068855744fb
           </div>
           
         </div>
@@ -106,22 +98,18 @@ function ListThesis() {
         <div></div>
       )}
       <br />
-<<<<<<< HEAD
-
-      <div className="container" style={{ paddingLeft: "8%", paddingRight: "8%", textAlign: "center", width: "100%" }}  >
-        <div className="row">
-=======
       <div className="container" style={{ textAlign: "center" }} >
         <div className="row" style={{ position: "relative", width: "100%" }} >
->>>>>>> 5b5105dccf0a59c68ecd1c926d8ab068855744fb
           {Object.keys(values).map((id, index) => {
             return (
 
               <div key={index} className="col-sm-3">
                 <Card className="btn select-thesis"
                   onClick={() =>
-                    (window.location.href = `/view-thesis/${id}`)
-                  }
+                    (
+                    window.location.href = `/view-thesis/${id}`, 
+                    firebaseDB.child("Thesis").child(id).update({View:values[id].View+1})
+                    )}
                   style={{ maxHeight: "350px", minHeight: "200px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }}
                 >
                   <div className="tag-icon" style={{ borderRadius: "8px", background: "#EA7676", position: "absolute", top: "60%", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >

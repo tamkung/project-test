@@ -7,8 +7,6 @@ import { IoIosArrowBack } from "react-icons/io";
 
 function AdminEditThesis() {
     const [values, setValues] = useState({
-        UserId: "",
-        Email: "",
         ThesisImg: "[]",
         ThesisAllow: "",
         ThesisFile: "[]",
@@ -17,9 +15,6 @@ function AdminEditThesis() {
         ThesisType: "",
         DevName1: "",
         DevName2: "",
-        Like: "",
-        View: "",
-        Download: "",
     });
 
     const { id } = useParams();

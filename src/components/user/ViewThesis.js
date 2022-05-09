@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import { firebaseDB } from "../../services/firebase";
-import * as AiIcons from "react-icons/ai";
+import { ButtonGroup, Button, ListGroup } from "react-bootstrap";
+import * as AiIcons from "react-icons/all";
 import "../../css/product-details.css";
 
 // function download(url) {
@@ -14,42 +15,49 @@ import "../../css/product-details.css";
 //   document.body.removeChild(a)
 // }
 
+
 function ViewThesis() {
   const { id } = useParams();
   const [values, setValues] = useState({});
   const [Images, setImages] = useState([]);
+  const [Files, setFiles] = useState([]);
+
+  // firebaseDB.child("Thesis").child(id).update({View:values.View+1}).then().catch((err)=>console.error(err));
 
   useEffect(() => {
-    firebaseDB
-      .child("Thesis")
-      .child(id)
-      .on("value", (snapshot) => {
+    firebaseDB.child("Thesis").child(id).on("value", (snapshot) => {
         if (snapshot.val() !== null) {
-          setValues({ ...snapshot.val() });
+          setValues({ ...snapshot.val()});
           setImages(snapshot.child("ThesisImg").val());
+          setFiles(snapshot.child("ThesisFile").val());
         } else {
           setValues({});
         }
       });
     return () => {
       setValues({});
+      
     };
   }, [id]);
+  
+  console.log("setImages : ",Images);
+  console.log("setFiles : ",Files);
+  console.log("Files : ",values.ThesisFile);
+  console.log("View : ",values.View);
 
   return (
     <div>
       <div className="container" style={{ width: "100%" }}>
         <div className="card-view">
-          <div
-           
-            style={{ maxWidth: "1500px", textAlign: "center" }}
-          >
-            <div style={{
-              minHeight: "200px",
-              border: "2px solid black",
-              boxShadow: "2px 2px 3px gray",
-              marginTop: "30px"
-            }}>
+          <div style={{ maxWidth: "1500px", textAlign: "center" }}>
+            <div
+              style={{
+                minHeight: "200px",
+                border: "2px solid black",
+                boxShadow: "2px 2px 3px gray",
+                marginTop: "30px",
+              }}
+            >
               <Carousel>
                 {Images.map((url, i) => (
                   <Carousel.Item interval={3000} key={i}>
@@ -60,7 +68,7 @@ function ViewThesis() {
                       style={{
                         minHeight: "200px",
                         height: "20vw",
-                        textAlign: "center"
+                        textAlign: "center",
                       }}
                     />
                   </Carousel.Item>
@@ -76,27 +84,34 @@ function ViewThesis() {
             </a>
 
             <div className="product-price">
-              <p>
-                {" "}
-                <span>ผู้พัฒนา</span>
-              </p>
-              <p className="new-price">
-                {" "}
-                <span> {values.DevName1}</span>
-              </p>
-              <p className="new-price">
-                {" "}
-                <span> {values.DevName2}</span>
-              </p>
+              <span>ผู้พัฒนา</span>
+              <br />
+              <span className="new-price">
+                คนที่ 1 : {values.DevName1}
+              </span>{" "}
+              <br />
+              <span className="new-price">คนที่ 2 : {values.DevName2}</span>
             </div>
             <div className="product-price">
-              <p>
-                {" "}
-                <span>Email : {values.Email}</span>
-              </p>
+              <span className="new-price">Email : {values.Email}</span>
             </div>
-
             <div className="product-detail">{values.ThesisDetails}</div>
+            <div className="mt-3">
+              <Button className="mx-2" size="lg">
+                <AiIcons.AiOutlineLike /> Like
+              </Button>
+              {/* <Button className="mx-2" size="lg">Middle</Button> */}
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div className="bg-danger">
+          <div className="row">
+            {Files.map((url,i)=>(
+            <>
+            <div className="col-10">{url}</div>
+               <div className="col-2"><AiIcons.AiOutlineDownload /></div>
+               </>))}
           </div>
         </div>
       </div>
