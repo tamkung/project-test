@@ -104,7 +104,7 @@ function MyThesis() {
                 <div key={id} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
                   <Card className="btn select-thesis "
                     onClick={() =>
-                      (window.location.href = `/viewcollection/${id}`)
+                      (window.location.href = `/view-thesis/${id}`)
                     }
                     style={{ background: "red", height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
                   >

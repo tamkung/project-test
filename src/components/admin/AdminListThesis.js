@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-// import { useParams } from "react-router-dom";
-import { firebaseDB } from "../../services/firebase";
-import { Card, CardImg } from 'react-bootstrap';
-
-import CardHeader from "react-bootstrap/esm/CardHeader";
+import { firebaseDB, firebaseStorage } from "../../services/firebase";
+import { getStorage, ref, deleteObject } from "firebase/storage";
+import { Card, Button } from "react-bootstrap";
 
 function AdminListThesis() {
   const [values, setValues] = useState({});
-  // const [sortedData, setSortedData] = useState([]);
-  // const [sort, setSort] = useState(false);
 
   useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setValues({ ...snapshot.val() });
-      } else {
-        setValues({});
-      }
-    },
-    )
+    firebaseDB
+      .child("Thesis")
+      .orderByChild("ThesisAllow")
+      .equalTo(true)
+      .on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          setValues({ ...snapshot.val() });
+        } else {
+          setValues({});
+        }
+      });
 
     return () => {
       setValues({});
@@ -30,111 +28,63 @@ function AdminListThesis() {
     if (
       window.confirm("Are you sure that you wanted to delete that contact ?")
     ) {
-      firebaseDB.child(`Thesis/${id}`).remove((err) => {
-        if (err) {
-          console.error(err);
-        } else {
-          // colors.log("Contact Deleted Successfully");
-          console.log("Contact Deleted Successfully");
-        }
+      const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
+      storageRef.listAll().then((listResults) => {
+        const promises = listResults.items.map((item) => {
+          return item.delete();
+        });
+        Promise.all(promises);
+        console.log(promises);
       });
+      firebaseDB.child(`Thesis/${id}`)
+      .remove()
+        .then(() => {
+          console.log("Contact Deleted Successfully");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
     }
   };
   return (
     <div className="container">
-
-      <table className="table table-hover" >
-        {/* <thead>
-          <tr>
-            <th scope="col">
-              <Link to={'/admin/add-thesis'}>
-                <button className="btn btn-view" style={{ color: 'green' }}><i className="fas fa-plus-circle"></i> Add</button>
-              </Link>
-            </th>
-          </tr>
-        </thead> */}
-        {Object.keys(values).map((id, index) => {
+      {Object.keys(values).map((id, i) => {
         return (
-            <tbody style={{border:"0px"}}>
-              <tr>
-                <td scope="col">{values[id].ThesisName}</td>
-                <td scope="col">{values[id].ThesisType}</td>
-                <td scope="col">{values[id].DevName1}</td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => onDelete(id)}
-                  >
-                    Delete
-                  </button>
-                  {/* <Link to={`/EditThesis/${id}`}> */}
-                    <button className="btn btn-view" style={{ background: "orange", color: "white" }} onClick={()=>window.location.href=`/admin/edit-thesis/${id}`}>Edit</button>
-                  {/* </Link> */}
-                  </td>
-              </tr>
-
-            </tbody>
-
-
-
+          <div key={i}>
+            <Card>
+              <Card.Header as="h5">{values[id].ThesisName}</Card.Header>
+              <Card.Body>
+                <Card.Img
+                  variant="top"
+                  sizes="30px ,30px"
+                  src={values[id].ThesisImg[0]}
+                />
+                <Card.Text>{values[id].ThesisDetails}</Card.Text>
+                {/* <Card.Text>{check.toString()}</Card.Text>  */}
+                {/* <Button variant="primary" onClick={()=>setCheck((prevCheck) => !prevCheck.value)}>อนุมัติ</Button> */}
+                <Button
+                  className="mx-2"
+                  variant="primary"
+                  onClick={() =>
+                    (window.location.href = `/admin/edit-thesis/${id}`)
+                  }
+                >
+                  แก้ไข
+                </Button>
+                <Button
+                  className="mx-2"
+                  variant="danger"
+                  onClick={() => onDelete(id)}
+                >
+                  ลบ
+                </Button>
+              </Card.Body>
+            </Card>
+            <br />
+          </div>
         );
       })}
-      </table>
-
-
-      
     </div>
-  )
+  );
 }
 export default AdminListThesis;
-
-{/* <table className="table table-sm table-hover">
-        <thead>
-
-          <tr>
-            <th colspan="4" style={{ textAlign: "center" }}>ปริญญานิพนธ์</th>
-
-            <th style={{ textAlign: "right" }}>
-              <Link to={'/AddCollection'}>
-                <button className="btn btn-view" style={{ color: 'green' }}><i class="fas fa-plus-circle"></i> Add</button>
-              </Link>
-            </th>
-            <th style={{ textAlign: "center" }}>Status</th>
-          </tr>
-
-        </thead>
-        <tbody>
-          {Object.keys(values).map((id, index) => {
-            return (
-
-              <td key={id} className="col-3" >
-                <th className="row">
-                  <td>
-                    <div className="container" >
-                      <CardItem
-                        src={values[id].ThesisImg}
-                        text={values[id].ThesisName}
-                        label={values[id].ThesisType}
-                        path='#'
-                      />
-                      <Link to={`/EditThesis/${id}`}>
-                        <button className="btn btn-view" style={{ background: "orange", color: "white" }}>Edit</button>
-                      </Link>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => onDelete(id)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </td>
-                  <td>
-
-                  </td>
-                </th>
-              </td>
-            );
-          })}
-        </tbody>
-
-      </table> */}

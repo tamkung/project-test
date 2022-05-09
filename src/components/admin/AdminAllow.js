@@ -40,9 +40,9 @@ function AdminAllow() {
     <div className="container mt-5">
       <h1>อนุมัติ Thesis</h1>
       <hr />
-      {Object.keys(values).map((id) => {
+      {Object.keys(values).map((id,i) => {
         return (
-          <div key={id}>
+          <div key={i}>
             <Card>
               <Card.Header as="h5">{values[id].ThesisName}</Card.Header>
               <Card.Body>

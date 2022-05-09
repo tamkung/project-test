@@ -43,20 +43,6 @@ function ListThesis() {
     };
   }, []);
 
-  // const onDelete = (id) => {
-  //   if (
-  //     window.confirm("Are you sure that you wanted to delete that contact ?")
-  //   ) {
-  //     firebaseDB.child(`Thesis/${id}`).remove((err) => {
-  //       if (err) {
-  //         console.error(err);
-  //       } else {
-  //         // colors.log("Contact Deleted Successfully");
-  //         console.log("Contact Deleted Successfully");
-  //       }
-  //     });
-  //   }
-  // };
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
@@ -104,11 +90,14 @@ function ListThesis() {
                 &nbsp; My Thesis
               </button>
             </Link>
+<<<<<<< HEAD
             <div>
               
             </div>
 
 
+=======
+>>>>>>> 5b5105dccf0a59c68ecd1c926d8ab068855744fb
           </div>
           
         </div>
@@ -116,11 +105,15 @@ function ListThesis() {
       ) : (
         <div></div>
       )}
-
       <br />
+<<<<<<< HEAD
 
       <div className="container" style={{ paddingLeft: "8%", paddingRight: "8%", textAlign: "center", width: "100%" }}  >
         <div className="row">
+=======
+      <div className="container" style={{ textAlign: "center" }} >
+        <div className="row" style={{ position: "relative", width: "100%" }} >
+>>>>>>> 5b5105dccf0a59c68ecd1c926d8ab068855744fb
           {Object.keys(values).map((id, index) => {
             return (
 
