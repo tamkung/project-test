@@ -41,24 +41,27 @@ function ViewThesis() {
       <div className="container" style={{ width: "100%" }}>
         <div className="card-view">
           <div
-            className="container"
+           
             style={{ maxWidth: "1500px", textAlign: "center" }}
           >
-            <div
-              style={{
-                textAlign: "center",
-                border: "2px solid black",
-                boxShadow: "2px 2px 3px gray",
-              }}
-            >
+            <div style={{
+              minHeight: "200px",
+              border: "2px solid black",
+              boxShadow: "2px 2px 3px gray",
+              marginTop: "30px"
+            }}>
               <Carousel>
                 {Images.map((url, i) => (
-                  <Carousel.Item interval={1000} key={i}>
+                  <Carousel.Item interval={3000} key={i}>
                     <img
                       className="d-block w-100"
                       src={url}
                       alt="First slide"
-                      style={{}}
+                      style={{
+                        minHeight: "200px",
+                        height: "20vw",
+                        textAlign: "center"
+                      }}
                     />
                   </Carousel.Item>
                 ))}

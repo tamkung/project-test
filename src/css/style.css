@@ -74,6 +74,9 @@ tr:hover{
     position: fixed; /* or absolute */
    
 }
+.box{
+    padding: 30px 30px 10px 30px;
+}
 .report-button{
     position: absolute;
     z-index: 999;

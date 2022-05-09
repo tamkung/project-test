@@ -6,6 +6,7 @@ import AddThesis from '../components/user/AddThesis';
 import ListThesis from '../components/user/ListThesis';
 import MyThesis from '../components/user/MyThesis';
 import ViewThesis from '../components/user/ViewThesis';
+import PaginatedItems from '../components/user/PaginatedItems';
 import NotFound from "../error_404"
 
 
@@ -42,6 +43,10 @@ export const RouterUser = [
   {
     path: "/AddCollection",
     element: <AddThesis />,
+  },
+  {
+    path: "/numpage",
+    element: <PaginatedItems />,
   },
  
 ];

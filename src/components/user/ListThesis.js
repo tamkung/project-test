@@ -3,25 +3,18 @@ import { Link } from "react-router-dom";
 // import { useParams } from "react-router-dom";
 import { firebaseDB, firebase } from "../../services/firebase";
 import { Card } from "react-bootstrap";
-import { BsFilter } from "react-icons/bs";
 import { ImBooks } from "react-icons/im";
 import { Dropdown } from 'react-bootstrap';
-import * as FaIcons from 'react-icons/fa';
 import * as FiIcons from 'react-icons/fi';
 import * as AiIcons from 'react-icons/ai';
-import * as IoIcons from 'react-icons/io';
 import * as BsIcons from 'react-icons/bs';
 import * as BiIcons from 'react-icons/bi';
-import * as ImIcons from 'react-icons/im';
 import * as GiIcons from 'react-icons/gi';
-import * as WiIcons from 'react-icons/wi';
 import * as MdIcons from 'react-icons/md';
-import * as GoIcons from 'react-icons/go';
-import * as GrIcons from 'react-icons/gr';
-import * as HiIcons from 'react-icons/hi';
-import * as RiIcons from 'react-icons/ri';
 import * as SiIcons from 'react-icons/si';
-import * as TiIcons from 'react-icons/ti';
+import ReactDOM from 'react-dom';
+import ReactPaginate from 'react-paginate';
+
 function ListThesis() {
   const [user, setUser] = useState(null);
 
@@ -122,35 +115,31 @@ function ListThesis() {
       <br />
 
       <div className="container" style={{ textAlign: "center" }} >
-        <div className="row" style={{ textAlign: "center" }} >
+        <div className="row" style={{ position: "relative", width: "100%" }} >
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={index} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", width: "10vw" }}>
-                <Card className="btn select-thesis "
+              <div key={index} className="btn col-sm-2" style={{ margin: "0% 5vw 4% 0%", textAlign: "center", position: "relative" }}>
+                <Card className="btn select-thesis"
                   onClick={() =>
                     (window.location.href = `/view-thesis/${id}`)
                   }
-                  style={{ height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
-
+                  style={{ maxHeight: "500px", minHeight: "200px", minWidth: "250px", maxWidth: "300px", width: "30vw", padding: "1%" }}
                 >
-
-                  <div style={{ height: "300px" }}>
+                  <div>
                     <img
                       className="show-img card-img-top"
-                      // style="height:200px;"
-                      style={{ height: "200px", width: "100%" }}
                       alt="Product Images"
                       src={values[id].ThesisImg[0]}
-                    // onClick="#"
-
+                      style={{ height: "200px", width: "100%" }}
                     />
                   </div>
 
-                  <Card.Body style={{ height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
-                    <Card.Title>{values[id].ThesisName}</Card.Title>
+
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: "2vh" }}>{values[id].ThesisName}</Card.Title>
                     <Card.Text>{values[id].ThesisType}</Card.Text>
                     <AiIcons.AiOutlineLike /> {values[id].Like}
-                    
+
                   </Card.Body>
                 </Card>
                 {/* <Card style={{ height: "200px" }} onClick={() =>  window.location.href=`/viewcollection/${id}`}> */}

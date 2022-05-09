@@ -17,7 +17,7 @@ import "../src/css/admin.css";
 import "./css/style.css";
 
 // ----------@Pages--------
-import {RouterAdmin} from "./Routes/RoutesAdmin";
+import { RouterAdmin } from "./Routes/RoutesAdmin";
 import { RouterNoLogin } from "./Routes/RoutesNoLogin";
 import { RouterUser } from "./Routes/RoutesUser";
 
@@ -52,9 +52,9 @@ function App() {
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
           <NavbarAdmin />
           <Routes>
-           {RouterAdmin.map(({path,element},key)=>{
-             return <Route index path={path} element={element} key={key} />
-           })}
+            {RouterAdmin.map(({ path, element }, key) => {
+              return <Route index path={path} element={element} key={key} />
+            })}
           </Routes>
         </div>
       ) : admin == "user" ? (
@@ -63,9 +63,9 @@ function App() {
           {/* <h1>Not Admin</h1> */}
           <Navbar />
           <Routes>
-     {RouterUser.map(({path,element},key)=>{
-          return <Route index path={path} element={element} key={key} />
-     })}
+            {RouterUser.map(({ path, element }, key) => {
+              return <Route index path={path} element={element} key={key} />
+            })}
           </Routes>
           <Footer />
         </div>
@@ -74,15 +74,15 @@ function App() {
           {/* <------------------------------------------------ Pages NoLogin ------------------------------------------------> */}
           <Navbar />
           <Routes>
-            {RouterNoLogin.map(({path,element},key)=>{
-               return <Route index path={path} element={element} key={key} />
+            {RouterNoLogin.map(({ path, element }, key) => {
+              return <Route index path={path} element={element} key={key} />
             })}
           </Routes>
           <Footer />
         </div>
       ) : (
         <div className="wait-spinner">
-          <Spinner animation="border" variant="success"/>
+          <Spinner animation="border" variant="success" />
         </div>
       )}
     </div>
