@@ -48,7 +48,7 @@ function ListThesis() {
       {user ? (
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
-          <Search/>
+          <input type="search"/>
             <Dropdown className="btn">
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
@@ -99,7 +99,7 @@ function ListThesis() {
       )}
       <br />
       <div className="container" style={{ textAlign: "center" }} >
-        <div className="row" style={{ position: "relative", width: "100%" }} >
+        <div className="row" style={{ position: "relative", paddingLeft:"10%",width: "100%" }} >
           {Object.keys(values).map((id, index) => {
             return (
 
