@@ -1,35 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import { firebaseDB } from "../../services/firebase";
-import { ButtonGroup, Button, ListGroup } from "react-bootstrap";
+import { firebaseDB,firebase } from "../../services/firebase";
+import {  Button } from "react-bootstrap";
 import * as AiIcons from "react-icons/all";
 import "../../css/product-details.css";
-
-// function download(url) {
-//   const a = document.createElement('a')
-//   a.href = url
-//   a.download = url.split('/').pop()
-//   document.body.appendChild(a)
-//   a.click()
-//   document.body.removeChild(a)
-// }
-
 
 function ViewThesis() {
   const { id } = useParams();
   const [values, setValues] = useState({});
   const [Images, setImages] = useState([]);
-  const [Files, setFiles] = useState([]);
+  // const [Files, setFiles] = useState([]);
+  const [user, setUser] = useState(null);
 
-  // firebaseDB.child("Thesis").child(id).update({View:values.View+1}).then().catch((err)=>console.error(err));
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+  }, []);
 
   useEffect(() => {
     firebaseDB.child("Thesis").child(id).on("value", (snapshot) => {
         if (snapshot.val() !== null) {
           setValues({ ...snapshot.val()});
           setImages(snapshot.child("ThesisImg").val());
-          setFiles(snapshot.child("ThesisFile").val());
+          // setFiles(snapshot.child("ThesisFile").val());
         } else {
           setValues({});
         }
@@ -39,11 +34,18 @@ function ViewThesis() {
       
     };
   }, [id]);
+
+
+  const btnLike = (id) =>{
+    firebaseDB.child("Thesis").child(id).child("Like").update(user.uid);
+
+  }
   
   console.log("setImages : ",Images);
-  console.log("setFiles : ",Files);
+  // console.log("setFiles : ",Files);
   console.log("Files : ",values.ThesisFile);
   console.log("View : ",values.View);
+  console.log("Download : ",values.Download);
 
   return (
     <div>
@@ -97,15 +99,17 @@ function ViewThesis() {
             </div>
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
-              <Button className="mx-2" size="lg">
+              <Button className="mx-2" size="lg" onClick={()=>(btnLike(id))}>
                 <AiIcons.AiOutlineLike /> Like
               </Button>
-              {/* <Button className="mx-2" size="lg">Middle</Button> */}
+              <Button className="mx-2" target="_blank" size="lg" onClick={()=>(window.location.href=`${values.ThesisFile[0]}`,firebaseDB.child("Thesis").child(id).update({Download:values.Download+1}))}>
+                <AiIcons.AiOutlineDownload />Download
+                </Button>
             </div>
           </div>
         </div>
         <hr />
-        <div className="bg-danger">
+        {/* <div className="bg-danger">
           <div className="row">
             {Files.map((url,i)=>(
             <>
@@ -113,7 +117,7 @@ function ViewThesis() {
                <div className="col-2"><AiIcons.AiOutlineDownload /></div>
                </>))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

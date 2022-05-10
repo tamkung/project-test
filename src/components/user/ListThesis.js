@@ -119,7 +119,7 @@ function ListThesis() {
                   </div>
                   <div className="tag-icon" style={{ borderRadius: "8px", background: "#5CC7F0", position: "absolute", top: "60%", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >
                     <div>
-                      <AiIcons.AiOutlineLike /> {values[id].Like}
+                      <AiIcons.AiOutlineLike /> {values[id].Like.length}
                     </div>
                   </div>
                   <div className="tag-icon" style={{ borderRadius: "8px", background: "#F8DB24", position: "absolute", top: "60%", left: "37%", zIndex: "9999", padding: "3px", fontSize: "15px", width: "40px" }} >
