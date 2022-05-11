@@ -117,11 +117,6 @@ function ListThesis() {
                         <AiIcons.AiOutlineLike /> {values[id].Like.length}
                       </div>
                     </div>
-                    <div className="tag-icon col" style={{ borderRadius: "8px", background: "#F8DB24", left: "37%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                      <div>
-                        <AiIcons.AiOutlineComment /> {values[id].Comment}
-                      </div>
-                    </div>
                   </div>
                   <div >
                     <img
