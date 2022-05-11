@@ -14,6 +14,7 @@ function ViewThesis() {
   const [user, setUser] = useState(null);
   const [IndexLike, setIndexLike] = useState(null);
   const [CheckLike, setCheckLike] = useState(null);
+  const [Comment, setComment] = useState({});
 
   const [TextCom,setTextCom] =useState("");
 
@@ -30,6 +31,7 @@ function ViewThesis() {
               setValues({ ...snapshot.val() });
               setImages(snapshot.child("ThesisImg").val());
               setLikes(snapshot.child("Like").val());
+              setComment(snapshot.child("Comment").val());
               const ValLike = snapshot.child("Like").val()
               setIndexLike(ValLike.findIndex((id) => id == user.uid));
               setCheckLike(ValLike.find((id) => id == user.uid));
@@ -75,20 +77,24 @@ function ViewThesis() {
   };
 
 
-  const commentThesis = () =>{
+  const btnCommentThesis = () =>{
     firebaseDB.child("Thesis").child(id).child("Comment").push({
       text:TextCom,
       uId:user.uid,
-      uNeme:user.displayName,
+      uName:user.displayName,
       uImg:user.photoURL,
 
     }).then(()=>console.log('CommentText')).catch((err)=>console.log(err));
   }
+  const btnDelComment = (uid) => {
+    firebaseDB.child("Thesis").child(id).child("Comment").child(uid).remove().then(()=>console.log('delete')).catch((err)=>console.log(err));
+};
 
   console.log("User : ", user);
   console.log("IndexLink : ", IndexLike);
   console.log("CheckLike : ", CheckLike);
   console.log("Comment : ", TextCom);
+  console.log("Comment Firbase : ", Comment);
 
   return (
     <div>
@@ -161,10 +167,24 @@ function ViewThesis() {
           </div>
         </div>
         <hr />
-        {values.Comment.map()}
+        {Object.keys(Comment).map((id, index) => {
+          if(Comment[id].uId == user.uid){
+            return(
+              <div key={index}>
+                    <img src={Comment[id].uImg}/>
+                    <p>{Comment[id].uName}</p>
+                    <p>{Comment[id].text}</p>
+                    <button onClick={()=>btnDelComment(id)}>ลบ</button>
+                    <hr/>
+                  </div>
+            )
+            
+          }else{
+          }
+        })}
         <InputGroup className="mb-3">
           <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" onChange={e=>setTextCom(e.target.value)}/>
-          <Button variant="outline-success" id="button-addon2" onClick={()=>commentThesis()}>
+          <Button variant="outline-success" id="button-addon2" onClick={()=>btnCommentThesis()}>
             <AiIcons.AiOutlineSend className="me-3" /> Send
           </Button>
         </InputGroup>

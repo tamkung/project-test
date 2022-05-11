@@ -39,7 +39,7 @@ function Footer() {
               <div>
                 <div className="social-icons" style={{ textAlign: "center", width: "100%" }}>
                   <a className="facebook" href="https://www.facebook.com/CEDKMUTNB"><FaIcons.FaFacebookF /></a>
-                  <input type="text" hidden={true} value="ced@fte.kmutnb.ac.th" id="myInput"/>
+                  <input type="text" hidden={true} defaultValue="ced@fte.kmutnb.ac.th" id="myInput"/>
                   <a className="mail" onClick={myFunction} ><SiIcons.SiMaildotru /> </a>
                   <a className="admin" href="/admin/sign-in"><RiIcons.RiAdminFill /> </a>
                 </div>
