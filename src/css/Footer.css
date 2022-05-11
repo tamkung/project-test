@@ -1,7 +1,7 @@
 .site-footer
 {
   background-color:#224d40;
-  padding:45px 0 20px;
+  padding:10px 0 20px;
   font-size:15px;
   line-height:24px;
   color:#737373;
@@ -43,7 +43,7 @@
 }
 .footer-links a
 {
-  color:#737373
+  color:#c0c0c0
 }
 .footer-links a:active,.footer-links a:focus,.footer-links a:hover
 {
@@ -66,7 +66,7 @@
   margin-left:6px;
   margin-right:0;
   border-radius:100%;
-  background-color:#f1f1f1
+  background-color:#103329
 }
 .copyright-text
 {
@@ -105,13 +105,13 @@
 {
   margin-right:15px;
   text-transform:uppercase;
-  color:#96a2b2;
+  color:#5b636d;
   font-weight:700;
   font-size:13px
 }
 .social-icons a{
-  background-color:#eceeef;
-  color:#818a91;
+  background-color:#1aa548;
+  color:#ffffff;
   font-size:16px;
   display:inline-block;
   line-height:44px;
@@ -144,17 +144,9 @@
 {
   background-color:#00aced
 }
-.social-icons a.danger:hover
+.social-icons a.admin:hover
 {
   background-color:#d83232
-}
-.social-icons a.linkedin:hover
-{
-  background-color:#007bb6
-}
-.social-icons a.dribbble:hover
-{
-  background-color:#ea4c89
 }
 @media (max-width:767px)
 {

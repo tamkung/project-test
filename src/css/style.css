@@ -28,6 +28,35 @@
 tr:hover{
     background-color: rgb(221, 221, 221);
 }
+.btn-like {
+    background-color: white;
+    width: 80px;
+    font-size: 25px;
+    border: 0 solid ;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px lightgray;
+}
+.btn-download {
+    background-color: transparent;
+    width: 80px;
+    font-size: 25px;
+    border: 0 solid black;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px lightgray;
+}
+.flex {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+}
+.flex-item {
+    display: block;
+    box-sizing: border-box;
+    width: 20%;
+}
 .container-report{
     margin: 1%;
     border-color: #02bd11;

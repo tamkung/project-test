@@ -20,7 +20,7 @@ function HeroSection() {
   
   return (
     <div className='hero-container'>
-      <h2></h2>
+      <h1>Thesis Collection</h1>
       
 
       <p>For KMUTNB Students</p>

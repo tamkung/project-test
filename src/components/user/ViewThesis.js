@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
-import { firebaseDB,firebase } from "../../services/firebase";
-import {  Button } from "react-bootstrap";
+import { firebaseDB, firebase } from "../../services/firebase";
+import { Button } from "react-bootstrap";
 import * as AiIcons from "react-icons/all";
 import "../../css/product-details.css";
 
@@ -21,31 +21,34 @@ function ViewThesis() {
 
   useEffect(() => {
     firebaseDB.child("Thesis").child(id).on("value", (snapshot) => {
-        if (snapshot.val() !== null) {
-          setValues({ ...snapshot.val()});
-          setImages(snapshot.child("ThesisImg").val());
-          // setFiles(snapshot.child("ThesisFile").val());
-        } else {
-          setValues({});
-        }
-      });
+      if (snapshot.val() !== null) {
+        setValues({ ...snapshot.val() });
+        setImages(snapshot.child("ThesisImg").val());
+        // setFiles(snapshot.child("ThesisFile").val());
+      } else {
+        setValues({});
+      }
+    });
     return () => {
       setValues({});
-      
+
     };
   }, [id]);
 
 
-  const btnLike = (id) =>{
+  const btnLike = (id) => {
     firebaseDB.child("Thesis").child(id).child("Like").update(user.uid);
 
   }
-  
-  console.log("setImages : ",Images);
+
+  console.log("setImages : ", Images);
   // console.log("setFiles : ",Files);
-  console.log("Files : ",values.ThesisFile);
-  console.log("View : ",values.View);
-  console.log("Download : ",values.Download);
+  console.log("Files : ", values.ThesisFile);
+  console.log("View : ", values.View);
+  console.log("Download : ", values.Download);
+
+
+ 
 
   return (
     <div>
@@ -99,12 +102,17 @@ function ViewThesis() {
             </div>
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
-              <Button className="mx-2" size="lg" onClick={()=>(btnLike(id))}>
-                <AiIcons.AiOutlineLike /> Like
-              </Button>
-              <Button className="mx-2" target="_blank" size="lg" onClick={()=>(window.location.href=`${values.ThesisFile[0]}`,firebaseDB.child("Thesis").child(id).update({Download:values.Download+1}))}>
-                <AiIcons.AiOutlineDownload />Download
-                </Button>
+              {user ? (
+                <button className="btn-like" size="lg" onClick={() => (btnLike(id))}>
+                  <AiIcons.AiOutlineLike /> 1
+                </button>
+                
+
+              ) : (<AiIcons.AiOutlineLike />)
+              }
+              <button className="btn-download" target="_blank" size="lg" onClick={() => (window.location.href = `${values.ThesisFile[0]}`, firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 }))}>
+                <AiIcons.AiOutlineDownload /> {values.Download}
+              </button>
             </div>
           </div>
         </div>

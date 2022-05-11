@@ -14,7 +14,6 @@ import Spinner from "react-bootstrap/Spinner";
 import "../src/css/App.css";
 import "../src/css/admin.css";
 import "./css/style.css";
-
 // ----------@Pages--------
 import { RouterAdmin } from "./Routes/RoutesAdmin";
 import { RouterNoLogin } from "./Routes/RoutesNoLogin";
@@ -46,20 +45,20 @@ function App() {
 
   return (
     <div>
-      {/* {admin == "admin" ? ( */}
-        {/* <div> */}
+      {admin == "admin" ? (
+        <div>
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
-          {/* <NavbarAdmin />
+          <NavbarAdmin />
           <Routes>
             {RouterAdmin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
-          </Routes> */}
-        {/* </div> */}
-      {/* ) : admin == "user" ? ( */}
-        {/* <div> */}
+          </Routes>
+        </div>
+      ) : admin == "user" ? (
+        <div>
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
-          {/* <h1>Not Admin</h1> */}
+        
           <Navbar />
           
           <Routes>
@@ -69,23 +68,23 @@ function App() {
             })}
           </Routes>
           <Footer />
-        {/* </div> */}
-      {/* ) : admin == "NoLogin" ? ( */}
-        {/* <div> */}
+        </div>
+       ) : admin == "NoLogin" ? (
+         <div> 
           {/* <------------------------------------------------ Pages NoLogin ------------------------------------------------> */}
-          {/* <Navbar />
+           <Navbar />
           <Routes>
             {RouterNoLogin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
           </Routes>
-          <Footer /> */}
-        {/* </div> */}
-      {/* ) : ( */}
-        {/* <div className="wait-spinner">
+          <Footer /> 
+        </div>
+      ) : (
+        <div className="wait-spinner">
           <Spinner animation="border" variant="success" />
-        </div> */}
-      {/* )} */}
+        </div>
+      )}
     </div>
   );
 }
