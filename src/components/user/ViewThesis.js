@@ -12,23 +12,46 @@ function ViewThesis() {
   const [Images, setImages] = useState([]);
   const [Likes, setLikes] = useState([]);
   const [user, setUser] = useState(null);
-  const CheckLike =Likes.findIndex((id) => id == user.uid);
+  const [IndexLike, setIndexLike] = useState(null);
+  const [CheckLike, setCheckLike] = useState(null);
+
+  const [TextCom,setTextCom] =useState("");
+
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      setUser(user);
-      firebaseDB
-        .child("Thesis")
-        .child(id)
-        .on("value", (snapshot) => {
-          if (snapshot.val() !== null) {
-            setValues({ ...snapshot.val() });
-            setImages(snapshot.child("ThesisImg").val());
-            setLikes(snapshot.child("Like").val());
-          } else {
-            setValues({});
-          }
-        });
+      if(user !== null){    
+        setUser(user);
+        firebaseDB
+          .child("Thesis")
+          .child(id)
+          .on("value", (snapshot) => {
+            if (snapshot.val() !== null) {
+              setValues({ ...snapshot.val() });
+              setImages(snapshot.child("ThesisImg").val());
+              setLikes(snapshot.child("Like").val());
+              const ValLike = snapshot.child("Like").val()
+              setIndexLike(ValLike.findIndex((id) => id == user.uid));
+              setCheckLike(ValLike.find((id) => id == user.uid));
+            } else {
+              setValues({});
+            }
+          });
+        }else{
+          firebaseDB
+          .child("Thesis")
+          .child(id)
+          .on("value", (snapshot) => {
+            if (snapshot.val() !== null) {
+              setValues({ ...snapshot.val() });
+              setImages(snapshot.child("ThesisImg").val());
+              setLikes(snapshot.child("Like").val());
+            } else {
+              setValues({});
+            }
+          });
+        }
+  
     });
     return () => {
       setValues({});
@@ -48,19 +71,24 @@ function ViewThesis() {
     }
   };
   const btnUnLike = () => {
-    if (Likes.length == null) {
-      firebaseDB.child("Thesis").child(id).child("Like").child(0).set(user.uid);
-    } else {
-      firebaseDB
-        .child("Thesis")
-        .child(id)
-        .child("Like")
-        .child(Likes.length)
-        .set(user.uid);
-    }
+      firebaseDB.child("Thesis").child(id).child("Like").child(IndexLike).remove().then(()=>console.log('unLike')).catch((err)=>console.log(err));
   };
 
-  console.log("CheckLink : ", CheckLike);
+
+  const commentThesis = () =>{
+    firebaseDB.child("Thesis").child(id).child("Comment").push({
+      text:TextCom,
+      uId:user.uid,
+      uNeme:user.displayName,
+      uImg:user.photoURL,
+
+    }).then(()=>console.log('CommentText')).catch((err)=>console.log(err));
+  }
+
+  console.log("User : ", user);
+  console.log("IndexLink : ", IndexLike);
+  console.log("CheckLike : ", CheckLike);
+  console.log("Comment : ", TextCom);
 
   return (
     <div>
@@ -115,48 +143,29 @@ function ViewThesis() {
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
               {CheckLike ?(
-                 <button
-                 className="btn-like"
-                 size="lg"
-                 onClick={() => btnUnLike(id,CheckLike)}
-               >
-                 <AiIcons.AiOutlineLike /> {Likes.length}
-               </button>
+                <button className="btn-like" size="lg"  onClick={() => btnUnLike()}   >
+                  <AiIcons.AiFillLike /> {Likes.length}
+                </button>
               ) : (
-                <button
-                  className="btn-like"
-                  size="lg"
-                  onClick={() => btnLike(id)}
-                >
+                <button className="btn-like" size="lg" onClick={() => btnLike()}>
                   <AiIcons.AiOutlineLike /> {Likes.length}
                 </button>
               )}
-              <button
-                className="btn-download"
-                target="_blank"
-                size="lg"
-                onClick={() => (
+              <button className="btn-download" target="_blank" size="lg" onClick={() => (
                   (window.location.href = `${values.ThesisFile[0]}`),
-                  firebaseDB
-                    .child("Thesis")
-                    .child(id)
-                    .update({ Download: values.Download + 1 })
-                )}
-              >
+                  firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
+                )}>
                 <AiIcons.AiOutlineDownload /> {values.Download}
               </button>
             </div>
           </div>
         </div>
         <hr />
+        {values.Comment.map()}
         <InputGroup className="mb-3">
-          <FormControl
-            placeholder="แสดงความคิดเห็น..."
-            aria-describedby="basic-addon2"
-          />
-          <Button variant="outline-success" id="button-addon2">
-            <AiIcons.AiOutlineSend className="me-3" />
-            Send
+          <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" onChange={e=>setTextCom(e.target.value)}/>
+          <Button variant="outline-success" id="button-addon2" onClick={()=>commentThesis()}>
+            <AiIcons.AiOutlineSend className="me-3" /> Send
           </Button>
         </InputGroup>
       </div>
