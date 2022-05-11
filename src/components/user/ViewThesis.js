@@ -111,7 +111,16 @@ function ViewThesis() {
                     <AiIcons.AiOutlineDownload /> {values.Download}
                   </button>
                 </div>
-              ) : (<AiIcons.AiOutlineLike />)
+              ) : (
+                <div>
+                  <div>
+                    <AiIcons.AiOutlineLike />
+                  </div>
+                  <div>
+                    <AiIcons.AiOutlineDownload />
+                  </div>
+                </div>
+                )
               }
 
             </div>
