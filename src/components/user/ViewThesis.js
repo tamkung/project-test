@@ -84,7 +84,12 @@ function ViewThesis() {
       uName:user.displayName,
       uImg:user.photoURL,
 
-    }).then(()=>console.log('CommentText')).catch((err)=>console.log(err));
+    }).then(()=>
+    {
+      setTextCom("")
+      console.log('CommentText')
+  })
+    .catch((err)=>console.log(err));
   }
   const btnDelComment = (uid) => {
     firebaseDB.child("Thesis").child(id).child("Comment").child(uid).remove().then(()=>console.log('delete')).catch((err)=>console.log(err));
@@ -197,8 +202,8 @@ function ViewThesis() {
         )}
     
         <InputGroup className="mb-3">
-          <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" onChange={e=>setTextCom(e.target.value)}/>
-          <Button variant="outline-success" id="button-addon2" onClick={()=>btnCommentThesis()}>
+          <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" value={TextCom} onChange={e=>setTextCom(e.target.value)}/>
+          <Button variant="outline-success" id="button-addon2"  onClick={()=>btnCommentThesis()}>
             <AiIcons.AiOutlineSend className="me-3" /> Send
           </Button>
         </InputGroup>
