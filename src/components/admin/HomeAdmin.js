@@ -162,7 +162,7 @@ function HomeAdmin() {
       </Container>
       <Container >
         <Row>
-          <h1>List Thesis</h1>
+          <h1>List Thesis ( Allowed )</h1>
           <hr/>
           <AdminListThesis />
           

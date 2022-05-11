@@ -37,7 +37,7 @@ function AdminListThesis() {
         console.log(promises);
       });
       firebaseDB.child(`Thesis/${id}`)
-      .remove()
+        .remove()
         .then(() => {
           console.log("Contact Deleted Successfully");
         })
@@ -48,42 +48,51 @@ function AdminListThesis() {
   };
   return (
     <div className="container">
-      {Object.keys(values).map((id, i) => {
-        return (
-          <div key={i}>
-            <Card>
-              <Card.Header as="h5">{values[id].ThesisName}</Card.Header>
-              <Card.Body>
-                <Card.Img
-                  variant="top"
-                  sizes="30px ,30px"
-                  src={values[id].ThesisImg[0]}
-                />
-                <Card.Text>{values[id].ThesisDetails}</Card.Text>
-                {/* <Card.Text>{check.toString()}</Card.Text>  */}
-                {/* <Button variant="primary" onClick={()=>setCheck((prevCheck) => !prevCheck.value)}>อนุมัติ</Button> */}
-                <Button
-                  className="mx-2"
-                  variant="primary"
-                  onClick={() =>
-                    (window.location.href = `/admin/edit-thesis/${id}`)
-                  }
-                >
-                  แก้ไข
-                </Button>
-                <Button
-                  className="mx-2"
-                  variant="danger"
-                  onClick={() => onDelete(id)}
-                >
-                  ลบ
-                </Button>
-              </Card.Body>
-            </Card>
-            <br />
-          </div>
-        );
-      })}
+      <div className="flex">
+
+
+
+        {Object.keys(values).map((id, i) => {
+          return (
+            <div className="flex-item" >
+            <div key={i}>
+              <Card >
+                <Card.Header style={{height:"50px" }} >{values[id].ThesisName}</Card.Header>
+                <Card.Body>
+                  <Card.Img
+                    variant="top"
+                    sizes="30px ,30px"
+                    src={values[id].ThesisImg[0]}
+                    style={{height:"150px" }}
+                  />
+                  
+                  {/* <Card.Text>{check.toString()}</Card.Text>  */}
+                  {/* <Button variant="primary" onClick={()=>setCheck((prevCheck) => !prevCheck.value)}>อนุมัติ</Button> */}
+                  <Button
+                    className="mx-2"
+                    variant="primary"
+                    onClick={() =>
+                      (window.location.href = `/admin/edit-thesis/${id}`)
+                    }
+                  >
+                    แก้ไข
+                  </Button>
+                  <Button
+                    className="mx-2"
+                    variant="danger"
+                    onClick={() => onDelete(id)}
+                  >
+                    ลบ
+                  </Button>
+                </Card.Body>
+              </Card>
+              <br />
+            </div>
+            
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

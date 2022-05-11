@@ -152,7 +152,7 @@ function ViewThesis() {
                 </button>
               )}
               <button className="btn-download" target="_blank" size="lg" onClick={() => (
-                  (window.location.href = `${values.ThesisFile[0]}`),
+                  (window.href = `${values.ThesisFile[0]}`),
                   firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
                 )}>
                 <AiIcons.AiOutlineDownload /> {values.Download}
