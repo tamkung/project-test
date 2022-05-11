@@ -47,16 +47,6 @@ function ListThesis() {
       {user ? (
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
-            {/* <input list="searches" name="search" id="search" />
-            {Object.keys(values).map((id, index) => {
-              return (
-                <div>
-                  <datalist id="searches">
-                    <option > {values[id].ThesisName} </option>
-                  </datalist>
-                </div>
-              )
-            })} */}
             <Dropdown className="btn">
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
@@ -116,19 +106,21 @@ function ListThesis() {
                   )}
                   style={{ maxHeight: "350px", minHeight: "200px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }}
                 >
-                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#EA7676", position: "absolute", top: "60%", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px" }} >
-                    <div>
-                      <AiIcons.AiOutlineEye /> {values[id].View}
+                  <div className="row" style={{ position: "absolute", top: "60%" }} >
+                    <div className="tag-icon col" style={{ borderRadius: "8px", background: "#EA7676", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                      <div>
+                        <AiIcons.AiOutlineEye /> {values[id].View}
+                      </div>
                     </div>
-                  </div>
-                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#5CC7F0", position: "absolute", top: "60%", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px" }} >
-                    <div>
-                      <AiIcons.AiOutlineLike /> {values[id].Like.length}
+                    <div className="tag-icon col" style={{ borderRadius: "8px", background: "#5CC7F0", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                      <div>
+                        <AiIcons.AiOutlineLike /> {values[id].Like.length}
+                      </div>
                     </div>
-                  </div>
-                  <div className="tag-icon" style={{ borderRadius: "8px", background: "#F8DB24", position: "absolute", top: "60%", left: "37%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px" }} >
-                    <div>
-                      <AiIcons.AiOutlineComment /> {values[id].Comment}
+                    <div className="tag-icon col" style={{ borderRadius: "8px", background: "#F8DB24", left: "37%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                      <div>
+                        <AiIcons.AiOutlineComment /> {values[id].Comment}
+                      </div>
                     </div>
                   </div>
                   <div >

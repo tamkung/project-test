@@ -167,7 +167,7 @@ function AddThesis() {
               required
               onChange={handleOnChange}
             >
-              <option value="">Choose...</option>
+              <option value="" >Choose...</option>
               <option value="Website">Website</option>
               <option value="Application">Application</option>
               <option value="Iot">Iot</option>
