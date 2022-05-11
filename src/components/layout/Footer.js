@@ -4,6 +4,20 @@ import * as FaIcons from 'react-icons/fa'
 import * as SiIcons from 'react-icons/si'
 import * as RiIcons from 'react-icons/ri'
 function Footer() {
+  function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+
+    /* Alert the copied text */
+    alert("Copied" + copyText.value + " in your Clipboard");
+  }
 
   return (
     <div>
@@ -24,8 +38,9 @@ function Footer() {
               </p>
               <div>
                 <div className="social-icons" style={{ textAlign: "center", width: "100%" }}>
-                  <a className="facebook" href="#"><FaIcons.FaFacebookF /></a>
-                  <a className="mail" href="#"><SiIcons.SiMaildotru /> </a>
+                  <a className="facebook" href="https://www.facebook.com/CEDKMUTNB"><FaIcons.FaFacebookF /></a>
+                  <input type="text" hidden={true} value="ced@fte.kmutnb.ac.th" id="myInput"/>
+                  <a className="mail" onClick={myFunction} ><SiIcons.SiMaildotru /> </a>
                   <a className="admin" href="/admin/sign-in"><RiIcons.RiAdminFill /> </a>
                 </div>
               </div>
