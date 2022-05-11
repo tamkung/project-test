@@ -167,21 +167,35 @@ function ViewThesis() {
           </div>
         </div>
         <hr />
-        {Object.keys(Comment).map((id, index) => {
-          if(Comment[id].uId == user.uid){
-            return(
-              <div key={index}>
-                    <img src={Comment[id].uImg}/>
-                    <p>{Comment[id].uName}</p>
-                    <p>{Comment[id].text}</p>
-                    <button onClick={()=>btnDelComment(id)}>ลบ</button>
-                    <hr/>
-                  </div>
-            )
-            
-          }else{
-          }
-        })}
+        {Comment ?(
+          Object.keys(Comment).map((id, index) => {
+            if(Comment[id].uId == user.uid){
+              return(
+                <div key={index}>
+                      <img src={Comment[id].uImg}/>
+                      <p>{Comment[id].uName}</p>
+                      <p>{Comment[id].text}</p>
+                      <button onClick={()=>btnDelComment(id)}>ลบ</button>
+                      <hr/>
+                    </div>
+              )
+            }else{
+              return(
+                <div key={index}>
+                      <img src={Comment[id].uImg}/>
+                      <p>{Comment[id].uName}</p>
+                      <p>{Comment[id].text}</p>
+                      <hr/>
+                    </div>
+              )
+            }
+          })
+        ):(
+          <div>
+            <p>ไม่มีความคิดเห็น...</p>
+          </div>
+        )}
+    
         <InputGroup className="mb-3">
           <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" onChange={e=>setTextCom(e.target.value)}/>
           <Button variant="outline-success" id="button-addon2" onClick={()=>btnCommentThesis()}>
