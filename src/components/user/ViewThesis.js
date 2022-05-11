@@ -48,7 +48,7 @@ function ViewThesis() {
   console.log("Download : ", values.Download);
 
 
- 
+
 
   return (
     <div>
@@ -103,16 +103,17 @@ function ViewThesis() {
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
               {user ? (
-                <button className="btn-like" size="lg" onClick={() => (btnLike(id))}>
-                  <AiIcons.AiOutlineLike /> 1
-                </button>
-                
-
+                <div>
+                  <button className="btn-like" size="lg" onClick={() => (btnLike(id))}>
+                    <AiIcons.AiOutlineLike /> 1
+                  </button>
+                  <button className="btn-download" target="_blank" size="lg" onClick={() => (window.location.href = `${values.ThesisFile[0]}`, firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 }))}>
+                    <AiIcons.AiOutlineDownload /> {values.Download}
+                  </button>
+                </div>
               ) : (<AiIcons.AiOutlineLike />)
               }
-              <button className="btn-download" target="_blank" size="lg" onClick={() => (window.location.href = `${values.ThesisFile[0]}`, firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 }))}>
-                <AiIcons.AiOutlineDownload /> {values.Download}
-              </button>
+
             </div>
           </div>
         </div>
