@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import Carousel from "react-bootstrap/Carousel";
 import { firebaseDB, firebase } from "../../services/firebase";
-import { Button } from "react-bootstrap";
+import { Button, InputGroup, FormControl } from "react-bootstrap";
 import * as AiIcons from "react-icons/all";
 import "../../css/product-details.css";
 
@@ -10,45 +10,57 @@ function ViewThesis() {
   const { id } = useParams();
   const [values, setValues] = useState({});
   const [Images, setImages] = useState([]);
-  // const [Files, setFiles] = useState([]);
+  const [Likes, setLikes] = useState([]);
   const [user, setUser] = useState(null);
+  const CheckLike =Likes.findIndex((id) => id == user.uid);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
-    });
-  }, []);
-
-  useEffect(() => {
-    firebaseDB.child("Thesis").child(id).on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setValues({ ...snapshot.val() });
-        setImages(snapshot.child("ThesisImg").val());
-        // setFiles(snapshot.child("ThesisFile").val());
-      } else {
-        setValues({});
-      }
+      firebaseDB
+        .child("Thesis")
+        .child(id)
+        .on("value", (snapshot) => {
+          if (snapshot.val() !== null) {
+            setValues({ ...snapshot.val() });
+            setImages(snapshot.child("ThesisImg").val());
+            setLikes(snapshot.child("Like").val());
+          } else {
+            setValues({});
+          }
+        });
     });
     return () => {
       setValues({});
-
     };
   }, [id]);
 
+  const btnLike = () => {
+    if (Likes.length == null) {
+      firebaseDB.child("Thesis").child(id).child("Like").child(0).set(user.uid);
+    } else {
+      firebaseDB
+        .child("Thesis")
+        .child(id)
+        .child("Like")
+        .child(Likes.length)
+        .set(user.uid);
+    }
+  };
+  const btnUnLike = () => {
+    if (Likes.length == null) {
+      firebaseDB.child("Thesis").child(id).child("Like").child(0).set(user.uid);
+    } else {
+      firebaseDB
+        .child("Thesis")
+        .child(id)
+        .child("Like")
+        .child(Likes.length)
+        .set(user.uid);
+    }
+  };
 
-  const btnLike = (id) => {
-    firebaseDB.child("Thesis").child(id).child("Like").update(user.uid);
-
-  }
-
-  console.log("setImages : ", Images);
-  // console.log("setFiles : ",Files);
-  console.log("Files : ", values.ThesisFile);
-  console.log("View : ", values.View);
-  console.log("Download : ", values.Download);
-
-
-
+  console.log("CheckLink : ", CheckLike);
 
   return (
     <div>
@@ -102,40 +114,51 @@ function ViewThesis() {
             </div>
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
-              {user ? (
-                <div>
-                  <button className="btn-like" size="lg" onClick={() => (btnLike(id))}>
-                    <AiIcons.AiOutlineLike /> 1
-                  </button>
-                  <button className="btn-download" target="_blank" size="lg" onClick={() => (window.location.href = `${values.ThesisFile[0]}`, firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 }))}>
-                    <AiIcons.AiOutlineDownload /> {values.Download}
-                  </button>
-                </div>
+              {CheckLike ?(
+                 <button
+                 className="btn-like"
+                 size="lg"
+                 onClick={() => btnUnLike(id,CheckLike)}
+               >
+                 <AiIcons.AiOutlineLike /> {Likes.length}
+               </button>
               ) : (
-                <div>
-                  <div>
-                    <AiIcons.AiOutlineLike />
-                  </div>
-                  <div>
-                    <AiIcons.AiOutlineDownload />
-                  </div>
-                </div>
-                )
-              }
-
+                <button
+                  className="btn-like"
+                  size="lg"
+                  onClick={() => btnLike(id)}
+                >
+                  <AiIcons.AiOutlineLike /> {Likes.length}
+                </button>
+              )}
+              <button
+                className="btn-download"
+                target="_blank"
+                size="lg"
+                onClick={() => (
+                  (window.location.href = `${values.ThesisFile[0]}`),
+                  firebaseDB
+                    .child("Thesis")
+                    .child(id)
+                    .update({ Download: values.Download + 1 })
+                )}
+              >
+                <AiIcons.AiOutlineDownload /> {values.Download}
+              </button>
             </div>
           </div>
         </div>
         <hr />
-        {/* <div className="bg-danger">
-          <div className="row">
-            {Files.map((url,i)=>(
-            <>
-            <div className="col-10">{url}</div>
-               <div className="col-2"><AiIcons.AiOutlineDownload /></div>
-               </>))}
-          </div>
-        </div> */}
+        <InputGroup className="mb-3">
+          <FormControl
+            placeholder="แสดงความคิดเห็น..."
+            aria-describedby="basic-addon2"
+          />
+          <Button variant="outline-success" id="button-addon2">
+            <AiIcons.AiOutlineSend className="me-3" />
+            Send
+          </Button>
+        </InputGroup>
       </div>
     </div>
   );

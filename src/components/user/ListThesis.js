@@ -13,10 +13,6 @@ import * as BiIcons from 'react-icons/bi';
 import * as GiIcons from 'react-icons/gi';
 import * as MdIcons from 'react-icons/md';
 import * as SiIcons from 'react-icons/si';
-import ReactDOM from 'react-dom';
-import ReactPaginate from 'react-paginate';
-import { Component } from 'react'
-import Select from 'react-select'
 
 function ListThesis() {
 
