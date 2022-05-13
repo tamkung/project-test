@@ -101,41 +101,39 @@ function AdminAddThesis() {
           });
         }
       );
-    });
-
-    Files.forEach((files) => {
-      const storageRef = ref(
-        firebaseStorage,
-        `Thesis/Thesis-${dateKey}/Files-${files.name}`
-      );
-      const uploadTask = uploadBytesResumable(storageRef, files);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {},
-        (error) => console.log(error),
-        async () => {
-          await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log("Files :", downloadURL);
-            return values.ThesisFile.push(downloadURL);
+    }).then(()=>{
+      Files.forEach((files) => {
+        const storageRef = ref(
+          firebaseStorage,
+          `Thesis/Thesis-${dateKey}/Files-${files.name}`
+        );
+        const uploadTask = uploadBytesResumable(storageRef, files);
+        uploadTask.on(
+          "state_changed",
+          (snapshot) => {},
+          (error) => console.log(error),
+          async () => {
+            await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+              console.log("Files :", downloadURL);
+              return values.ThesisFile.push(downloadURL);
+            });
+          }
+        );
+      });
+    }).then(()=>{
+        firebaseDB
+          .child("Thesis")
+          .child("Thesis-" + dateKey)
+          .set(values)
+          .then(() => {
+            // <Toast/>
+            alert("add data success");
+            window.location.href='/';
+          })
+          .catch((error) => {
+            alert(error);
           });
-        }
-      );
     });
-
-    setTimeout(() => {
-      firebaseDB
-        .child("Thesis")
-        .child("Thesis-" + dateKey)
-        .set(values)
-        .then(() => {
-          // <Toast/>
-          alert("add data success");
-          window.location.href='/';
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }, 8000);
   };
 
   return (

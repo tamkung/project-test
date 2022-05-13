@@ -33,8 +33,13 @@ function ViewThesis() {
               setLikes(snapshot.child("Like").val());
               setComment(snapshot.child("Comment").val());
               const ValLike = snapshot.child("Like").val()
-              setIndexLike(ValLike.findIndex((id) => id == user.uid));
-              setCheckLike(ValLike.find((id) => id == user.uid));
+              if(ValLike !== null){
+                setIndexLike(ValLike.findIndex((id) => id == user.uid));
+                setCheckLike(ValLike.find((id) => id == user.uid));
+              }else{
+                setIndexLike(null);
+                setCheckLike(null);
+              }
             } else {
               setValues({});
             }
@@ -61,23 +66,17 @@ function ViewThesis() {
   }, [id]);
 
   const btnLike = () => {
-    if (Likes.length == null) {
+    if (Likes == null) {
       firebaseDB.child("Thesis").child(id).child("Like").child(0).set(user.uid);
     } else {
-      firebaseDB
-        .child("Thesis")
-        .child(id)
-        .child("Like")
-        .child(Likes.length)
-        .set(user.uid);
+      firebaseDB.child("Thesis").child(id).child("Like").child(Likes.length).set(user.uid);
     }
   };
   const btnUnLike = () => {
     firebaseDB.child("Thesis").child(id).child("Like").child(IndexLike).remove().then(() => console.log('unLike')).catch((err) => console.log(err));
   };
 
-
-  const btnCommentThesis = () => {
+  const btnCommentThesis = () =>{
     firebaseDB.child("Thesis").child(id).child("Comment").push({
       text: TextCom,
       uId: user.uid,
@@ -152,39 +151,23 @@ function ViewThesis() {
             </div>
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
-              {user ? (
-                <div>
-                  {CheckLike ? (
-                    <div>
-                      <a size="lg" className="btn-like" style={{ marginRight: "12px" }} onClick={() => btnUnLike()}   >
-                        < AiIcons.AiFillLike />
-                      </a>
-                      {Likes.length}
-                    </div>
-                  ) : (
-                    <div>
-                      <a size="lg" className="btn-like" style={{ marginRight: "12px" }} onClick={() => btnLike()}>
-                        <AiIcons.AiOutlineLike />
-                      </a>
-                      {Likes.length}
-                    </div>
-                  )}
 
-                  <a style={{ marginRight: "12px" }} target="_blank" className="btn-download" size="lg" onClick={() => (
-                    (window.location.href = `${values.ThesisFile[0]}`),
-                    firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
-                  )}>
-                    <AiIcons.AiOutlineDownload />
-                  </a>{values.Download}
-                </div>
+              {CheckLike ?(
+                <button className="btn-like" size="lg"  onClick={() => btnUnLike()}   >
+                  <AiIcons.AiFillLike /> {Likes ?(Likes.length):(0)}
+                </button>
               ) : (
-                <div>
-                  <a style={{ fontSize: "24px", margin: "1%" }}><AiIcons.AiOutlineLike /> {Likes.length}</a>
-                  <a style={{ fontSize: "24px", margin: "1%" }}><AiIcons.AiOutlineDownload /> {values.Download}</a>
-                </div>
+                <button className="btn-like" size="lg" onClick={() => btnLike()}>
+                  <AiIcons.AiOutlineLike /> {Likes ?(Likes.length):(0)}
+                </button>
               )}
 
-
+              <button className="btn-download" target="_blank" size="lg" onClick={() => (
+                  (window.href = `${values.ThesisFile[0]}`),
+                  firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
+                )}>
+                <AiIcons.AiOutlineDownload /> {values.Download}
+              </button>
 
             </div>
           </div>

@@ -25,8 +25,6 @@ function ListThesis() {
   }, []);
 
   const [values, setValues] = useState({});
-  // const [sortedData, setSortedData] = useState([]);
-  // const [sort, setSort] = useState(false);
 
   useEffect(() => {
     firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
@@ -36,7 +34,6 @@ function ListThesis() {
         setValues({});
       }
     });
-
     return () => {
       setValues({});
     };
@@ -114,8 +111,10 @@ function ListThesis() {
                     </div>
                     <div className="tag-icon col" style={{ borderRadius: "8px", background: "#5CC7F0", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
                       <div>
-                        <AiIcons.AiOutlineLike />
-                         {values[id].Like.length}
+                        {values[id].Like ?(<>
+                          <AiIcons.AiOutlineLike /> {values[id].Like.length}</>):(<>
+                            <AiIcons.AiOutlineLike /> 0</>)}
+                       
                       </div>
                     </div>
                   </div>
