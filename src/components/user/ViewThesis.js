@@ -16,12 +16,12 @@ function ViewThesis() {
   const [CheckLike, setCheckLike] = useState(null);
   const [Comment, setComment] = useState({});
 
-  const [TextCom,setTextCom] =useState("");
+  const [TextCom, setTextCom] = useState("");
 
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      if(user !== null){    
+      if (user !== null) {
         setUser(user);
         firebaseDB
           .child("Thesis")
@@ -39,8 +39,8 @@ function ViewThesis() {
               setValues({});
             }
           });
-        }else{
-          firebaseDB
+      } else {
+        firebaseDB
           .child("Thesis")
           .child(id)
           .on("value", (snapshot) => {
@@ -52,8 +52,8 @@ function ViewThesis() {
               setValues({});
             }
           });
-        }
-  
+      }
+
     });
     return () => {
       setValues({});
@@ -73,27 +73,26 @@ function ViewThesis() {
     }
   };
   const btnUnLike = () => {
-      firebaseDB.child("Thesis").child(id).child("Like").child(IndexLike).remove().then(()=>console.log('unLike')).catch((err)=>console.log(err));
+    firebaseDB.child("Thesis").child(id).child("Like").child(IndexLike).remove().then(() => console.log('unLike')).catch((err) => console.log(err));
   };
 
 
-  const btnCommentThesis = () =>{
+  const btnCommentThesis = () => {
     firebaseDB.child("Thesis").child(id).child("Comment").push({
-      text:TextCom,
-      uId:user.uid,
-      uName:user.displayName,
-      uImg:user.photoURL,
+      text: TextCom,
+      uId: user.uid,
+      uName: user.displayName,
+      uImg: user.photoURL,
 
-    }).then(()=>
-    {
+    }).then(() => {
       setTextCom("")
       console.log('CommentText')
-  })
-    .catch((err)=>console.log(err));
+    })
+      .catch((err) => console.log(err));
   }
   const btnDelComment = (uid) => {
-    firebaseDB.child("Thesis").child(id).child("Comment").child(uid).remove().then(()=>console.log('delete')).catch((err)=>console.log(err));
-};
+    firebaseDB.child("Thesis").child(id).child("Comment").child(uid).remove().then(() => console.log('delete')).catch((err) => console.log(err));
+  };
 
   console.log("User : ", user);
   console.log("IndexLink : ", IndexLike);
@@ -153,60 +152,83 @@ function ViewThesis() {
             </div>
             <div className="product-detail">{values.ThesisDetails}</div>
             <div className="mt-3">
-              {CheckLike ?(
-                <button className="btn-like" size="lg"  onClick={() => btnUnLike()}   >
-                  <AiIcons.AiFillLike /> {Likes.length}
-                </button>
+              {user ? (
+                <div>
+                  {CheckLike ? (
+                    <div>
+                      <a size="lg" className="btn-like" style={{ marginRight: "12px" }} onClick={() => btnUnLike()}   >
+                        < AiIcons.AiFillLike />
+                      </a>
+                      {Likes.length}
+                    </div>
+                  ) : (
+                    <div>
+                      <a size="lg" className="btn-like" style={{ marginRight: "12px" }} onClick={() => btnLike()}>
+                        <AiIcons.AiOutlineLike />
+                      </a>
+                      {Likes.length}
+                    </div>
+                  )}
+
+                  <a style={{ marginRight: "12px" }} target="_blank" className="btn-download" size="lg" onClick={() => (
+                    (window.location.href = `${values.ThesisFile[0]}`),
+                    firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
+                  )}>
+                    <AiIcons.AiOutlineDownload />
+                  </a>{values.Download}
+                </div>
               ) : (
-                <button className="btn-like" size="lg" onClick={() => btnLike()}>
-                  <AiIcons.AiOutlineLike /> {Likes.length}
-                </button>
+                <div>
+                  <a style={{ fontSize: "24px", margin: "1%" }}><AiIcons.AiOutlineLike /> {Likes.length}</a>
+                  <a style={{ fontSize: "24px", margin: "1%" }}><AiIcons.AiOutlineDownload /> {values.Download}</a>
+                </div>
               )}
-              <button className="btn-download" target="_blank" size="lg" onClick={() => (
-                  (window.href = `${values.ThesisFile[0]}`),
-                  firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
-                )}>
-                <AiIcons.AiOutlineDownload /> {values.Download}
-              </button>
+
+
+
             </div>
           </div>
         </div>
         <hr />
-        {Comment ?(
+        {Comment ? (
           Object.keys(Comment).map((id, index) => {
-            if(Comment[id].uId == user.uid){
-              return(
-                <div key={index}>
-                      <img src={Comment[id].uImg}/>
-                      <p>{Comment[id].uName}</p>
-                      <p>{Comment[id].text}</p>
-                      <button onClick={()=>btnDelComment(id)}>ลบ</button>
-                      <hr/>
-                    </div>
+            if (Comment[id].uId == user.uid) {
+              return (
+                <div key={index} style={{ position: "relative" }}>
+                  <button className="btn-delete-comment" style={{ position: "absolute", right: "0%" }} onClick={() => btnDelComment(id)}>ลบ</button>
+                  <div>
+                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "1vw", marginLeft: "10px" }}>{Comment[id].uName}</a>
+                  </div>
+                  <p style={{ marginTop: "2%" }}>{Comment[id].text}</p>
+
+                  <hr />
+                </div>
               )
-            }else{
-              return(
+            } else {
+              return (
                 <div key={index}>
-                      <img src={Comment[id].uImg}/>
-                      <p>{Comment[id].uName}</p>
-                      <p>{Comment[id].text}</p>
-                      <hr/>
-                    </div>
+                  <div>
+                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "1vw", marginLeft: "10px" }}>{Comment[id].uName}</a>
+                  </div>
+                  <p style={{ marginTop: "2%" }}>{Comment[id].text}</p>
+                  <hr />
+                </div>
               )
             }
           })
-        ):(
+        ) : (
           <div>
             <p>ไม่มีความคิดเห็น...</p>
           </div>
         )}
-    
-        <InputGroup className="mb-3">
-          <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" value={TextCom} onChange={e=>setTextCom(e.target.value)}/>
-          <Button variant="outline-success" id="button-addon2"  onClick={()=>btnCommentThesis()}>
-            <AiIcons.AiOutlineSend className="me-3" /> Send
-          </Button>
-        </InputGroup>
+        {user ? (
+          <InputGroup className="mb-3">
+            <FormControl placeholder="แสดงความคิดเห็น..." aria-describedby="basic-addon2" value={TextCom} onChange={e => setTextCom(e.target.value)} />
+            <Button variant="outline-success" id="button-addon2" onClick={() => btnCommentThesis()}>
+              <AiIcons.AiOutlineSend className="me-3" /> ส่ง
+            </Button>
+          </InputGroup>
+        ) : ""}
       </div>
     </div>
   );

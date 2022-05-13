@@ -47,19 +47,19 @@ function AdminAddThesis() {
 
   const createThesis = () => {
     if (values.ThesisName === "") {
-      console.log("ใส่ชื่อ ไอ้สอง");
+      console.log("ใส่ชื่อ");
     } else if (values.ThesisType === "") {
-      console.log("ใส่ประเภท ไอ้สอง");
+      console.log("ใส่ประเภท");
     } else if (values.ThesisDetails === "") {
-      console.log("ใส่รายละเอียด ไอ้สอง");
+      console.log("ใส่รายละเอียด");
     } else if (values.DevName1 === "") {
-      console.log("ใส่ชื่อคนทำที่ 1 ไอ้สอง");
+      console.log("ใส่ชื่อคนทำที่ 1 ");
     } else if (values.DevName2 === "") {
-      console.log("ใส่ชื่อคนทำที่ 2 ไอ้สอง");
+      console.log("ใส่ชื่อคนทำที่ 2 ");
     } else if (Images.length == 0) {
-      console.log("ใส่รูป ไอ้สอง");
+      console.log("ใส่รูป");
     } else if (Files.length == 0) {
-      console.log("ใส่ไฟล์ ไอ้สอง");
+      console.log("ใส่ไฟล์");
     } else {
       AddThesis();
     }
@@ -248,7 +248,7 @@ function AdminAddThesis() {
              
             </div>
             <div className="form-group mt-3">
-              <label htmlFor="ThesisDev">PDF</label>
+              <label htmlFor="ThesisDev">PDF ( รวมเล่มฉบับสมบูรณ์ )</label>
               <input
                 className="form-control"
                 type="file"

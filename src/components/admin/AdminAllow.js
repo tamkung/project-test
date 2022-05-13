@@ -15,7 +15,6 @@ function AdminAllow() {
     firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(false).on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setValues({ ...snapshot.val() });
-        // setImages(snapshot.child("ThesisImg").val());
         console.log(snapshot.val())
       } else {
         setValues({});

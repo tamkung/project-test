@@ -94,10 +94,10 @@ function ListThesis() {
       )}
       <br />
       <div className="flex" style={{ textAlign: "center" }} >
-        <div className="row" style={{ position: "relative", paddingLeft: "10%", width: "100%" }} >
+        <div className="row" style={{ position: "relative", paddingLeft: "1%", width: "100%" }} >
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={index} className="col-sm-3">
+              <div key={index} className="col-sm-3 md-3 lg-3">
                 <Card className="btn select-thesis flex-item "
                   onClick={() =>
                   (
@@ -114,7 +114,8 @@ function ListThesis() {
                     </div>
                     <div className="tag-icon col" style={{ borderRadius: "8px", background: "#5CC7F0", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
                       <div>
-                        <AiIcons.AiOutlineLike /> {values[id].Like.length}
+                        <AiIcons.AiOutlineLike />
+                         {values[id].Like.length}
                       </div>
                     </div>
                   </div>

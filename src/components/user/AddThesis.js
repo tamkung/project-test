@@ -247,7 +247,7 @@ function AddThesis() {
              
             </div>
             <div className="form-group mt-3">
-              <label htmlFor="ThesisDev">PDF</label>
+              <label htmlFor="ThesisDev">PDF ( รวมเล่มฉบับสมบูรณ์ )</label>
               <input
                 className="form-control"
                 type="file"

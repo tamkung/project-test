@@ -2,22 +2,27 @@
     width: 100%;
 
 }
-.container{
+
+.container {
     min-height: 700px;
 }
-.set-align{
+
+.set-align {
     align-items: left;
 }
+
 .select-btn:hover {
     transform: scale(1.2);
 }
-.wait-spinner { 
-   
+
+.wait-spinner {
+
     position: absolute;
     top: 50%;
     left: 50%;
-  
+
 }
+
 .select-thesis {
     margin: 5;
     align-items: center;
@@ -25,16 +30,33 @@
     position: relative;
     z-index: 98;
 }
-tr:hover{
+
+tr:hover {
     background-color: rgb(221, 221, 221);
 }
+
 .btn-like {
     background-color: white;
     width: 80px;
     font-size: 25px;
-    border: 0 solid ;
+    border: 0 solid;
     border-radius: 10px;
-    box-shadow: 3px 3px 5px lightgray;
+}
+
+.btn-like:hover {
+    font-size: 27px;
+    transition: all 0.1s ease-out;
+}
+.btn-delete-comment {
+    width: 50px;
+    border-radius: 15px;
+    background-color:white;
+    color: gray;
+    border: 0;
+}
+.btn-delete-comment:hover { 
+    background-color:rgb(243, 59, 53);
+    color: #fefefe;
 }
 .btn-download {
     background-color: transparent;
@@ -42,76 +64,93 @@ tr:hover{
     font-size: 25px;
     border: 0 solid black;
     border-radius: 10px;
-    box-shadow: 3px 3px 5px lightgray;
 }
+
+.btn-download:hover {
+    font-size: 27px;
+    transition: all 0.1s ease-out;
+}
+
 .flex {
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
-    
+
 }
+
 .flex-item {
     display: block;
     box-sizing: border-box;
     width: 20%;
     margin-left: 50px;
 }
-.container-report{
+
+.container-report {
     margin: 1%;
     border-color: #02bd11;
     padding: 1%;
     border-radius: 2% 2% 2% 2%;
     box-shadow: 0px 1px 3px rgb(121, 121, 121);
 }
+
 .select-thesis:hover {
     transform: scale(1.1);
     box-shadow: 0px 0px 5px rgb(121, 121, 121);
     transition: 500ms;
 }
+
 .auth-btn {
     background-color: #fefefe;
     color: gray;
     text-align: center;
 }
+
 .auth-out-btn {
     background-color: #fefefe;
     color: gray;
     border: 0;
     font-size: 32px;
 }
+
 .auth-btn:hover {
     color: #02bd11;
     transform: scale(1.1);
     transition: all 0.1s ease-out;
 }
+
 .auth-out-btn:hover {
     color: #ffffff;
     transform: scale(1.1);
     transition: all 0.1s ease-out;
 }
-.circle{
+
+.circle {
     border: 0;
     margin: 10px;
     border-radius: 50%;
     text-align: center;
 }
 
-.zoom:hover{
+.zoom:hover {
     transform: scale(3);
     transition: all 0.1s ease-out;
     margin: 100px;
-    position: fixed; /* or absolute */
-   
+    position: fixed;
+    /* or absolute */
+
 }
-.box{
+
+.box {
     padding: 30px 30px 10px 30px;
 }
-.report-button{
+
+.report-button {
     position: absolute;
     z-index: 999;
 }
+
 .tag-icon:hover {
     color: #ffffff;
     transition: 500ms;
