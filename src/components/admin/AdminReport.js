@@ -63,11 +63,11 @@ function AdminReport() {
                     {Object.keys(values).map((id, index) => {
                         return(
                                 <tr >
-                                    <td scope="col">{values[id].DataTime}</td>
-                                    <td scope="col">{values[id].RpHeader}</td>
-                                    <td scope="col">{values[id].ReportType}</td>
-                                    <td scope="col">{values[id].RpDetails}</td>
-                                    <td scope="col">{values[id].FromEmail}</td>
+                                    <td scope="col" style={{width:"150px"}}>{values[id].DataTime}</td>
+                                    <td scope="col" style={{width:"200px"}}>{values[id].RpHeader}</td>
+                                    <td scope="col" style={{width:"300px"}}>{values[id].ReportType}</td>
+                                    <td scope="col" style={{width:"800px"}}>{values[id].RpDetails}</td>
+                                    <td scope="col" style={{width:"50px"}}>{values[id].FromEmail}</td>
                                     <td>
                                         <AiIcons.AiOutlineCheckCircle type="button" style={{ color: 'green', fontSize: '125%' }}
 

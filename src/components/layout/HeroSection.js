@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import '../../css/App.css';
 import '../../css/HeroSection.css';
 import '../../css/Navbar.css';
-import { firebaseDB, firebase } from "../../services/firebase";
+import { firebase } from "../../services/firebase";
 
-import { Dropdown } from 'react-bootstrap';
 function HeroSection() {
 
   const [user, setUser] = useState(null);

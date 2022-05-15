@@ -84,7 +84,7 @@ function MyThesis() {
 
   return (
     <div className="container" style={{ textAlign: "center", marginTop: "20px" }}>
-
+      
       <div className="row">
         <div className="col-lg" style={{ textAlign: "right" }}>
           <Link to={"/AddCollection"}>
@@ -94,50 +94,52 @@ function MyThesis() {
           </Link>
         </div>
       </div>
-
+      <br />
+      <h3 style={{ textAlign: "left"}} >My Thesis</h3>
       <br />
       <div className="container">
+        
         <div className="row">
           {
             Object.keys(values).map((id) => {
               return (
-                <div key={id} className="btn col-md-4" style={{ margin: "0% 5% 5% 0%", textAlign: "center", maxWidth: "250px" }}>
-                  <Card className="btn select-thesis "
+                <div className="col-sm-3 md-3 lg-3">
+                  <Card className="btn select-thesis flex-item "
                     onClick={() =>
-                      (window.location.href = `/view-thesis/${id}`)
-                    }
-                    style={{ background: "red", height: "350px", minWidth: "250px", maxWidth: "250px", padding: "1%" }}
+                    (
+                      window.location.href = `/view-thesis/${id}`,
+                      firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+                    )}
+                    style={{ maxHeight: "500px", minHeight: "450px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }}
                   >
-                    <div style={{ height: "300px" }}>
+                    <div className="row" style={{ position: "absolute", top: "5%" }} >
+                      <div className="tag-icon col" style={{ borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                        <div>
+                          <AiIcons.AiOutlineEye /> {values[id].View}
+                        </div>
+                      </div>
+                      <div className="tag-icon col" style={{ borderRadius: "8px", background: "white", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                        <div>
+                          {values[id].Like ? (<>
+                            <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                              <AiIcons.AiOutlineLike /> 0</>)}
+
+                        </div>
+                      </div>
+                    </div>
+                    <div >
                       <img
-                        id="imgShow"
-                        className="card-img-top"
-                        // style="height:200px;"
-                        style={{ height: "200px", width: "100%" }}
-                        alt="Product Images"
+                        className="show-img card-img-top"
+                        alt="Thesis Images"
                         src={values[id].ThesisImg[0]}
-                      // onClick="#"
+                        style={{ height: "300px", width: "100%" }}
                       />
                     </div>
-
-                    <Card.Body style={{ background: "blue", height: "200px", minWidth: "250px", maxWidth: "250px", padding: "10px" }}>
-                      <Card.Title>{values[id].ThesisName}</Card.Title>
+                    <Card.Body>
+                      <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
                       <Card.Text>{values[id].ThesisType}</Card.Text>
-                      <AiIcons.AiOutlineLike /> {values[id].Like}
                     </Card.Body>
                   </Card>
-                  {/* <Card style={{ height: "200px" }} onClick={() =>  window.location.href=`/viewcollection/${id}`}> */}
-
-                  {/* <Card.Body> */}
-
-                  {/* <AiOutlineEye /> {values[id].Share} */}
-                  {/* <Card.Title>{values[id].ThesisName}</Card.Title> */}
-
-                  {/* <Card.Text>{values[id].ThesisType}</Card.Text> */}
-                  {/* <AiOutlineLike /> {values[id].Like} */}
-                  {/* </Card.Body> */}
-
-                  {/* </Card> */}
                 </div>
               );
             })}

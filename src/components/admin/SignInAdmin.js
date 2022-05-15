@@ -40,7 +40,7 @@ function SignInAdmin() {
     <div className="container p-5 ">
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h1>Login Page</h1>
+          <h1>Login Admin Page</h1>
           <hr />
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -67,16 +67,14 @@ function SignInAdmin() {
               Submit
             </button>
           </form>
-          <div className="row mt-3">
-            <p className="col-8 my-auto">
-              No account? ,<Link to={"/admin/sign-up"}>Create one</Link>
-            </p>
+          {/* <div className="row mt-3">
+            
             <div className="col-4">
               <button className="btn btn-outline-danger btn-sm">
                 Forgot Password
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

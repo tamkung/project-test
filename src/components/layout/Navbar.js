@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import { firebase, firebaseDB } from "../../services/firebase";
 import { Dropdown } from "react-bootstrap";
 import { auth } from "../../services/firebase";
+import * as BsIcons from 'react-icons/bs';
 function Navbar() {
   const [user, setUser] = useState(null);
 
@@ -84,6 +85,7 @@ function Navbar() {
                 <Dropdown.Toggle className="nav-links" variant="transprent">
                   <img
                     src={user.photoURL}
+                    alt={<BsIcons.BsFillPersonFill />}
                     style={{
                       borderRadius: "50%",
                       width: "40px",
