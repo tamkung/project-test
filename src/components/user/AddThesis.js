@@ -96,45 +96,46 @@ function AddThesis() {
         async () => {
           await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("Image :", downloadURL);
-            return values.ThesisImg.push(downloadURL);
+           values.ThesisImg.push(downloadURL);
+            if(values.ThesisImg.length  === Images.length){
+              Files.forEach((files) => {
+                const storageRef = ref(
+                  firebaseStorage,
+                  `Thesis/Thesis-${dateKey}/Files-${files.name}`
+                );
+                const uploadTask = uploadBytesResumable(storageRef, files);
+                uploadTask.on(
+                  "state_changed",
+                  (snapshot) => {},
+                  (error) => console.log(error),
+                  async () => {
+                    await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                      console.log("Files :", downloadURL);
+                      values.ThesisFile.push(downloadURL);
+                      if(values.ThesisFile.length === Files.length){
+                        console.log("and Add Data");
+                        firebaseDB
+                        .child("Thesis")
+                        .child("Thesis-" + dateKey)
+                        .set(values)
+                        .then(() => {
+                          // <Toast/>
+                          alert("add data success");
+                          window.location.href='/ListThesis';
+                        })
+                        .catch((error) => {
+                          alert(error);
+                        });
+                      }
+                    });
+                  }
+                );
+              });
+            }
           });
         }
       );
     });
-
-    Files.forEach((files) => {
-      const storageRef = ref(
-        firebaseStorage,
-        `Thesis/Thesis-${dateKey}/Files-${files.name}`
-      );
-      const uploadTask = uploadBytesResumable(storageRef, files);
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {},
-        (error) => console.log(error),
-        async () => {
-          await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            console.log("Files :", downloadURL);
-            return values.ThesisFile.push(downloadURL);
-          });
-        }
-      );
-    });
-
-    setTimeout(() => {
-      firebaseDB
-        .child("Thesis")
-        .child("Thesis-" + dateKey)
-        .set(values)
-        .then(() => {
-          // <Toast/>
-          alert("add data success");
-          window.location.href='/ListThesis';
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }, 8000);
   };
 
   return (

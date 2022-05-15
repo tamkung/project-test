@@ -17,6 +17,7 @@ import * as SiIcons from 'react-icons/si';
 function ListThesis() {
 
   const [user, setUser] = useState(null);
+  const [type, setType] = useState(null);
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -39,12 +40,19 @@ function ListThesis() {
     };
   }, []);
 
+
+
+console.log("Type : ",type)
+
+
+
+
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
-            <Dropdown className="btn">
+            <Dropdown className="btn" onChange={e=> setType(e.target.values)}>
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
