@@ -88,7 +88,7 @@ function AdminEditThesis() {
                                 <option value="เว็บไซต์">เว็บไซต์</option>
                                 <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
                                 <option value="อุปกรณ์ Iot">อุปกรณ์ Iot</option>
-                                <option value="สื่อการสอน">สื่อการสอน</option>
+                                <option value="สื่อการเรียนรู้">สื่อการเรียนรู้</option>
                                 <option value="เกม">เกม</option>
                                 <option value="VR AR MR">VR AR MR</option>
                                 <option value="อื่นๆ">อื่นๆ</option>

@@ -57,13 +57,13 @@ function AdminListThesis() {
             <div className="flex-item" >
             <div key={i}>
               <Card >
-                <Card.Header style={{height:"50px" }} >{values[id].ThesisName}</Card.Header>
+                <Card.Header >{values[id].ThesisName}</Card.Header>
                 <Card.Body>
                   <Card.Img
                     variant="top"
                     sizes="30px ,30px"
                     src={values[id].ThesisImg[0]}
-                    style={{height:"150px" }}
+                    style={{height:"150px" , marginBottom:"25px" }}
                   />
                   
                   {/* <Card.Text>{check.toString()}</Card.Text>  */}
@@ -71,6 +71,7 @@ function AdminListThesis() {
                   <Button
                     className="mx-2"
                     variant="primary"
+
                     onClick={() =>
                       (window.location.href = `/admin/edit-thesis/${id}`)
                     }

@@ -121,7 +121,8 @@ function ViewThesis() {
                       alt="First slide"
                       style={{
                         minHeight: "200px",
-                        height: "20vw",
+                        height: "100%",
+                        maxHeight: "900px",
                         textAlign: "center",
                       }}
                     />
@@ -153,11 +154,11 @@ function ViewThesis() {
             <div className="mt-3">
 
               {CheckLike ?(
-                <button className="btn-like" size="lg"  onClick={() => btnUnLike()}   >
+                <button className="btn-like-clicked" size="lg"  onClick={() => btnUnLike()}   >
                   <AiIcons.AiFillLike /> {Likes ?(Likes.length):(0)}
                 </button>
               ) : (
-                <button className="btn-like" size="lg" onClick={() => btnLike()}>
+                <button className="btn-like " size="lg" onClick={() => btnLike()}>
                   <AiIcons.AiOutlineLike /> {Likes ?(Likes.length):(0)}
                 </button>
               )}

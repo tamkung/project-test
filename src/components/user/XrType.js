@@ -15,7 +15,7 @@ import * as MdIcons from 'react-icons/md';
 import * as SiIcons from 'react-icons/si';
 
 
-function WebType() {
+function XrType() {
   const [user, setUser] = useState(null);
   const [type, setType] = useState(null);
 
@@ -41,7 +41,7 @@ function WebType() {
   }, []);
 
   useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo('เว็บไซต์').on("value", (snapshot) => {
+    firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo('VR AR MR').on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setValues({ ...snapshot.val() });
       } else {
@@ -160,4 +160,4 @@ console.log("Type : ",type)
     </div>
   );
 }
-export default WebType;
+export default XrType;

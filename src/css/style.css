@@ -54,6 +54,15 @@ tr:hover {
     color: gray;
     border: 0;
 }
+.btn-like-clicked{
+    transition: all 0.1s ease-out;
+    color: rgb(43, 188, 245);
+    background-color: transparent;
+    width: 80px;
+    font-size: 30px;
+    border: 0 solid;
+    border-radius: 10px;
+}
 .btn-delete-comment:hover { 
     background-color:rgb(243, 59, 53);
     color: #fefefe;

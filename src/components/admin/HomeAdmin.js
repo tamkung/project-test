@@ -98,7 +98,7 @@ function HomeAdmin() {
                     <Card.Title> {TeachThesis.length} </Card.Title>
                   </Card.Body>
                   <Card.Footer className="text-right">
-                    <Card.Text> สื่อการสอน </Card.Text>
+                    <Card.Text> สื่อการเรียนรู้ </Card.Text>
                   </Card.Footer>
                 </Card>
               </Col>

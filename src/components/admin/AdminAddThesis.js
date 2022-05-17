@@ -169,14 +169,14 @@ function AdminAddThesis() {
               required
               onChange={handleOnChange}
             >
-              <option value="">Choose...</option>
-              <option value="Website">Website</option>
-              <option value="Application">Application</option>
-              <option value="Iot">Iot</option>
-              <option value="Media">Media</option>
-              <option value="Game">Game</option>
+              <option value="" >Choose...</option>
+              <option value="เว็บไซต์">เว็บไซต์</option>
+              <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
+              <option value="อุปกรณ์ iot">อุปกรณ์ iot</option>
+              <option value="สื่อการเรียนรู้">สื่อการเรียนรู้</option>
+              <option value="เกม">เกม</option>
               <option value="VR AR MR">VR AR MR</option>
-              <option value="Other">Other</option>
+              <option value="อื่นๆ">อื่นๆ</option>
             </select>
           </div>
           <br />
