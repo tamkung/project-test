@@ -36,7 +36,6 @@ function AdminAddThesis() {
     ThesisType: "",
     DevName1: "",
     DevName2: "",
-    Like: 0,
     View: 0,
     Download: 0,
   });
