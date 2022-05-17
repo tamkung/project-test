@@ -3,6 +3,7 @@ import { firebaseDB, firebase } from "../../services/firebase";
 import { useEffect, useState } from "react";
 import { Card, CardImg, Button } from "react-bootstrap";
 import CardHeader from "react-bootstrap/esm/CardHeader";
+import { firebaseStorage } from "../../services/firebase";
 import { Divider } from "@mui/material";
 
 function AdminAllow() {
@@ -26,6 +27,28 @@ function AdminAllow() {
     };
   }, []);
 
+  const onDelete = (id) => {
+    if (
+      window.confirm("Are you sure that you wanted to delete that contact ?")
+    ) {
+      const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
+      storageRef.listAll().then((listResults) => {
+        const promises = listResults.items.map((item) => {
+          return item.delete();
+        });
+        Promise.all(promises);
+        console.log(promises);
+      });
+      firebaseDB.child(`Thesis/${id}`)
+        .remove()
+        .then(() => {
+          console.log("Contact Deleted Successfully");
+        })
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+  };
 
   const onUpdateAllow = (id) => {
     firebaseDB.child("Thesis").child(id)
@@ -77,7 +100,7 @@ function AdminAllow() {
                   </div>
                   <div className="col" style={{ textAlign: "right" }}>
                     <Button style={{ margin: "5px" }} variant="primary" onClick={() => onUpdateAllow(id)}>อนุมัติ</Button>
-                    <Button className="btn-danger" style={{ margin: "5px" }} variant="primary" onClick={() => onUpdateAllow(id)}>ไม่อนุมัติ</Button>
+                    <Button className="btn-danger" style={{ margin: "5px" }} variant="primary" onClick={() => onDelete(id)}>ไม่อนุมัติ</Button>
                   </div>
                 </div>
 

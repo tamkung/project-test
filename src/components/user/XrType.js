@@ -28,7 +28,7 @@ function XrType() {
   const [values, setValues] = useState({});
 
   useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
+    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).child("Thesis").orderByChild("ThesisType").equalTo('VR AR MR').on("value", (snapshot) => {
       if (snapshot.val() !== null) {
         setValues({ ...snapshot.val() });
       } else {
@@ -40,18 +40,18 @@ function XrType() {
     };
   }, []);
 
-  useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo('VR AR MR').on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setValues({ ...snapshot.val() });
-      } else {
-        setValues({});
-      }
-    });
-    return () => {
-      setValues({});
-    };
-  }, []);
+  // useEffect(() => {
+  //   firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo('VR AR MR').on("value", (snapshot) => {
+  //     if (snapshot.val() !== null) {
+  //       setValues({ ...snapshot.val() });
+  //     } else {
+  //       setValues({});
+  //     }
+  //   });
+  //   return () => {
+  //     setValues({});
+  //   };
+  // }, []);
 
 
 

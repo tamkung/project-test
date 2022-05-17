@@ -40,19 +40,6 @@ function WebType() {
     };
   }, []);
 
-  useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo('เว็บไซต์').on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setValues({ ...snapshot.val() });
-      } else {
-        setValues({});
-      }
-    });
-    return () => {
-      setValues({});
-    };
-  }, []);
-
 
 
 console.log("Type : ",type)
