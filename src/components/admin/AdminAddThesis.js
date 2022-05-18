@@ -7,10 +7,6 @@ var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 var dateKey = saveCurrentDate + "," + saveCurrentTime;
-
-
-
-
 function AdminAddThesis() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -23,7 +19,6 @@ function AdminAddThesis() {
       console.log(user.uid, user.email);
     });
   }, []);
-
   const [values, setValues] = useState({
     UserId: "",
     Email: "",
@@ -39,11 +34,9 @@ function AdminAddThesis() {
     View: 0,
     Download: 0,
   });
-
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
   const createThesis = () => {
     if (values.ThesisName === "") {
       console.log("ใส่ชื่อ");
@@ -147,7 +140,6 @@ function AdminAddThesis() {
         <form className="was-validated">
           <div className="form-group">
             <label htmlFor="ThesisName">ชื่อปริญญานิพนธ์</label>
-
             <input
               type="text"
               id="ThesisName"
@@ -158,7 +150,6 @@ function AdminAddThesis() {
               required
             />
           </div>
-
           <div className="form-group mt-3">
             <label htmlFor="ThesisType">ประเภทปริญญานิพนธ์</label>
             <br />
@@ -186,21 +177,18 @@ function AdminAddThesis() {
             name="ThesisDetails"
             className="form-control"
             placeholder="ThesisDetails"
-            // value={values.name}
             onChange={handleOnChange}
             pattren="{1,250}"
             required
           />
           <div className="form-group mt-3">
             <label htmlFor="ThesisDev">ผู้พัฒนา</label>
-
             <input
               type="text"
               id="DevName1"
               name="DevName1"
               className="form-control"
               placeholder="Dev Name 1"
-              // value={values.name}
               onChange={handleOnChange}
               pattren="[A-Za-zก-๏]{1,250}"
               title="ใส่เป็นตัวอักษรเท่านั้น"
@@ -219,7 +207,6 @@ function AdminAddThesis() {
                 required
               />
             </div>
-
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">
                 อัปโหลดรูปภาพ <a style={{ color: "red" }}>( ไม่เกิน 5 รูป )</a>{" "}
@@ -245,7 +232,6 @@ function AdminAddThesis() {
                   </div>
                 ))}
                 </div>
-             
             </div>
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">PDF ( รวมเล่มฉบับสมบูรณ์ )</label>
@@ -259,28 +245,22 @@ function AdminAddThesis() {
               />
             </div>
           </div>
-
           <br />
-
           <div className="row mt-3">
             <Link
               className="btn col mx-3"
-              to="/ListThesis"
+              to="/"
               style={{ color: "gray", fontSize: "24px" }}
             >
               <IoIosArrowBack />
             </Link>
-
             <button
               className="btn btn-success col mx-3"
               onClick={createThesis}
               type="button"
             >
-              {/* <Link className="btn" to="/ListThesis" style={{ color: "white" }}> */}
-              Submit
-              {/* </Link> */}
+              Submit  
             </button>
-
             <button
               type="reset "
               className="btn btn-warning col mx-3"

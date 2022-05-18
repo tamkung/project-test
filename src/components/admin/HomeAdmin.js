@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-
 import {Card,Container,Row,Col,} from "react-bootstrap";
 import { firebaseDB } from "../../services/firebase";
 import AdminListThesis from "./AdminListThesis";
-
 function HomeAdmin() {
   const [values, setValues] = useState({});
-
   const AllThesis = Object.keys(values).map((id) => values[id].ThesisType);
   const WebThesis = AllThesis.filter((AllThesis) => AllThesis == "Website");
   const AppThesis = AllThesis.filter((AllThesis) => AllThesis == "Application");
@@ -15,23 +12,11 @@ function HomeAdmin() {
   const TeachThesis = AllThesis.filter((AllThesis) => AllThesis == "Media");
   const VrThesis = AllThesis.filter((AllThesis) => AllThesis == "VR AR MR");
   const OtherThesis = AllThesis.filter((AllThesis) => AllThesis == "other");
-
   const AllowThesis = Object.keys(values).map((id) => values[id].ThesisAllow);
   const ValAllowThesis = AllowThesis.filter((AllowThesis)=>AllowThesis == true);
   const NotAllowThesis = AllowThesis.filter((AllowThesis)=>AllowThesis == false);
-
-  // console.log(values);
-  // console.log(AllThesis);
   console.log("Allow Thesis\t" + ValAllowThesis.length);
   console.log("Not Allow Thesis\t" + NotAllowThesis.length);
-  // console.log("Web Thesis\t" + WebThesis.length);
-  // console.log("App Thesis\t" + AppThesis.length);
-  // console.log("Iot Thesis\t" + IotThesis.length);
-  // console.log("Game Thesis\t" + GameThesis.length);
-  // console.log("Teach Thesis\t" + TeachThesis.length);
-  // console.log("VR Thesis\t" + VrThesis.length);
-  // console.log("Other Thesis\t" + OtherThesis.length);
-
   useEffect(() => {
     firebaseDB.child("Thesis").once("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -165,7 +150,7 @@ function HomeAdmin() {
           <h1>List Thesis ( Allowed )</h1>
           <hr/>
           <AdminListThesis />
-          
+
         </Row>
       </Container>
     </div>

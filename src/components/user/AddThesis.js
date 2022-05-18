@@ -3,13 +3,11 @@ import { firebaseDB, firebaseStorage, firebase } from "../../services/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
-
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime =
   d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
 var dateKey = saveCurrentDate + "," + saveCurrentTime;
-
 function AddThesis() {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -22,7 +20,6 @@ function AddThesis() {
       console.log(user.uid, user.email);
     });
   }, []);
-
   const [values, setValues] = useState({
     UserId: "",
     Email: "",
@@ -38,11 +35,9 @@ function AddThesis() {
     View: 0,
     Download: 0,
   });
-
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
   const createThesis = () => {
     if (values.ThesisName === "") {
       console.log("ใส่ชื่อ ไอ้สอง");
@@ -146,7 +141,6 @@ function AddThesis() {
         <form className="was-validated">
           <div className="form-group">
             <label htmlFor="ThesisName">ชื่อปริญญานิพนธ์</label>
-
             <input
               type="text"
               id="ThesisName"
@@ -157,7 +151,6 @@ function AddThesis() {
               required
             />
           </div>
-
           <div className="form-group mt-3">
             <label htmlFor="ThesisType">ประเภทปริญญานิพนธ์</label>
             <br />
@@ -192,7 +185,6 @@ function AddThesis() {
           />
           <div className="form-group mt-3">
             <label htmlFor="ThesisDev">ผู้พัฒนา</label>
-
             <input
               type="text"
               id="DevName1"
@@ -218,7 +210,6 @@ function AddThesis() {
                 required
               />
             </div>
-
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">
                 อัปโหลดรูปภาพ <a style={{ color: "red" }}>( ไม่เกิน 5 รูป )</a>{" "}
@@ -244,7 +235,6 @@ function AddThesis() {
                   </div>
                 ))}
                 </div>
-             
             </div>
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">PDF ( รวมเล่มฉบับสมบูรณ์ )</label>
@@ -258,9 +248,7 @@ function AddThesis() {
               />
             </div>
           </div>
-
           <br />
-
           <div className="row mt-3">
             <Link
               className="btn col mx-3"

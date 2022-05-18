@@ -5,7 +5,6 @@ import { firebaseDB, firebase } from "../../services/firebase";
 import { Button, InputGroup, FormControl } from "react-bootstrap";
 import * as AiIcons from "react-icons/all";
 import "../../css/product-details.css";
-
 function ViewThesis() {
   const { id } = useParams();
   const [values, setValues] = useState({});
@@ -15,10 +14,7 @@ function ViewThesis() {
   const [IndexLike, setIndexLike] = useState(null);
   const [CheckLike, setCheckLike] = useState(null);
   const [Comment, setComment] = useState({});
-
   const [TextCom, setTextCom] = useState("");
-
-
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user !== null) {
@@ -131,13 +127,11 @@ function ViewThesis() {
               </Carousel>
             </div>
           </div>
-
           <div className="product-content">
             <h2 className="product-title">{values.ThesisName}</h2>
             <a href="#" className="product-link">
               {values.ThesisType}
             </a>
-
             <div className="product-price">
               <span>ผู้พัฒนา</span>
               <br />

@@ -16,7 +16,6 @@ function AdminEditThesis() {
         DevName1: "",
         DevName2: "",
     });
-
     const { id } = useParams();
 
     useEffect(() => {

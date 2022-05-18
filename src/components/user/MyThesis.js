@@ -22,8 +22,8 @@ import * as SiIcons from 'react-icons/si';
 import * as TiIcons from 'react-icons/ti';
 
 function MyThesis() {
+  
   const [values, setValues] = useState({});
-
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       firebaseDB

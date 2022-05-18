@@ -8,12 +8,7 @@ import { firebaseDB } from "../../services/firebase";
 
 
 function AdminReport() {
-
     const [values, setValues] = useState({});
-    // const [sortedData, setSortedData] = useState([]);
-    // const [sort, setSort] = useState(false);
-
-
     useEffect(() => {
         firebaseDB.child("Report").on("value", (snapshot) => {
             if (snapshot.val() !== null) {
@@ -23,7 +18,6 @@ function AdminReport() {
             }
         },
         )
-
         return () => {
             setValues({});
         };
@@ -32,7 +26,6 @@ function AdminReport() {
         const { name, value } = e.target;
         setValues({ ...values, [name]: value });
     };
-
     const onDelete = (id) => {
         if (
             window.confirm("คุณแน่ใจว่าจะลบหรือไม่?")
@@ -47,10 +40,6 @@ function AdminReport() {
             });
         }
     };
-
-
-
-
     return (
         <div className="container" >
 
@@ -78,12 +67,8 @@ function AdminReport() {
 
                                             onClick={() => onDelete(id)}
                                         />
-
                                     </td>
-                                    
                                 </tr>
-                                
-                            
                         );
                     })}
                 </table>

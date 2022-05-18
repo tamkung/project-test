@@ -2,16 +2,9 @@ import React from "react";
 import { firebaseDB, firebase } from "../../services/firebase";
 import { useEffect, useState } from "react";
 import { Card, CardImg, Button } from "react-bootstrap";
-import CardHeader from "react-bootstrap/esm/CardHeader";
 import { firebaseStorage } from "../../services/firebase";
-import { Divider } from "@mui/material";
-
 function AdminAllow() {
-
   const [values, setValues] = useState({});
-  //   const [check, setCheck] = useState(false);
-  // const [Images, setImages] = useState([]);
-
   useEffect(() => {
     firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(false).on("value", (snapshot) => {
       if (snapshot.val() !== null) {
@@ -21,12 +14,10 @@ function AdminAllow() {
         setValues({});
       }
     });
-
     return () => {
       setValues({});
     };
   }, []);
-
   const onDelete = (id) => {
     if (
       window.confirm("Are you sure that you wanted to delete that contact ?")
@@ -84,26 +75,20 @@ function AdminAllow() {
                           textAlign: "center",
                           margin: "1%"
                         }}
-
                       />
                     </div>
                   ))}
-
                 </div>
-
                 <Card.Text>{values[id].ThesisDetails}</Card.Text>
                 <div className="row">
                   <div className="col">
                     <Button href={values[id].ThesisFile[0]} target="_blank">File</Button>
-                    {/* <Button target="_blank" style={{ margin: "5px" }} onClick={() => (
-                      (window.location.href = `${values[id].ThesisFile[0]}`, "_blank"))}> File </Button> */}
                   </div>
                   <div className="col" style={{ textAlign: "right" }}>
                     <Button style={{ margin: "5px" }} variant="primary" onClick={() => onUpdateAllow(id)}>อนุมัติ</Button>
                     <Button className="btn-danger" style={{ margin: "5px" }} variant="primary" onClick={() => onDelete(id)}>ไม่อนุมัติ</Button>
                   </div>
                 </div>
-
               </Card.Body>
             </Card>
             <br />
