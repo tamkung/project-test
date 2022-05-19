@@ -4,7 +4,6 @@ import Home from '../components/pages/Home';
 import ListThesis from '../components/user/ListThesis';
 import ViewThesis from '../components/user/ViewThesis';
 import NotFound from "../error_404"
-
 export const RouterNoLogin = [
   {
     path: "*",

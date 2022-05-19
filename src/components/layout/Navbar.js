@@ -6,10 +6,13 @@ import { firebase, firebaseDB } from "../../services/firebase";
 import { Dropdown } from "react-bootstrap";
 import { auth } from "../../services/firebase";
 import * as BsIcons from 'react-icons/bs';
+import CheckLogin from '../user/CheckLogin';
+
 function Navbar() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
+      
       setUser(user);
     });
   }, []);
@@ -45,6 +48,7 @@ function Navbar() {
             <li className="nav-item"><Link to="/ListThesis" className="nav-links" onClick={closeMobileMenu}> Collection </Link></li>
             {user ? (
               <>
+              <CheckLogin />
                 <li className="nav-item">
                   <Link to="/report" className="nav-links" onClick={closeMobileMenu}>
                     Report

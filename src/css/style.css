@@ -47,14 +47,16 @@ tr:hover {
     font-size: 27px;
     transition: all 0.1s ease-out;
 }
+
 .btn-delete-comment {
     width: 50px;
     border-radius: 15px;
-    background-color:white;
+    background-color: white;
     color: gray;
     border: 0;
 }
-.btn-like-clicked{
+
+.btn-like-clicked {
     transition: all 0.1s ease-out;
     color: rgb(43, 188, 245);
     background-color: transparent;
@@ -63,10 +65,12 @@ tr:hover {
     border: 0 solid;
     border-radius: 10px;
 }
-.btn-delete-comment:hover { 
-    background-color:rgb(243, 59, 53);
+
+.btn-delete-comment:hover {
+    background-color: rgb(243, 59, 53);
     color: #fefefe;
 }
+
 .btn-download {
     background-color: transparent;
     width: 80px;
@@ -85,15 +89,12 @@ tr:hover {
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
-
 }
 
 .flex-item {
     display: block;
     box-sizing: border-box;
     width: 20%;
-    margin-left: 50px;
 }
 
 .container-report {
@@ -163,4 +164,120 @@ tr:hover {
 .tag-icon:hover {
     color: #ffffff;
     transition: 500ms;
+}
+
+/* @media screen and (max-width: 960px) {
+    .flex {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    
+    }
+    
+    .flex-item {
+        display: block;
+        box-sizing: border-box;
+        width: 25%;
+        margin-left: 50px;
+    }
+
+
+}
+@media screen and (max-width: 720px) {
+    .flex {
+        display: flex;
+        box-sizing: border-box;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    
+    }
+    
+    .flex-item {
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        margin-left: 50px;
+    }
+
+
+} */
+.flexbox {
+    display: flex;
+    background-color: #02bd11;
+    box-sizing: border-box;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    position: relative;
+    align-items: center;
+}
+
+.itemflex {
+    display: block;
+    width: 20%;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 10px;
+    
+}
+.hovercard:hover{
+border: 2px solid rgb(255, 94, 0);
+}
+.itemflex:hover {
+    transition: 300ms;
+    transform: scale(1.1);
+    
+}
+@media screen and (max-width: 1500px) {
+
+    .itemflex {
+        display: block;
+        width: 25%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+       
+    }
+
+}
+@media screen and (max-width: 1200px) {
+
+    .itemflex {
+        display: block;
+        width: 33.33%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+
+}
+@media screen and (max-width: 800px) {
+
+    .itemflex {
+        display: block;
+        width: 50%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    .itemflex {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding-left: 50px;
+        padding-right: 50px;
+        margin-bottom: 10px;
+    }
 }

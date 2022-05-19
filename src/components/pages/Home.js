@@ -5,6 +5,7 @@ import HeroSection from '../layout/HeroSection';
 function Home() {
   return (
     <div>
+     
           <HeroSection />
     </div>
   );

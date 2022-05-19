@@ -81,14 +81,66 @@ function ListThesis() {
           </div>
         </div>
       ) : ("")}<br />
-      <div className="flex" style={{ textAlign: "center" }} >
-        <div className="row" style={{ position: "relative", paddingLeft: "1%", width: "100%" }} >
+      {/* <div className="flex" style={{ textAlign: "center" }} >
+        <div style={{ paddingLeft: "1%", width: "100%" }} >
           {Object.keys(values).map((id, index) => {
             return (
-              <div key={index} className="col-sm-3 md-3 lg-3">
-                <Card className="btn select-thesis flex-item "
-                  onClick={() => (window.location.href = `/view-thesis/${id}`,firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+              <div key={index} >
+                <Card className="select-thesis flex-item "
+                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
                   )} style={{ maxHeight: "500px", minHeight: "450px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }} >
+                  <div style={{ position: "absolute", top: "5%" }} >
+                    <div style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                      <div>
+                        <AiIcons.AiOutlineEye /> {values[id].View}
+                      </div>
+                    </div>
+                    <div className="col" style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
+                      <div>
+                        {values[id].Like ? (<>
+                          <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                            <AiIcons.AiOutlineLike /> 0</>)}
+                      </div>
+                    </div>
+                  </div>
+                  <div><img className="show-img card-img-top" alt="Thesis Images" src={values[id].ThesisImg[0]} style={{ height: "300px", width: "100%" }} /></div>
+                  <Card.Body>
+                    <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
+                    <Card.Text>{values[id].ThesisType}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+          })}
+        </div>
+      </div> */}
+
+      {/* <div className="flex">
+        <div  >
+          {Object.keys(values).map((id, index) => {
+            return (
+              <div className="flex-item">
+                <Card key={index} >
+                  <img src={values[id].ThesisImg[0]} />
+                  <Card.Body>
+                    <Card.Title>{values[id].ThesisName}</Card.Title>
+                    <Card.Text>{values[id].ThesisType}</Card.Text>
+                  </Card.Body>
+                </Card>
+              </div>
+            );
+
+          })}
+        </div>
+      </div> */}
+
+      <div className="flexbox">
+      {Object.keys(values).map((id, index) => {
+            return (
+              <div key={index} type="button"className="itemflex">
+                <Card className="hovercard"
+                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+                  )} style={{height:"450px"}}>
                   <div className="row" style={{ position: "absolute", top: "5%" }} >
                     <div className="col" style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
                       <div>
@@ -103,17 +155,18 @@ function ListThesis() {
                       </div>
                     </div>
                   </div>
-                  <div><img className="show-img card-img-top" alt="Thesis Images" src={values[id].ThesisImg[0]}style={{ height: "300px", width: "100%" }}/></div>
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
-                    <Card.Text>{values[id].ThesisType}</Card.Text>
-                  </Card.Body>
+                  <div ><img className="show-img card-img-top" alt="Thesis Images" src={values[id].ThesisImg[0]} style={{ height: "300px" }} /></div>
+                  <div >
+                    <div style={{ height:"80px",fontSize: "14px",overFlow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis" }}>{values[id].ThesisName}</div>
+                    <Card.Text style={{ height:"10px",fontSize: "0.5vw" }} > {values[id].ThesisType}</Card.Text>
+                  </div>
                 </Card>
               </div>
             );
           })}
-        </div>
+        
       </div>
+
     </div>
   );
 }
