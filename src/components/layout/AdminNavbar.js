@@ -33,7 +33,7 @@ function AdminNavbar() {
   }, []);
 
   return (
-    <div style={{backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
+    <div >
       <Navbar expand={false} >
         <Container fluid >
           <Navbar.Brand href="/">Admin Thesis</Navbar.Brand>
@@ -49,6 +49,7 @@ function AdminNavbar() {
               <Nav.Link href="/admin/report">Report</Nav.Link>
               <Nav.Link href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
               <Nav.Link href="/admin/add-thesis">Add Thesis</Nav.Link>
+              <Nav.Link href="/admin/sign-up">Add Admin</Nav.Link>
             </Offcanvas.Body>
 
             <Nav.Link onClick={() => auth.signOut()

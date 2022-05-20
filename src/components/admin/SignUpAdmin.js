@@ -6,7 +6,7 @@ function SignUpAdmin() {
   const [value, setValue] = useState({
     email: "",
     password: "",
-    password1: "",
+    confirm: "",
   });
 
   const handleChange = (e) => {
@@ -56,16 +56,17 @@ function SignUpAdmin() {
 
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>E-mail</label>
+              <label>Admin E-mail</label>
               <input
                 className="form-control"
+               
                 type="email"
                 name="email"
                 onChange={handleChange}
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group mt-3">
               <label>Password</label>
               <input
                 className="form-control"
@@ -73,8 +74,15 @@ function SignUpAdmin() {
                 name="password"
                 onChange={handleChange}
               />
+              <label>Comfirm Password</label>
+              <input
+                className="form-control"
+                type="password"
+                name="confirm"
+                onChange={handleChange}
+              />
             </div>
-
+            
             {/* <div className="form-group">
               <label>Confirm Password</label>
               <input
@@ -88,7 +96,7 @@ function SignUpAdmin() {
             <br />
             <button
               className="btn btn-success"
-              disabled={value.password.length < 6}
+              disabled={value.password.length < 6 || value.password !== value.confirm || value.email === ""}
             >
               Submit
             </button>
