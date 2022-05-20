@@ -2,7 +2,8 @@ import React from 'react';
 import './css/error404.css'
 
 function Error404(){
-    return(<div>
+    return(
+	<div style={{width:"100%"}}>
         <div id="notfound">
 		<div className="notfound">
 			<div className="notfound-404"></div>
