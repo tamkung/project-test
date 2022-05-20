@@ -4,6 +4,7 @@ import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
 import { ThesisType } from "../user/ThesisType";
+import Swal from 'sweetalert2'
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime =
@@ -84,6 +85,27 @@ function AddThesis() {
         firebaseStorage,
         `Thesis/Thesis-${dateKey}/Images-${files.name}`
       );
+      let timerInterval
+      Swal.fire({
+        title: 'รอสักครู่',
+        timer: 5000,
+        timerProgressBar: true,
+        didOpen: () => {
+          Swal.showLoading()
+          const b = Swal.getHtmlContainer().querySelector('b')
+          timerInterval = setInterval(() => {
+            b.textContent = Swal.getTimerLeft()
+          }, 100)
+        },
+        willClose: () => {
+          clearInterval(timerInterval)
+        }
+      }).then((result) => {
+        /* Read more about handling dismissals below */
+        if (result.dismiss === Swal.DismissReason.timer) {
+          console.log('I was closed by the timer')
+        }
+      })
       const uploadTask = uploadBytesResumable(storageRef, files);
       uploadTask.on(
         "state_changed",
@@ -229,7 +251,6 @@ function AddThesis() {
                 id="formFileMultiple"
                 accept="image/*"
                 onChange={ImgOnChange}
-                maxLength="5"
                 multiple
                 required
               />

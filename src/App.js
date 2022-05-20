@@ -50,7 +50,7 @@ function App() {
         <div style={{backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)"}}>
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
           <NavbarAdmin style={{height:"50px" }} />
-          <Routes>
+          <Routes style={{backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)"}}>
             {RouterAdmin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}

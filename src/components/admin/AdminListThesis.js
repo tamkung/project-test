@@ -50,11 +50,10 @@ function AdminListThesis() {
   return (
     <div className="container" style={{ marginTop: "50px" }}>
       <div className="flex">
-
         {Object.keys(values).map((id, i) => {
           return (
-            <div className="itemflex">
-              <div key={i} >
+            <div className="itemflex" key={i}>
+              <div  >
                 <Card style={{ height: "auto" }}>
                   <Card.Header style={{ whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Header>
                   <Card.Body>

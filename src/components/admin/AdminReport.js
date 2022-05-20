@@ -66,30 +66,12 @@ function AdminReport() {
                                     {values[id].Email}
                                 </div>
                                 <div style={{ display: "block", boxSizing: "border-box", width: "10%", textAlign: "center", paddingRight: "5px", paddingLeft: "5px" }}>
-                                    <AiIcons.AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '1.5vw' }}
+                                    <AiIcons.AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '18px' }}
                                         onClick={() => onDelete(id)}
                                     />
                                 </div>
 
                             </div>
-                            {/* <tr style={{ background: "blue" }}>
-                                    <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", paddingRight: "50px" }}>{values[id].DataTime}</td>
-                                    <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw" }}>{values[id].RpHeader}</td>
-                                    <td className="d-none d-sm-block" scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", background: "red" }}>{values[id].ReportType}</td>
-                                    <td scope="col" style={{ whiteSpace: "nowrap", width: "800px", fontSize: "1vw" }} >{values[id].RpDetails}</td>
-                                    <td scope="col" style={{ whiteSpace: "nowrap", width: "50px", fontSize: "1vw" }}>{values[id].FromEmail}</td>
-                                    <td>
-                                        <AiIcons.AiOutlineCheckCircle type="button" style={{ color: 'green', fontSize: '125%' }}
-
-                                            onClick={() => onDelete(id)}
-                                        />
-                                        &nbsp;&nbsp;
-                                        <AiIcons.AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '125%' }}
-
-                                            onClick={() => onDelete(id)}
-                                        />
-                                    </td>
-                                </tr> */}
                         </div>
                     );
                 })}

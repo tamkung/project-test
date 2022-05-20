@@ -106,6 +106,7 @@ function AdminEditThesis() {
                                 placeholder="Dev Name 1"
                                 value={values.DevName1}
                                 onChange={handleOnChange}
+
                             />
                             <div className="form-group mt-3">
                                 <input
@@ -119,24 +120,32 @@ function AdminEditThesis() {
                                 />
                             </div>
                         </div>
+
                         <div className="row mt-3">
-                            <Link className="btn col mx-3" to='/' style={{ color: "gray", fontSize: "24px" }}>
+                            <Link className="btn col mx-3" to='/adminlist' style={{ color: "gray", fontSize: "24px" }}>
                                 <IoIosArrowBack
+
                                 />
+
                             </Link>
                             <button className="btn btn-success col mx-3" onClick={updateThesis} to='#'>
-                                <Link className="btn" to='/' style={{ color: "white" }}>Submit</Link>
+                                <Link className="btn" to='/adminlist' style={{ color: "white" }}>Submit</Link>
+
                             </button>
+
                             <button type="reset " className="btn btn-warning col mx-3" style={{ color: "white" }}>
                                 Clear
                             </button>
+
+
+
                         </div>
                     </form>
 
                 </div>
             </div>
             <br /><br /><br /><br /><br />
-            <Footer />
+         
         </div>
     );
 }

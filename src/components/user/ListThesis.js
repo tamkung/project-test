@@ -52,7 +52,6 @@ function ListThesis() {
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
-
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
             <Dropdown className="btn" onChange={e => setType(e.target.values)}>
@@ -60,6 +59,9 @@ function ListThesis() {
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
               <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', alignItems: "center", boxShadow: "0px 1px 5px black" }}>
+                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => setType(null)}>
+                  ทั้งหมด
+                </Dropdown.Item>
                 {ThesisType.map((item, index) => {
                   return (
                     // <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = (item.path)}>
@@ -87,24 +89,24 @@ function ListThesis() {
       ) : ("")}<br />
 
       <div className="flexbox">
-        { Object.keys(values).map((id, index) => {
+        {Object.keys(values).map((id, index) => {
           return (
             <div key={index} type="button" className="itemflex">
-            {values[id].ThesisAllow ?(
-              <Card className="hovercard"
-                onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
-                )} style={{ height: "450px" }}>
-                <div style={{ overflow: "hidden", height: "300px" }}><img className="show-img card-img-top" style={{ height: "100%", width: "auto" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
-                <div style={{ padding: "10px", paddingTop: "30px" }}>
-                  <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
-                  <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>
-                  <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
-                  {values[id].Like ? (<>
-                    <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
-                      <AiIcons.AiOutlineLike /> 0 </>)}
-                </div>
-              </Card>
-            ):(<></>)}
+              {values[id].ThesisAllow ? (
+                <Card className="hovercard"
+                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+                  )} style={{ height: "450px" }}>
+                  <div style={{ overflow: "hidden", height: "300px" }}><img className="show-img card-img-top" style={{ height: "auto", width: "100%" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
+                  <div style={{ padding: "10px", paddingTop: "30px" }}>
+                    <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
+                    <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>
+                    <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {values[id].Like ? (<>
+                      <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                        <AiIcons.AiOutlineLike /> 0 </>)}
+                  </div>
+                </Card>
+              ) : (<></>)}
             </div>
           );
         })}
