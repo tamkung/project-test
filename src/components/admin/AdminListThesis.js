@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import { firebaseDB, firebaseStorage } from "../../services/firebase";
 import { getStorage, ref, deleteObject } from "firebase/storage";
 import { Card, Button } from "react-bootstrap";
-
+import * as AiIcons from 'react-icons/ai';
+import * as BsIcons from 'react-icons/bs';
 function AdminListThesis() {
   const [values, setValues] = useState({});
 
@@ -47,14 +48,14 @@ function AdminListThesis() {
     }
   };
   return (
-    <div className="container" style={{ marginTop: "50px"}}>
+    <div className="container" style={{ marginTop: "50px" }}>
       <div className="flex">
 
         {Object.keys(values).map((id, i) => {
           return (
             <div className="itemflex">
               <div key={i} >
-                <Card  style={{ height: "auto"}}>
+                <Card style={{ height: "auto" }}>
                   <Card.Header style={{ whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Header>
                   <Card.Body>
                     <Card.Img
@@ -62,9 +63,13 @@ function AdminListThesis() {
                       src={values[id].ThesisImg[0]}
                       style={{ marginBottom: "25px" }}
                     />
+                    <div style={{ textAlign: "center" , marginBottom:"10px"}}>
+                      <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
+                      {values[id].Like ? (<>
+                        <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                          <AiIcons.AiOutlineLike /> 0 </>)}
 
-                    {/* <Card.Text>{check.toString()}</Card.Text>  */}
-                    {/* <Button variant="primary" onClick={()=>setCheck((prevCheck) => !prevCheck.value)}>อนุมัติ</Button> */}
+                    </div>
                     <div type='button'
                       className="mx-2 edit-admin-btn"
                       variant="primary"
