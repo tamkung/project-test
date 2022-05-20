@@ -49,7 +49,7 @@ function App() {
       {admin == "admin" ? (
         <div>
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
-          <NavbarAdmin />
+          <NavbarAdmin style={{height:"50px" }} />
           <Routes>
             {RouterAdmin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
@@ -57,33 +57,34 @@ function App() {
           </Routes>
         </div>
       ) : admin == "user" ? (
-        
+
         <div>
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
-        
+          <CheckLogin />
           <Navbar />
-          
+
           <Routes>
-          
+
             {RouterUser.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
           </Routes>
           <Footer />
         </div>
-       ) : admin == "NoLogin" ? (
-         <div> 
+      ) : admin == "NoLogin" ? (
+        <div>
           {/* <------------------------------------------------ Pages NoLogin ------------------------------------------------> */}
-           <Navbar />
+          <Navbar />
           <Routes>
             {RouterNoLogin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
           </Routes>
-          <Footer /> 
+          <Footer />
         </div>
       ) : (
         <div className="wait-spinner">
+
           <Spinner animation="border" variant="success" />
         </div>
       )}

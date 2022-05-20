@@ -3,6 +3,8 @@ import "../../css/Footer.css";
 import * as FaIcons from 'react-icons/fa'
 import * as SiIcons from 'react-icons/si'
 import * as RiIcons from 'react-icons/ri'
+import Swal from 'sweetalert2'
+
 function Footer() {
   function myFunction() {
     /* Get the text field */
@@ -13,7 +15,16 @@ function Footer() {
     /* Copy the text inside the text field */
     navigator.clipboard.writeText(copyText.value);
     /* Alert the copied text */
-    alert("Copied" + copyText.value + " in your Clipboard");
+    // alert("คัดลอก" + copyText.value + " เรียบร้อย");
+    Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: "คัดลอก " + copyText.value,
+      showConfirmButton: false,
+      timer: 1500
+    })
+
+
   }
   return (
     <div>

@@ -4,6 +4,7 @@ import { firebaseDB, firebase } from "../../services/firebase";
 import { Card } from "react-bootstrap";
 import { ImBooks } from "react-icons/im";
 import { Dropdown } from 'react-bootstrap';
+import { ThesisType } from "../user/ThesisType";
 import * as FiIcons from 'react-icons/fi';
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
@@ -42,8 +43,8 @@ function ListThesis() {
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
-              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', height: "250px", alignItems: "center", boxShadow: "0px 1px 5px black" }}>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/webtype'} >
+              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', alignItems: "center", boxShadow: "0px 1px 5px black" }}>
+                {/* <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/webtype'} >
                   <MdIcons.MdOutlineWebAsset style={{ margin: "2px" }} size={20} /> เว็บไซต์
                 </Dropdown.Item>
                 <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/apptype'}>
@@ -63,7 +64,14 @@ function ListThesis() {
                 </Dropdown.Item>
                 <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/othertype'}>
                   <BsIcons.BsThreeDots style={{ margin: "2px" }} size={20} /> อื่นๆ
-                </Dropdown.Item>
+                </Dropdown.Item> */}
+                {ThesisType.map((item, index) => {
+                  return (
+                    <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = (item.path)}>
+                      {item.icons} {item.title}
+                    </Dropdown.Item>
+                  );
+                })}
               </Dropdown.Menu>
             </Dropdown>
             <Link to={"/AddCollection"}>
@@ -135,36 +143,27 @@ function ListThesis() {
       </div> */}
 
       <div className="flexbox">
-      {Object.keys(values).map((id, index) => {
-            return (
-              <div key={index} type="button"className="itemflex">
-                <Card className="hovercard"
-                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
-                  )} style={{height:"450px"}}>
-                  <div className="row" style={{ position: "absolute", top: "5%" }} >
-                    <div className="col" style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                      <div>
-                        <AiIcons.AiOutlineEye /> {values[id].View}
-                      </div>
-                    </div>
-                    <div className="col" style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                      <div>
-                        {values[id].Like ? (<>
-                          <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
-                            <AiIcons.AiOutlineLike /> 0</>)}
-                      </div>
-                    </div>
-                  </div>
-                  <div ><img className="show-img card-img-top" alt="Thesis Images" src={values[id].ThesisImg[0]} style={{ height: "300px" }} /></div>
-                  <div >
-                    <div style={{ height:"80px",fontSize: "14px",overFlow:"hidden",whiteSpace:"nowrap",textOverflow:"ellipsis" }}>{values[id].ThesisName}</div>
-                    <Card.Text style={{ height:"10px",fontSize: "0.5vw" }} > {values[id].ThesisType}</Card.Text>
-                  </div>
-                </Card>
-              </div>
-            );
-          })}
-        
+        {Object.keys(values).map((id, index) => {
+          return (
+            <div key={index} type="button" className="itemflex">
+              <Card className="hovercard"
+                onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+                )} style={{ height: "450px" }}>
+                <div style={{ overflow: "hidden", height: "300px" }}><img className="show-img card-img-top" style={{ height: "100%", width: "auto" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
+                <div style={{ padding: "10px", paddingTop: "30px" }}>
+                  <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
+                  <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>
+                  <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
+                  {values[id].Like ? (<>
+                    <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                      <AiIcons.AiOutlineLike /> 0 </>)}
+
+                </div>
+              </Card>
+            </div>
+          );
+        })}
+
       </div>
 
     </div>

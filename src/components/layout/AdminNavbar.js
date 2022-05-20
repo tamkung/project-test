@@ -16,8 +16,8 @@ function AdminNavbar() {
   const [values, setValues] = useState({});
 
   const AllowThesis = Object.keys(values).map((id) => values[id].ThesisAllow);
-  const NotAllowThesis = AllowThesis.filter((AllowThesis)=>AllowThesis == false);
- 
+  const NotAllowThesis = AllowThesis.filter((AllowThesis) => AllowThesis == false);
+
 
   useEffect(() => {
     firebaseDB.child("Thesis").once("value", (snapshot) => {
@@ -33,9 +33,9 @@ function AdminNavbar() {
   }, []);
 
   return (
-    <div>
+    <div style={{backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
       <Navbar expand={false} >
-        <Container fluid style={{ position: "fixed" }}>
+        <Container fluid >
           <Navbar.Brand href="/">Admin Thesis</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="end">

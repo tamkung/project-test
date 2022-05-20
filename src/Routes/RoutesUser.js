@@ -15,6 +15,7 @@ import OtherType from '../components/user/OtherType';
 import ViewThesis from '../components/user/ViewThesis';
 import PaginatedItems from '../components/user/PaginatedItems';
 import NotFound from "../error_404"
+import Category from '../components/user/Category';
 
 
 
@@ -30,6 +31,10 @@ export const RouterUser = [
   {
     path: "/ListThesis",
     element: <ListThesis />,
+  },
+  {
+    path: "/Category",
+    element: <Category />,
   },
   {
     path: "/MyThesis",

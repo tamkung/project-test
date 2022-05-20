@@ -122,7 +122,7 @@ function AdminEditThesis() {
                         </div>
 
                         <div className="row mt-3">
-                            <Link className="btn col mx-3" to='/adminlist' style={{ color: "gray", fontSize: "24px" }}>
+                            <Link className="btn col mx-3" to='/' style={{ color: "gray", fontSize: "24px" }}>
                                 <IoIosArrowBack
 
                                 />

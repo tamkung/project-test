@@ -15,24 +15,7 @@ function CheckLogin() {
 
         if (reg.test(user.email)) {
           
-          let timerInterval
-          Swal.fire({
-            icon: 'success',
-            title: 'Gmail ถูกต้อง',
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: () => {
-              Swal.showLoading()
-              const b = Swal.getHtmlContainer().querySelector('b')
-              timerInterval = setInterval(() => {
-
-              }, 1000)
-            },
-            willClose: () => {
-              clearInterval(timerInterval)
-            }
-          }).then((result) => {
-          })
+          
 
 
         } else {
@@ -69,7 +52,7 @@ function CheckLogin() {
   }, []);
   return (
     <div>
-      
+
     </div>
   );
 

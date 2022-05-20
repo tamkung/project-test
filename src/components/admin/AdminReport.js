@@ -43,20 +43,27 @@ function AdminReport() {
     return (
         <div className="container" >
 
-            <h1 className="mt-3" style={{ textAlign: 'center', color: 'red'}}><MdReport /> รายงานปัญหา <MdReport /> </h1>
+            <h1 className="mt-3" style={{ textAlign: 'center', color: 'red' }}><MdReport /> รายงานปัญหา <MdReport /> </h1>
             <hr />
             <div className="container-report" >
                 <br />
 
                 <table>
                     {Object.keys(values).map((id, index) => {
-                        return(
-                                <tr >
-                                    <td scope="col" style={{width:"150px"}}>{values[id].DataTime}</td>
-                                    <td scope="col" style={{width:"200px"}}>{values[id].RpHeader}</td>
-                                    <td scope="col" style={{width:"300px"}}>{values[id].ReportType}</td>
-                                    <td scope="col" style={{width:"800px"}}>{values[id].RpDetails}</td>
-                                    <td scope="col" style={{width:"50px"}}>{values[id].FromEmail}</td>
+                        return (
+                            <div>
+                                <div style={{ display: "flex", flexWarp: "warp", flexDirection:"row" , alignContent:"flex-start",justifyContent:"start" }}>
+                                    <div style={{display:"block"}}>
+
+                                    </div>
+
+                                </div>
+                                <tr style={{ background: "blue" }}>
+                                    <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", paddingRight: "50px" }}>{values[id].DataTime}</td>
+                                    <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw" }}>{values[id].RpHeader}</td>
+                                    <td className="d-none d-sm-block" scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", background: "red" }}>{values[id].ReportType}</td>
+                                    <td scope="col" style={{ whiteSpace: "nowrap", width: "800px", fontSize: "1vw" }} >{values[id].RpDetails}</td>
+                                    <td scope="col" style={{ whiteSpace: "nowrap", width: "50px", fontSize: "1vw" }}>{values[id].FromEmail}</td>
                                     <td>
                                         <AiIcons.AiOutlineCheckCircle type="button" style={{ color: 'green', fontSize: '125%' }}
 
@@ -69,6 +76,7 @@ function AdminReport() {
                                         />
                                     </td>
                                 </tr>
+                            </div>
                         );
                     })}
                 </table>

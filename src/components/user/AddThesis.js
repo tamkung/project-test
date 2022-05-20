@@ -3,6 +3,7 @@ import { firebaseDB, firebaseStorage, firebase } from "../../services/firebase";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack } from "react-icons/io";
+import { ThesisType } from "../user/ThesisType";
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
 var saveCurrentTime =
@@ -65,6 +66,7 @@ function AddThesis() {
   const ImgOnChange = (e) => {
     const selectedFIles = [];
     const targetFilesObject = [...e.target.files];
+
     setImages([...e.target.files]);
     targetFilesObject.map((file) => {
       return selectedFIles.push(URL.createObjectURL(file));
@@ -85,13 +87,13 @@ function AddThesis() {
       const uploadTask = uploadBytesResumable(storageRef, files);
       uploadTask.on(
         "state_changed",
-        (snapshot) => {},
+        (snapshot) => { },
         (error) => console.log(error),
         async () => {
           await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             console.log("Image :", downloadURL);
-           values.ThesisImg.push(downloadURL);
-            if(values.ThesisImg.length  === Images.length){
+            values.ThesisImg.push(downloadURL);
+            if (values.ThesisImg.length === Images.length) {
               Files.forEach((files) => {
                 const storageRef = ref(
                   firebaseStorage,
@@ -100,26 +102,26 @@ function AddThesis() {
                 const uploadTask = uploadBytesResumable(storageRef, files);
                 uploadTask.on(
                   "state_changed",
-                  (snapshot) => {},
+                  (snapshot) => { },
                   (error) => console.log(error),
                   async () => {
                     await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                       console.log("Files :", downloadURL);
                       values.ThesisFile.push(downloadURL);
-                      if(values.ThesisFile.length === Files.length){
+                      if (values.ThesisFile.length === Files.length) {
                         console.log("and Add Data");
                         firebaseDB
-                        .child("Thesis")
-                        .child("Thesis-" + dateKey)
-                        .set(values)
-                        .then(() => {
-                          // <Toast/>
-                          alert("add data success");
-                          window.location.href='/ListThesis';
-                        })
-                        .catch((error) => {
-                          alert(error);
-                        });
+                          .child("Thesis")
+                          .child("Thesis-" + dateKey)
+                          .set(values)
+                          .then(() => {
+                            // <Toast/>
+                            alert("add data success");
+                            window.location.href = '/ListThesis';
+                          })
+                          .catch((error) => {
+                            alert(error);
+                          });
                       }
                     });
                   }
@@ -161,13 +163,20 @@ function AddThesis() {
               onChange={handleOnChange}
             >
               <option value="" >Choose...</option>
+              {ThesisType.map((item, index) => {
+                return (
+                  <option key={index} value={item.value}>{item.title}</option>
+
+                );
+              })}
+              {/* <option value="" >Choose...</option>
               <option value="เว็บไซต์">เว็บไซต์</option>
               <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
               <option value="อุปกรณ์ iot">อุปกรณ์ iot</option>
               <option value="สื่อการเรียนรู้">สื่อการเรียนรู้</option>
               <option value="เกม">เกม</option>
               <option value="VR AR MR">VR AR MR</option>
-              <option value="อื่นๆ">อื่นๆ</option>
+              <option value="อื่นๆ">อื่นๆ</option> */}
             </select>
           </div>
           <br />
@@ -224,17 +233,18 @@ function AddThesis() {
                 multiple
                 required
               />
-             <div className="row mt-3">
+              <div className="row mt-3" >
                 {ShowImages.map((url, i) => (
-                 <div className="col" key={i}>
+                  <div className="col" key={i} >
                     <img
                       className="d-block w-100"
                       src={url}
                       alt="firebase-images"
+                      style={{ maxHeight: "500px" }}
                     />
                   </div>
                 ))}
-                </div>
+              </div>
             </div>
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">PDF ( รวมเล่มฉบับสมบูรณ์ )</label>

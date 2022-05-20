@@ -206,14 +206,12 @@ tr:hover {
 } */
 .flexbox {
     display: flex;
-    background-color: #02bd11;
     box-sizing: border-box;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: flex-start;
     position: relative;
-    align-items: center;
 }
 
 .itemflex {
@@ -223,16 +221,45 @@ tr:hover {
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 10px;
-    
+    transition: 300ms;
+
 }
-.hovercard:hover{
-border: 2px solid rgb(255, 94, 0);
+
+.edit-admin-btn {
+    background-color: #f8e578;
+    margin-bottom: 5px;
+    transition: 300ms;
 }
+
+.edit-admin-btn:hover {
+    transition: 300ms;
+    background-color: #ffaf02;
+    border-radius: 10px;
+    color: #fefefe;
+}
+
+.delete-admin-btn {
+    background-color: #ff8d6b;
+    margin-bottom: 5px;
+}
+
+.delete-admin-btn:hover {
+    transition: 300ms;
+    background-color: #ff3d02;
+    border-radius: 10px;
+    color: #fefefe;
+}
+
+.hovercard:hover {
+    border: 2px solid rgb(255, 94, 0);
+}
+
 .itemflex:hover {
     transition: 300ms;
     transform: scale(1.1);
-    
+
 }
+
 @media screen and (max-width: 1500px) {
 
     .itemflex {
@@ -242,10 +269,11 @@ border: 2px solid rgb(255, 94, 0);
         padding-left: 10px;
         padding-right: 10px;
         margin-bottom: 10px;
-       
+
     }
 
 }
+
 @media screen and (max-width: 1200px) {
 
     .itemflex {
@@ -258,6 +286,7 @@ border: 2px solid rgb(255, 94, 0);
     }
 
 }
+
 @media screen and (max-width: 800px) {
 
     .itemflex {
