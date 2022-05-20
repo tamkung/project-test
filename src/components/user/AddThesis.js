@@ -89,7 +89,6 @@ function AddThesis() {
       Swal.fire({
         title: 'รอสักครู่',
         timer: 5000,
-        timerProgressBar: true,
         didOpen: () => {
           Swal.showLoading()
           const b = Swal.getHtmlContainer().querySelector('b')
@@ -138,7 +137,6 @@ function AddThesis() {
                           .set(values)
                           .then(() => {
                             // <Toast/>
-                            alert("add data success");
                             window.location.href = '/ListThesis';
                           })
                           .catch((error) => {

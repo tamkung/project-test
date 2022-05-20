@@ -49,7 +49,7 @@ function SignUpAdmin() {
   };
 
   return (
-    <div className="container p-5">
+    <div className="container p-5" style={{minHeight:"850px" }}>
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h1>Register Page</h1>

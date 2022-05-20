@@ -35,7 +35,7 @@ function HomeAdmin() {
 
 
   return (
-    <div className="container mt-3">
+    <div className="container mt-3" >
       <div className="flexbox" style={{ display: "flexbox" }} >
         <div style={{ display: "block", width: "100%" }}>
           <h1>ALL THESIS : {AllThesis.length}</h1>

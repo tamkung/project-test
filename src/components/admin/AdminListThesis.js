@@ -4,6 +4,7 @@ import { getStorage, ref, deleteObject } from "firebase/storage";
 import { Card, Button } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai';
 import * as BsIcons from 'react-icons/bs';
+import Swal from 'sweetalert2'
 function AdminListThesis() {
   const [values, setValues] = useState({});
 
@@ -26,26 +27,59 @@ function AdminListThesis() {
   }, []);
 
   const onDelete = (id) => {
-    if (
-      window.confirm("Are you sure that you wanted to delete that contact ?")
-    ) {
-      const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
-      storageRef.listAll().then((listResults) => {
-        const promises = listResults.items.map((item) => {
-          return item.delete();
-        });
-        Promise.all(promises);
-        console.log(promises);
-      });
-      firebaseDB.child(`Thesis/${id}`)
-        .remove()
-        .then(() => {
-          console.log("Contact Deleted Successfully");
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    Swal.fire({
+      title: 'ลบปริญญานิพนธ์นี้หรือไม่?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#189B12',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ลบ',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        {
+          const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
+          storageRef.listAll().then((listResults) => {
+            const promises = listResults.items.map((item) => {
+              return item.delete();
+            });
+            Promise.all(promises);
+            console.log(promises);
+          });
+          firebaseDB.child(`Thesis/${id}`)
+            .remove()
+            .then(() => {
+              console.log("Contact Deleted Successfully");
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+        }
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+
+
   };
   return (
     <div className="container" style={{ marginTop: "50px" }}>
@@ -62,7 +96,7 @@ function AdminListThesis() {
                       src={values[id].ThesisImg[0]}
                       style={{ marginBottom: "25px" }}
                     />
-                    <div style={{ textAlign: "center" , marginBottom:"10px"}}>
+                    <div style={{ textAlign: "center", marginBottom: "10px" }}>
                       <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
                       {values[id].Like ? (<>
                         <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>

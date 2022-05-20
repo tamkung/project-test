@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { firebaseDB, firebaseStorage, firebase } from "../../services/firebase";
+import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
 var d = new Date();
 var saveCurrentDate = d.getDate() + "-" + d.getMonth() + "-" + d.getFullYear();
@@ -28,20 +29,31 @@ function Report() {
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+
+  
   const sendReport = (e) => {
-    if (!useState) {
-      console.error("null");
-    } else {
-      firebaseDB
-        .child("Report")
-        .push(values)
-        .then(() => {
-          alert("ส่งรายงานปัญหาเรียบร้อย");
-        })
-        .catch((error) => {
-          alert(error);
-        });
-    }
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#189B12',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'ส่ง',
+        cancelButtonText: 'ยกเลิก'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          firebaseDB.child("Report").push(values).catch();
+
+          Swal.fire(
+            'ส่งรายงานปัญหาเรียบร้อย!',
+            '',
+            'success'
+          )
+        }
+      })
+    
   };
   return (
     <>
@@ -91,22 +103,16 @@ function Report() {
             />
             <br />
             <div className="row mt-3">
+
               <button
                 className="btn btn-success col mx-3"
                 onClick={sendReport}
-                type="submit"
-                to="/ListThesis"
-              >
-                <Link
-                  className="btn"
-                  to="/ListThesis"
-                  style={{ color: "white" }}
                 >
                   Submit
-                </Link>
               </button>
+              
               <button
-                type="reset "
+                type="reset"
                 className="btn btn-warning col mx-3"
                 style={{ color: "white" }}
               >

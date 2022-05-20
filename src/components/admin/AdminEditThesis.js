@@ -4,7 +4,7 @@ import { firebaseDB } from "../../services/firebase";
 import Footer from '../layout/Footer';
 import { Link } from 'react-router-dom';
 import { IoIosArrowBack } from "react-icons/io";
-
+import Swal from 'sweetalert2'
 function AdminEditThesis() {
     const [values, setValues] = useState({
         ThesisImg: "[]",
@@ -38,22 +38,37 @@ function AdminEditThesis() {
 
     const updateThesis = (e) => {
         e.preventDefault();
+        Swal.fire({
+            title: 'คุณต้องการแก้ไขหรือไม่?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#189B12',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'แก้ไข',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (values.ThesisName == null) {
+                    console.log("null");
+                } else {
+                    firebaseDB.child("Thesis").child(id).update(values);
+                    window.location.href = '/'
+                }
+                Swal.fire(
+                    'แก้ไขเสร็จสิ้น',
+                    '',
+                    'success'
+                )
+            }
+        })
 
-        if (values.ThesisName == null) {
-            console.log("null");
-        } else {
-            // --------add data----------------
-            // ----------------- push----------เจคคีย์ใหม่ให้
-            // ----------------- set----------ใส่ค่าที่มีอยู่ลงใน child
-            firebaseDB.child("Thesis").child(id).update(values, (error) => {
-                if (error) {
-                    alert.error(error);
-                }
-                else {
-                    console.log("edit data success");
-                }
-            });
-        }
+
+
+
+
+
+
+
     }
 
     return (
@@ -83,7 +98,7 @@ function AdminEditThesis() {
 
                             <br />
                             <select name="ThesisType" className="form-control" value={values.ThesisType} onChange={handleOnChange}>
-                                <option selected>Choose...</option>
+                                <option defaultValue>Choose...</option>
                                 <option value="เว็บไซต์">เว็บไซต์</option>
                                 <option value="แอปพลิเคชัน">แอปพลิเคชัน</option>
                                 <option value="อุปกรณ์ Iot">อุปกรณ์ Iot</option>
@@ -122,30 +137,19 @@ function AdminEditThesis() {
                         </div>
 
                         <div className="row mt-3">
-                            <Link className="btn col mx-3" to='/adminlist' style={{ color: "gray", fontSize: "24px" }}>
-                                <IoIosArrowBack
-
-                                />
-
+                            <Link className="btn col mx-3" to='/' style={{ color: "gray", fontSize: "24px" }}>
+                                <IoIosArrowBack />
                             </Link>
-                            <button className="btn btn-success col mx-3" onClick={updateThesis} to='#'>
-                                <Link className="btn" to='/adminlist' style={{ color: "white" }}>Submit</Link>
-
+                            <button className="btn btn-success col mx-3" onClick={updateThesis}>
+                                Submit
                             </button>
-
-                            <button type="reset " className="btn btn-warning col mx-3" style={{ color: "white" }}>
-                                Clear
-                            </button>
-
-
-
                         </div>
                     </form>
 
                 </div>
             </div>
             <br /><br /><br /><br /><br />
-         
+
         </div>
     );
 }

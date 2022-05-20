@@ -5,7 +5,7 @@ import { MdReport } from 'react-icons/md';
 import * as AiIcons from 'react-icons/ai';
 // import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
-
+import Swal from 'sweetalert2'
 
 function AdminReport() {
     const [values, setValues] = useState({});
@@ -27,21 +27,37 @@ function AdminReport() {
         setValues({ ...values, [name]: value });
     };
     const onDelete = (id) => {
-        if (
-            window.confirm("คุณแน่ใจว่าจะลบหรือไม่?")
-        ) {
-            firebaseDB.child(`Report/${id}`).remove((err) => {
-                if (err) {
-                    console.error(err);
+        Swal.fire({
+            title: 'คุณต้องการลบหรือไม่?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#189B12',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ลบรายงานนี้!',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                if (values.ThesisName == null) {
+                    console.log("null");
                 } else {
-                    // colors.log("Contact Deleted Successfully");
-                    console.log("Deleted Successfully");
+                    firebaseDB.child(`Report/${id}`).remove();
+                    window.location.href = '/'
                 }
-            });
-        }
+                Swal.fire(
+                    'ลบสร็จสิ้น',
+                    '',
+                    'success'
+                )
+            }
+        })
+
+      
+
+
+       
     };
     return (
-        <div className="container" >
+        <div className="container" style={{minHeight:"835px" }}>
             <h1 className="mt-3" style={{ textAlign: 'center', color: 'red' }}><MdReport /> รายงานปัญหา <MdReport /> </h1>
             <hr />
             <div className="container-report" >

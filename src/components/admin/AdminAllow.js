@@ -1,8 +1,9 @@
 import React from "react";
 import { firebaseDB, firebase } from "../../services/firebase";
 import { useEffect, useState } from "react";
-import { Card, CardImg, Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { firebaseStorage } from "../../services/firebase";
+import Swal from 'sweetalert2'
 function AdminAllow() {
   const [values, setValues] = useState({});
   useEffect(() => {
@@ -42,18 +43,55 @@ function AdminAllow() {
   };
 
   const onUpdateAllow = (id) => {
-    firebaseDB.child("Thesis").child(id)
-      .update({ ThesisAllow: true, }).then(() => {
-        alert("Add Admin success");
-      }).catch((error) => {
-        console.error(error);
-      });
+    
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+    
+    swalWithBootstrapButtons.fire({
+      text: "ต้องการอนุญาตปริญญานิพนธ์นี้ใช้หรือไม่?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'ลบปริญญานิพนธ์',
+      cancelButtonText: 'ยกเลิก',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        
+        swalWithBootstrapButtons.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        firebaseDB.child("Thesis").child(id)
+        .update({ ThesisAllow: true, }).then(() => {
+          alert("Add Admin success");
+        }).catch((error) => {
+          console.error(error);
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }
+    })
+    
+   
   }
 
 
   return (
-    <div>
-      <div className="container mt-5">
+    <div style={{minHeight:"800px" }}>
+      <div className="container mt-5" >
         <h1>อนุมัติ Thesis</h1>
         <hr />
         {Object.keys(values).map((id, i) => {
