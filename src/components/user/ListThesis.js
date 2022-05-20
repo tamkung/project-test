@@ -52,6 +52,7 @@ function ListThesis() {
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
+
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
             <Dropdown className="btn" onChange={e => setType(e.target.values)}>
@@ -84,63 +85,12 @@ function ListThesis() {
           </div>
         </div>
       ) : ("")}<br />
-      {/* <div className="flex" style={{ textAlign: "center" }} >
-        <div style={{ paddingLeft: "1%", width: "100%" }} >
-          {Object.keys(values).map((id, index) => {
-            return (
-              <div key={index} >
-                <Card className="select-thesis flex-item "
-                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
-                  )} style={{ maxHeight: "500px", minHeight: "450px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }} >
-                  <div style={{ position: "absolute", top: "5%" }} >
-                    <div style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                      <div>
-                        <AiIcons.AiOutlineEye /> {values[id].View}
-                      </div>
-                    </div>
-                    <div className="col" style={{ boxShadow: "2px 2px 3px black", border: " 2px black solid ", borderRadius: "8px", background: "white", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                      <div>
-                        {values[id].Like ? (<>
-                          <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
-                            <AiIcons.AiOutlineLike /> 0</>)}
-                      </div>
-                    </div>
-                  </div>
-                  <div><img className="show-img card-img-top" alt="Thesis Images" src={values[id].ThesisImg[0]} style={{ height: "300px", width: "100%" }} /></div>
-                  <Card.Body>
-                    <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
-                    <Card.Text>{values[id].ThesisType}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
-
-      {/* <div className="flex">
-        <div  >
-          {Object.keys(values).map((id, index) => {
-            return (
-              <div className="flex-item">
-                <Card key={index} >
-                  <img src={values[id].ThesisImg[0]} />
-                  <Card.Body>
-                    <Card.Title>{values[id].ThesisName}</Card.Title>
-                    <Card.Text>{values[id].ThesisType}</Card.Text>
-                  </Card.Body>
-                </Card>
-              </div>
-            );
-
-          })}
-        </div>
-      </div> */}
 
       <div className="flexbox">
-        {Object.keys(values).map((id, index) => {
+        { Object.keys(values).map((id, index) => {
           return (
             <div key={index} type="button" className="itemflex">
+            {values[id].ThesisAllow ?(
               <Card className="hovercard"
                 onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
                 )} style={{ height: "450px" }}>
@@ -152,9 +102,9 @@ function ListThesis() {
                   {values[id].Like ? (<>
                     <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
                       <AiIcons.AiOutlineLike /> 0 </>)}
-
                 </div>
               </Card>
+            ):(<></>)}
             </div>
           );
         })}
