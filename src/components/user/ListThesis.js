@@ -23,7 +23,7 @@ function ListThesis() {
 
   const [values, setValues] = useState({});
   useEffect(() => {
-    if(type !== null){
+    if (type !== null) {
       firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo(type).on("value", (snapshot) => {
         if (snapshot.val() !== null) {
           setValues({ ...snapshot.val() });
@@ -32,7 +32,7 @@ function ListThesis() {
         }
       });
 
-    }else{
+    } else {
       firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
         if (snapshot.val() !== null) {
           setValues({ ...snapshot.val() });

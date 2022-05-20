@@ -66,9 +66,7 @@ function AdminReport() {
                                     {values[id].Email}
                                 </div>
                                 <div style={{ display: "block", boxSizing: "border-box", width: "10%", textAlign: "center", paddingRight: "5px", paddingLeft: "5px" }}>
-                                    
                                     <AiIcons.AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '1.5vw' }}
-
                                         onClick={() => onDelete(id)}
                                     />
                                 </div>
