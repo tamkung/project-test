@@ -47,7 +47,7 @@ function App() {
   return (
     <div>
       {admin == "admin" ? (
-        <div>
+        <div style={{backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)"}}>
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
           <NavbarAdmin style={{height:"50px" }} />
           <Routes>
