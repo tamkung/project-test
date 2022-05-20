@@ -6,66 +6,71 @@ import Swal from 'sweetalert2'
 function CheckLogin() {
   const [user, setUser] = useState({});
   const reg = new RegExp('[a-zA-Z0-9]+@email+.+kmutnb+.ac+.th');
-  
+  const [login , setLogin] = useState('');
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
-      console.log(user.email)
-      if (reg.test(user.email)) {
-        let timerInterval
-        Swal.fire({
-          icon: 'success',
-          title: 'Gmail ถูกต้อง',
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading()
-            const b = Swal.getHtmlContainer().querySelector('b')
-            timerInterval = setInterval(() => {
-             
-            }, 1000)
-          },
-          willClose: () => {
-            clearInterval(timerInterval)
-          }
-        }).then((result) => {
-        })
+      if (user != null) {
 
+        if (reg.test(user.email)) {
+          
+          let timerInterval
+          Swal.fire({
+            icon: 'success',
+            title: 'Gmail ถูกต้อง',
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading()
+              const b = Swal.getHtmlContainer().querySelector('b')
+              timerInterval = setInterval(() => {
 
-      } else {
-        // window.location.href = "/ListThesis";
-        let timerInterval
-        Swal.fire({
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/th/thumb/b/be/Seal_of_KMUTNB.svg/640px-Seal_of_KMUTNB.svg.png',
-          imageHeight: 150,
-          title: 'Gmail ไม่ถูกต้อง',
-          html: 'เว็บไซต์นี้เป็นเว็บไซต์ของ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือเท่านั้น',
-          timer: 5000,
-          timerProgressBar: true,
-          didOpen: () => {
-            Swal.showLoading()
-            const b = Swal.getHtmlContainer().querySelector('b')
-            timerInterval = setInterval(() => {
-            }, 100)
-          },
-          willClose: () => {
-            clearInterval(timerInterval)
-          }
-        }).then((result) => {
-           auth.signOut()
-          .then(() => {
-            window.location.href = "/";
+              }, 1000)
+            },
+            willClose: () => {
+              clearInterval(timerInterval)
+            }
+          }).then((result) => {
           })
-        })
-        // auth.signOut()
-        //   .then(() => {
-        //     window.location.href = "/NoMatch";
-        //   })
+
+
+        } else {
+          // window.location.href = "/ListThesis";
+          let timerInterval
+          Swal.fire({
+            imageUrl: 'https://upload.wikimedia.org/wikipedia/th/thumb/b/be/Seal_of_KMUTNB.svg/640px-Seal_of_KMUTNB.svg.png',
+            imageHeight: 150,
+            title: 'Gmail ไม่ถูกต้อง',
+            html: 'เว็บไซต์นี้เป็นเว็บไซต์ของ มหาวิทยาลัยเทคโนโลยีพระจอมเกล้าพระนครเหนือเท่านั้น',
+            timer: 5000,
+            timerProgressBar: true,
+            didOpen: () => {
+              Swal.showLoading()
+              const b = Swal.getHtmlContainer().querySelector('b')
+              timerInterval = setInterval(() => {
+              }, 100)
+            },
+            willClose: () => {
+              clearInterval(timerInterval)
+            }
+          }).then((result) => {
+            auth.signOut()
+              .then(() => {
+                window.location.href = "/";
+              })
+          })
+        }
+      } else {
+
       }
+
     });
   }, []);
   return (
-    <div></div>
+    <div>
+      
+    </div>
   );
 
 }

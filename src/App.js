@@ -10,6 +10,7 @@ import Navbar from "./components/layout/Navbar";
 import NavbarAdmin from "./components/layout/AdminNavbar";
 import Footer from "./components/layout/Footer";
 import Spinner from "react-bootstrap/Spinner";
+import CheckLogin from './components/user/CheckLogin';
 // ----------@Css---------
 import "../src/css/App.css";
 import "../src/css/admin.css";
@@ -56,6 +57,7 @@ function App() {
           </Routes>
         </div>
       ) : admin == "user" ? (
+        
         <div>
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
         
