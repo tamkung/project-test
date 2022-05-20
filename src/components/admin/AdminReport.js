@@ -42,23 +42,39 @@ function AdminReport() {
     };
     return (
         <div className="container" >
-
             <h1 className="mt-3" style={{ textAlign: 'center', color: 'red' }}><MdReport /> รายงานปัญหา <MdReport /> </h1>
             <hr />
             <div className="container-report" >
                 <br />
-
-                <table>
-                    {Object.keys(values).map((id, index) => {
-                        return (
-                            <div>
-                                <div style={{ display: "flex", flexWarp: "warp", flexDirection:"row" , alignContent:"flex-start",justifyContent:"start" }}>
-                                    <div style={{display:"block"}}>
-
-                                    </div>
-
+                {Object.keys(values).map((id, index) => {
+                    return (
+                        <div key={index} style={{marginBottom:"10px"}}>
+                            <div style={{ display: "flex", width: "100%", boxSizing: "border-box", flexWarp: "warp", flexDirection: "row", alignContent: "flex-start", justifyContent: "start" }}>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "10%",  fontSize: "0.8vw", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    {values[id].DataTime}
                                 </div>
-                                <tr style={{ background: "blue" }}>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "15%", fontSize: "0.8vw", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    {values[id].RpHeader}
+                                </div>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "15%", fontSize: "0.8vw", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    {values[id].ReportType}
+                                </div>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "40%",  fontSize: "0.8vw", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    {values[id].RpDetails}
+                                </div>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "15%", fontSize: "0.8vw", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    {values[id].Email}
+                                </div>
+                                <div style={{ display: "block", boxSizing: "border-box", width: "10%", textAlign: "center", paddingRight: "5px", paddingLeft: "5px" }}>
+                                    
+                                    <AiIcons.AiFillMinusCircle type="button" style={{ color: 'red', fontSize: '1.5vw' }}
+
+                                        onClick={() => onDelete(id)}
+                                    />
+                                </div>
+
+                            </div>
+                            {/* <tr style={{ background: "blue" }}>
                                     <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", paddingRight: "50px" }}>{values[id].DataTime}</td>
                                     <td scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw" }}>{values[id].RpHeader}</td>
                                     <td className="d-none d-sm-block" scope="col" style={{ whiteSpace: "nowrap", fontSize: "1vw", background: "red" }}>{values[id].ReportType}</td>
@@ -75,11 +91,11 @@ function AdminReport() {
                                             onClick={() => onDelete(id)}
                                         />
                                     </td>
-                                </tr>
-                            </div>
-                        );
-                    })}
-                </table>
+                                </tr> */}
+                        </div>
+                    );
+                })}
+
             </div>
         </div>
     )
