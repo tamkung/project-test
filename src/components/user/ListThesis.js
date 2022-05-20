@@ -20,19 +20,34 @@ function ListThesis() {
       setUser(user);
     });
   }, []);
+
   const [values, setValues] = useState({});
   useEffect(() => {
-    firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
-      if (snapshot.val() !== null) {
-        setValues({ ...snapshot.val() });
-      } else {
-        setValues({});
-      }
-    });
-    return () => {
-      setValues({});
-    };
-  }, []);
+    if(type !== null){
+      firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo(type).on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          setValues({ ...snapshot.val() });
+        } else {
+          setValues({});
+        }
+      });
+
+    }else{
+      firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
+        if (snapshot.val() !== null) {
+          setValues({ ...snapshot.val() });
+        } else {
+          setValues({});
+        }
+      });
+    }
+
+    // return () => {
+    //   setValues({});
+    // };
+  }, [type]);
+
+
   console.log("Type : ", type)
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
@@ -44,30 +59,10 @@ function ListThesis() {
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
               <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', alignItems: "center", boxShadow: "0px 1px 5px black" }}>
-                {/* <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/webtype'} >
-                  <MdIcons.MdOutlineWebAsset style={{ margin: "2px" }} size={20} /> เว็บไซต์
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/apptype'}>
-                  <BiIcons.BiMobileAlt style={{ margin: "2px" }} size={20} /> แอปพลิเคชัน
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/iottype'}>
-                  <GiIcons.GiSolarPower style={{ margin: "2px" }} size={20} /> อุปกรณ์ iot
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/mediatype'}>
-                  <FiIcons.FiMonitor style={{ margin: "2px" }} size={20} /> สื่อการเรียนรู้
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/gametype'}>
-                  <BiIcons.BiGame style={{ margin: "2px" }} size={20} /> เกม
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/xrtype'}>
-                  <SiIcons.SiIngress style={{ margin: "2px" }} size={20} /> VR AR MR
-                </Dropdown.Item>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = '/othertype'}>
-                  <BsIcons.BsThreeDots style={{ margin: "2px" }} size={20} /> อื่นๆ
-                </Dropdown.Item> */}
                 {ThesisType.map((item, index) => {
                   return (
-                    <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = (item.path)}>
+                    // <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = (item.path)}>
+                    <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => setType(item.title)}>
                       {item.icons} {item.title}
                     </Dropdown.Item>
                   );
