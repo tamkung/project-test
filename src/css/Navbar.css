@@ -99,6 +99,45 @@
 
 }
 
+.item-nav-admin {
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  transition: 300ms;
+  color: #000000;
+}
+
+.item-nav-admin:hover {
+  background-image: linear-gradient(to right,  #ff8800,#ffd000);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #ffffff;
+  transition: 300ms;
+  border-radius: 0px 15px 15px 0px;
+}
+
+.item-nav-admin-logout {
+  background-color: rgb(255, 255, 255);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 180px;
+  transition: 300ms;
+  color: #000000;
+}
+
+.item-nav-admin-logout:hover {
+  background-image: linear-gradient(to right,  #ff4800,#ff0000);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #ffffff;
+  transition: 300ms;
+  border-radius: 0px 15px 15px 0px;
+}
+
+
 @media screen and (max-width: 960px) {
   .NavbarItems {
     position: relative;

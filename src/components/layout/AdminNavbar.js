@@ -45,22 +45,24 @@ function AdminNavbar() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/admin/report">Report</Nav.Link>
-              <Nav.Link href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
-              <Nav.Link href="/admin/add-thesis">Add Thesis</Nav.Link>
-              <Nav.Link href="/admin/sign-up">Add Admin</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/">Home</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/admin/report">Report</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/admin/add-thesis">Add Thesis</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/admin/sign-up">Add Admin</Nav.Link>
+
+              <Nav.Link className="item-nav-admin-logout"  onClick={() => auth.signOut()
+                .then(() => {
+                  window.location.href = "/";
+                })
+                .catch((error) => {
+                  console.error(error);
+                })}>
+                <span className="no-icon">Log out</span>
+              </Nav.Link>
             </Offcanvas.Body>
 
-            <Nav.Link onClick={() => auth.signOut()
-              .then(() => {
-                window.location.href = "/";
-              })
-              .catch((error) => {
-                console.error(error);
-              })}>
-              <span className="no-icon">Log out</span>
-            </Nav.Link>
+
           </Navbar.Offcanvas>
         </Container>
       </Navbar>

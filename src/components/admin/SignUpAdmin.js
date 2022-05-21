@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { firebase, firebaseDB } from "../../services/firebase";
-
+import Swal from 'sweetalert2'
 function SignUpAdmin() {
   const [value, setValue] = useState({
     email: "",
@@ -16,6 +16,10 @@ function SignUpAdmin() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
+
+    
     try {
       firebase
         .auth()
@@ -34,7 +38,13 @@ function SignUpAdmin() {
               type: "Admin",
             })
             .then(() => {
-              alert("Add Admin success");
+              Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+              })
             })
             .catch((error) => {
               console.error(error);

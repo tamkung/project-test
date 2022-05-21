@@ -20,30 +20,48 @@ function AdminAllow() {
     };
   }, []);
   const onDelete = (id) => {
-    if (
-      window.confirm("Are you sure that you wanted to delete that contact ?")
-    ) {
-      const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
-      storageRef.listAll().then((listResults) => {
-        const promises = listResults.items.map((item) => {
-          return item.delete();
-        });
-        Promise.all(promises);
-        console.log(promises);
+    const storageRef = firebaseStorage.ref().child(`Thesis/${id}`);
+    storageRef.listAll().then((listResults) => {
+      const promises = listResults.items.map((item) => {
+        return item.delete();
       });
-      firebaseDB.child(`Thesis/${id}`)
-        .remove()
-        .then(() => {
-          console.log("Contact Deleted Successfully");
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
+      Promise.all(promises);
+      console.log(promises);
+    });
+
+    Swal.fire({
+      title: 'ไม่อนุมัติปริญญานิพนธ์นี้?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#189B12',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ใช่',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        firebaseDB.child(`Thesis/${id}`)
+          .remove()
+          .then(() => {
+            console.log("Contact Deleted Successfully");
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
+
+
   };
 
   const onUpdateAllow = (id) => {
-    
+
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -51,46 +69,43 @@ function AdminAllow() {
       },
       buttonsStyling: false
     })
-    
+
     swalWithBootstrapButtons.fire({
-      text: "ต้องการอนุญาตปริญญานิพนธ์นี้ใช้หรือไม่?",
+      text: "ต้องการอนุมัติปริญญานิพนธ์นี้ใช้หรือไม่?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'ลบปริญญานิพนธ์',
       cancelButtonText: 'ยกเลิก',
-      reverseButtons: true
+      confirmButtonText: 'อนุมัติ',
     }).then((result) => {
       if (result.isConfirmed) {
-        
+
         swalWithBootstrapButtons.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'อนุมัติแล้ว!',
+          '',
           'success'
         )
         firebaseDB.child("Thesis").child(id)
-        .update({ ThesisAllow: true, }).then(() => {
-          alert("Add Admin success");
-        }).catch((error) => {
-          console.error(error);
-        });
+          .update({ ThesisAllow: true, }).catch((error) => {
+            console.error(error);
+          });
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
       ) {
         swalWithBootstrapButtons.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
+          'ยกเลิก',
+          '',
           'error'
         )
       }
     })
-    
-   
+
+
   }
 
 
   return (
-    <div style={{minHeight:"800px" }}>
+    <div style={{ minHeight: "800px" }}>
       <div className="container mt-5" >
         <h1>อนุมัติ Thesis</h1>
         <hr />
@@ -125,7 +140,9 @@ function AdminAllow() {
                     </div>
                     <div className="col" style={{ textAlign: "right" }}>
                       <Button style={{ margin: "5px" }} variant="primary" onClick={() => onUpdateAllow(id)}>อนุมัติ</Button>
-                      <Button className="btn-danger" style={{ margin: "5px" }} variant="primary" onClick={() => onDelete(id)}>ไม่อนุมัติ</Button>
+                      <Button className="btn-danger" style={{ margin: "5px" }} variant="primary" onClick={
+
+                        () => onDelete(id)}>ไม่อนุมัติ</Button>
                     </div>
                   </div>
                 </Card.Body>
