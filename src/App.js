@@ -47,10 +47,10 @@ function App() {
   return (
     <div>
       {admin == "admin" ? (
-        <div style={{backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)"}}>
+        <div style={{ backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)" }}>
           {/* <------------------------------------------------ Pages Admin ------------------------------------------------> */}
-          <NavbarAdmin style={{height:"50px" }} />
-          <Routes style={{backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)"}}>
+          <NavbarAdmin style={{ height: "50px" }} />
+          <Routes style={{ backgroundImage: "linear-gradient(to bottom, #ffffff, #DEDEDE)" }}>
             {RouterAdmin.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
@@ -60,11 +60,9 @@ function App() {
 
         <div>
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
-          
           <Navbar />
-
           <Routes>
-
+            <CheckLogin />
             {RouterUser.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}
@@ -73,7 +71,7 @@ function App() {
         </div>
       ) : admin == "NoLogin" ? (
         <div>
-          <CheckLogin />
+
           {/* <------------------------------------------------ Pages NoLogin ------------------------------------------------> */}
           <Navbar />
           <Routes>
