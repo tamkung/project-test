@@ -59,10 +59,11 @@ function App() {
       ) : admin == "user" ? (
 
         <div>
+          <CheckLogin />
           {/* <------------------------------------------------ Pages User ------------------------------------------------> */}
           <Navbar />
           <Routes>
-            <CheckLogin />
+            
             {RouterUser.map(({ path, element }, key) => {
               return <Route index path={path} element={element} key={key} />
             })}

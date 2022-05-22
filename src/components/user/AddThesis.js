@@ -88,7 +88,7 @@ function AddThesis() {
       let timerInterval
       Swal.fire({
         title: 'รอสักครู่',
-        timer: 5000,
+        timer: 15000,
         didOpen: () => {
           Swal.showLoading()
           const b = Swal.getHtmlContainer().querySelector('b')
@@ -241,7 +241,7 @@ function AddThesis() {
             </div>
             <div className="form-group mt-3">
               <label htmlFor="ThesisDev">
-                อัปโหลดรูปภาพ <a style={{ color: "red" }}>( ไม่เกิน 5 รูป )</a>{" "}
+                อัปโหลดรูปภาพ อัตราส่วน 1:1
               </label>
               <input
                 className="form-control"
@@ -278,7 +278,7 @@ function AddThesis() {
             </div>
           </div>
           <br />
-          <div className="row mt-3">
+          <div className="row mt-3 mb-2">
             <Link
               className="btn col mx-3"
               to="/ListThesis"
@@ -288,7 +288,7 @@ function AddThesis() {
             </Link>
 
             <button
-              className="btn btn-success col mx-3"
+              className="btn btn-success col mb-2 mx-3"
               onClick={createThesis}
               type="button"
             >
@@ -299,7 +299,7 @@ function AddThesis() {
 
             <button
               type="reset "
-              className="btn btn-warning col mx-3"
+              className="btn btn-warning col mb-2 mx-3"
               style={{ color: "white" }}
             >
               Clear

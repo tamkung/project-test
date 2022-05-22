@@ -6,6 +6,7 @@ import Swal from 'sweetalert2'
 function CheckLogin() {
   const [user, setUser] = useState({});
   const reg = new RegExp('[a-zA-Z0-9]+@email+.+kmutnb+.ac+.th');
+  const regadmin = new RegExp('[a-zA-Z0-9]+@admin.com]');
   const [login , setLogin] = useState('');
 
   useEffect(() => {
@@ -13,7 +14,7 @@ function CheckLogin() {
       setUser(user);
       if (user != null) {
 
-        if (reg.test(user.email)) {
+        if (reg.test(user.email) || regadmin.test(user.email)) {
         } else {
           // window.location.href = "/ListThesis";
           let timerInterval

@@ -95,8 +95,8 @@ function ListThesis() {
               {values[id].ThesisAllow ? (
                 <Card className="hovercard"
                   onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
-                  )} style={{ height: "450px" }}>
-                  <div style={{ overflow: "hidden", height: "300px" }}><img className="show-img card-img-top" style={{ height: "auto", width: "100%" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
+                  )} style={{ height: "350px" }}>
+                  <div style={{ overflow: "hidden", height: "200px" }}><img className="show-img card-img-top" style={{ height: "100%", width: "auto" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
                   <div style={{ padding: "10px", paddingTop: "30px" }}>
                     <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
                     <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>

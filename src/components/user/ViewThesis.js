@@ -229,7 +229,7 @@ function ViewThesis() {
                 <div key={index} style={{ position: "relative" }}>
                   <button className="btn-delete-comment" style={{ position: "absolute", right: "0%" }} onClick={() => btnDelComment(id)}>ลบ</button>
                   <div>
-                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "1vw", marginLeft: "10px" }}>{Comment[id].uName}</a>
+                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "14px", marginLeft: "10px" }}>{Comment[id].uName}</a>
                   </div>
                   <p style={{ marginTop: "2%" }}>{Comment[id].text}</p>
 
@@ -240,7 +240,7 @@ function ViewThesis() {
               return (
                 <div key={index}>
                   <div>
-                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "1vw", marginLeft: "10px" }}>{Comment[id].uName}</a>
+                    <img style={{ borderRadius: "50%", width: "50px" }} src={Comment[id].uImg} /> <a style={{ fontSize: "12px", marginLeft: "10px" }}>{Comment[id].uName}</a>
                   </div>
                   <p style={{ marginTop: "2%" }}>{Comment[id].text}</p>
                   <hr />

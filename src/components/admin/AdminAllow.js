@@ -113,12 +113,12 @@ function AdminAllow() {
           return (
             <div key={i}>
               <Card>
-                <Card.Header style={{ fontSize: "1vw" }}  > <img src={values[id].DevPhoto} style={{ borderRadius: "50%", width: "50px", height: "50px", marginRight: "10px" }} /> {values[id].Email} </Card.Header>
+                <Card.Header style={{ fontSize: "14px" }}  > <img src={values[id].DevPhoto} style={{ borderRadius: "50%", width: "50px", height: "50px", marginRight: "10px" }} /> {values[id].Email} </Card.Header>
                 <Card.Body>
                   <Card.Title>ชื่อ : {values[id].ThesisName}</Card.Title>
                   <Card.Text>ประเภท : {values[id].ThesisType}</Card.Text>
                   <Card.Text>เจ้าของ : {values[id].DevName1}  {values[id].DevName2}</Card.Text>
-                  <div className="row">
+                  <div className="flex">
                     {values[id].ThesisImg.map((url, i) => (
                       <div interval={3000} key={i}>
                         <img

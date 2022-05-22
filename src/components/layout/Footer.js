@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../css/Footer.css";
 import * as FaIcons from 'react-icons/fa'
 import * as SiIcons from 'react-icons/si'
 import * as RiIcons from 'react-icons/ri'
 import Swal from 'sweetalert2'
-
+import { firebase, firebaseDB } from "../../services/firebase";
 function Footer() {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      
+      setUser(user);
+    });
+  }, []);
+
+
+
+
+
+
   function myFunction() {
     /* Get the text field */
     var copyText = document.getElementById("myInput");
@@ -42,7 +55,9 @@ function Footer() {
                   <a className="facebook" href="https://www.facebook.com/CEDKMUTNB"><FaIcons.FaFacebookF /></a>
                   <input type="text" hidden={true} defaultValue="ced@fte.kmutnb.ac.th" id="myInput" />
                   <a className="mail" onClick={myFunction} ><SiIcons.SiMaildotru /> </a>
-                  <a className="admin" href="/admin/sign-in"><RiIcons.RiAdminFill /> </a>
+                  {user ? (
+                  ""
+                  ):(<a className="admin" href="/admin/sign-in"><RiIcons.RiAdminFill /> </a>)}
                 </div>
               </div>
             </div>

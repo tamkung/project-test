@@ -94,7 +94,7 @@ function AdminListThesis() {
                     <Card.Img
                       variant="top"
                       src={values[id].ThesisImg[0]}
-                      style={{ marginBottom: "25px" }}
+                      style={{ marginBottom: "25px" ,height:"200px"}}
                     />
                     <div style={{ textAlign: "center", marginBottom: "10px" }}>
                       <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;

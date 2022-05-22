@@ -99,77 +99,30 @@ function MyThesis() {
       <br />
       <div className="container">
         
-        <div className="row">
-          {
-            Object.keys(values).map((id) => {
-              return (
-                <div className="col-sm-3 md-3 lg-3">
-                  <Card className="btn select-thesis flex-item "
-                    onClick={() =>
-                    (
-                      window.location.href = `/view-thesis/${id}`,
-                      firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
-                    )}
-                    style={{ maxHeight: "500px", minHeight: "450px", minWidth: "250px", maxWidth: "250px", padding: "1%", marginBottom: "50px", boxShadow: "1px 1px 4px lightgray" }}
-                  >
-                    <div className="row" style={{ position: "absolute", top: "5%" }} >
-                      <div className="tag-icon col" style={{ borderRadius: "8px", background: "white", left: "3%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                        <div>
-                          <AiIcons.AiOutlineEye /> {values[id].View}
-                        </div>
-                      </div>
-                      <div className="tag-icon col" style={{ borderRadius: "8px", background: "white", left: "20%", zIndex: "9999", padding: "3px", fontSize: "15px", marginLeft: "5px", width: "50px" }} >
-                        <div>
-                          {values[id].Like ? (<>
-                            <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
-                              <AiIcons.AiOutlineLike /> 0</>)}
+      <div className="flexbox">
+        {Object.keys(values).map((id, index) => {
+          return (
+            <div key={index} type="button" className="itemflex">
+              {values[id].ThesisAllow ? (
+                <Card className="hovercard"
+                  onClick={() => (window.location.href = `/view-thesis/${id}`, firebaseDB.child("Thesis").child(id).update({ View: values[id].View + 1 })
+                  )} style={{ height: "350px" }}>
+                  <div style={{ overflow: "hidden", height: "200px" }}><img className="show-img card-img-top" style={{ height: "100%", width: "auto" }} alt="Thesis Images" src={values[id].ThesisImg[0]} /></div>
+                  <div style={{ padding: "10px", paddingTop: "30px" }}>
+                    <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
+                    <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>
+                    <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
+                    {values[id].Like ? (<>
+                      <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
+                        <AiIcons.AiOutlineLike /> 0 </>)}
+                  </div>
+                </Card>
+              ) : (<></>)}
+            </div>
+          );
+        })}
 
-                        </div>
-                      </div>
-                    </div>
-                    <div >
-                      <img
-                        className="show-img card-img-top"
-                        alt="Thesis Images"
-                        src={values[id].ThesisImg[0]}
-                        style={{ height: "300px", width: "100%" }}
-                      />
-                    </div>
-                    <Card.Body>
-                      <Card.Title style={{ fontSize: "1.5vh" }}>{values[id].ThesisName}</Card.Title>
-                      <Card.Text>{values[id].ThesisType}</Card.Text>
-                    </Card.Body>
-                  </Card>
-                </div>
-              );
-            })}
-
-          {/* {Object.keys(values).map((id) => {
-            if (values[id].UserId == user) {
-              return (
-                <div key={id} className="col-lg-3">
-                  <Card style={{ height: "200px" }}>
-                    <CardHeader style={{ height: "150px" }}>
-                      <AiOutlineEye /> {values[id].UserId}
-                      <Card.Title>{values[id].ThesisName}</Card.Title>
-                    </CardHeader>
-                    <Card.Body>
-                      <Card.Text>{values[id].ThesisType}</Card.Text>
-                      <AiOutlineLike /> {values[id].Like}
-                    </Card.Body>
-                  </Card>
-                  <br />
-                </div>
-              );
-            } else {
-              return (
-                <div className="container">
-                  <h1>not thesis</h1>
-                </div>
-              );
-            }
-          })} */}
-        </div>
+      </div>
       </div>
     </div>
   );

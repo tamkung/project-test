@@ -46,7 +46,7 @@ function AdminNavbar() {
             </Offcanvas.Header>
             <Offcanvas.Body className="justify-content-end flex-grow-1 pe-3">
               <Nav.Link className="item-nav-admin" href="/">Home</Nav.Link>
-              <Nav.Link className="item-nav-admin" href="/admin/report">Report</Nav.Link>
+              <Nav.Link className="item-nav-admin d-sm-none d-md-block d-none d-sm-block" href="/admin/report">Report</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/add-thesis">Add Thesis</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/sign-up">Add Admin</Nav.Link>

@@ -117,7 +117,7 @@ function AdminAddThesis() {
                 const storageRef = ref(
                   firebaseStorage,
                   `Thesis/Thesis-${dateKey}/Files-${files.name}`
-                  
+
                 );
                 const uploadTask = uploadBytesResumable(storageRef, files);
                 uploadTask.on(
@@ -129,7 +129,7 @@ function AdminAddThesis() {
                       console.log("Files :", downloadURL);
                       values.ThesisFile.push(downloadURL);
                       if (values.ThesisFile.length === Files.length) {
-                        
+
                         console.log("and Add Data");
                         firebaseDB
                           .child("Thesis")
@@ -280,6 +280,13 @@ function AdminAddThesis() {
             <button
               className="btn btn-success col mx-3"
               onClick={createThesis}
+              disabled={
+                values.ThesisDetails === "" ||
+                values.ThesisName === "" ||
+                values.ThesisType === "" ||
+                values.DevName1 === "" ||
+                values.DevName2 === ""
+              }
               type="button"
             >
               Submit
