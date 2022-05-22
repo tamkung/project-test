@@ -31,16 +31,13 @@ function HomeAdmin() {
       setValues({});
     };
   }, []);
-
-
-
   return (
     <div className="container mt-3" >
-      <div className="flexbox" style={{ display: "flexbox" }} >
+      <div style={{ display: "flex", flexWrap: "wrap" }} >
         <div style={{ display: "block", width: "100%" }}>
           <h1>ALL THESIS : {AllThesis.length}</h1>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center" >
               <Card.Title> {WebThesis.length} </Card.Title>
@@ -50,7 +47,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {AppThesis.length} </Card.Title>
@@ -60,7 +57,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {IotThesis.length} </Card.Title>
@@ -70,7 +67,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {TeachThesis.length} </Card.Title>
@@ -80,7 +77,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {GameThesis.length} </Card.Title>
@@ -90,7 +87,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {VrThesis.length} </Card.Title>
@@ -100,7 +97,7 @@ function HomeAdmin() {
             </Card.Footer>
           </Card>
         </div>
-        <div style={{ width: "20%", display: "block", maxWidth: "50%", padding: "10px" }}>
+        <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
             <Card.Body className="mx-auto text-center">
               <Card.Title> {OtherThesis.length} </Card.Title>
