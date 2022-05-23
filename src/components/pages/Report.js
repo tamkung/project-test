@@ -31,29 +31,27 @@ function Report() {
   };
 
 
-  
-  const sendReport = (e) => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#189B12',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'ส่ง',
-        cancelButtonText: 'ยกเลิก'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          firebaseDB.child("Report").push(values).catch();
 
-          Swal.fire(
-            'ส่งรายงานปัญหาเรียบร้อย!',
-            '',
-            'success'
-          )
-        }
-      })
-    
+  const sendReport = (e) => {
+    Swal.fire({
+      title: 'ต้องการส่งรายงานนี้หรือไม่?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#189B12',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ส่ง',
+      cancelButtonText: 'ยกเลิก'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        firebaseDB.child("Report").push(values).then(() => Swal.fire(
+          'ส่งรายงานปัญหาเรียบร้อย!',
+          '',
+          'success'
+        )).catch((e) => console.log(e));
+
+      }
+    })
+
   };
   return (
     <>
@@ -84,7 +82,7 @@ function Report() {
                 className="form-control"
                 onChange={handleOnChange}
               >
-                <option defaultValue="">Choose...</option>
+                <option defaultValue="none">Choose...</option>
                 <option value="แจ้ง ลบ/แก้ไข ผลงาน">แจ้ง ลบ/แก้ไข ผลงาน</option>
                 <option value="ระบบมีปัญหา">ระบบมีปัญหา</option>
                 <option value="อื่นๆ">อื่นๆ</option>
@@ -104,13 +102,26 @@ function Report() {
             <br />
             <div className="row mt-3">
 
-              <button
+              <div type="button"
                 className="btn btn-success col mx-3"
-                onClick={sendReport}
-                >
-                  Submit
-              </button>
+                onClick={() => {
+                  if (values.RpDetails === "" || values.ReportType === "Choose..." || values.RpHeader === "") {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'กรุณากรอกให้ครบถ้วน',
               
+                      
+                    })
+                  } else {
+                    sendReport()
+
+                  }
+                }
+                }
+              >
+                Send
+              </div>
+
               <button
                 type="reset"
                 className="btn btn-warning col mx-3"

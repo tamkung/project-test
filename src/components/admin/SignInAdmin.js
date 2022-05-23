@@ -29,6 +29,7 @@ function SignInAdmin() {
           window.location.href='/';
         }).catch((error)=>{
             console.error(error);
+            
         });
       // +(true);
     } catch (error) {

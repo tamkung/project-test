@@ -41,7 +41,7 @@ function SignUpAdmin() {
               Swal.fire({
                 position: 'top-center',
                 icon: 'success',
-                title: 'Your work has been saved',
+                title: 'เพิ่มผู้ดูแลเรียบร้อย',
                 showConfirmButton: false,
                 timer: 1500
               })
