@@ -36,6 +36,7 @@ function AddThesis() {
     DevName2: "",
     View: 0,
     Download: 0,
+    // Level:"",
   });
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -153,7 +154,6 @@ function AddThesis() {
       );
     });
   };
-
   return (
     <div className="container">
       <br />
@@ -173,6 +173,22 @@ function AddThesis() {
               required
             />
           </div>
+          {/* <div className="form-group mt-3">
+            <label htmlFor="Level">ระดับ</label>
+            <br />
+            <select
+              name="Level"
+              className="form-select"
+              required
+              onChange={handleOnChange}
+            >
+              <option value="" >Choose...</option>
+              <option value="ปริญญาตรี" >ปริญญาตรี</option>
+              <option value="ปริญญาโท" >ปริญญาโท</option>
+              <option value="ปริญญาเอก" >ปริญญาเอก</option>
+             
+            </select>
+          </div> */}
           <div className="form-group mt-3">
             <label htmlFor="ThesisType">ประเภทปริญญานิพนธ์</label>
             <br />

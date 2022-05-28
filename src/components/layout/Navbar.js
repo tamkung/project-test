@@ -39,7 +39,7 @@ function Navbar() {
     <div>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}> THESIS</Link>
+          <Link to="/" className="navbar-logo  d-sm-none d-md-block d-none d-sm-block d-md-none d-lg-block" onClick={closeMobileMenu}><img src="./images/logo.png"/></Link>
           <div className="menu-icon" onClick={handleClick}><i className={click ? "fas fa-times" : "fas fa-bars"} /> </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
