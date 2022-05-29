@@ -9,16 +9,9 @@ function Footer() {
   const [user, setUser] = useState(null);
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      
       setUser(user);
     });
   }, []);
-
-
-
-
-
-
   function myFunction() {
     /* Get the text field */
     var copyText = document.getElementById("myInput");
@@ -36,8 +29,6 @@ function Footer() {
       showConfirmButton: false,
       timer: 1500
     })
-
-
   }
   return (
     <div>

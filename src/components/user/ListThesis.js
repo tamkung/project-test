@@ -14,7 +14,7 @@ import * as MdIcons from 'react-icons/md';
 import * as SiIcons from 'react-icons/si';
 function ListThesis() {
   const [user, setUser] = useState(null);
-  const [type, setType] = useState(null);
+  const [type, setType] = useState("");
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -23,30 +23,41 @@ function ListThesis() {
 
   const [values, setValues] = useState({});
   useEffect(() => {
-    if (type !== null) {
-      firebaseDB.child("Thesis").orderByChild("ThesisType").equalTo(type).on("value", (snapshot) => {
-        if (snapshot.val() !== null) {
-          setValues({ ...snapshot.val() });
-        } else {
-          setValues({});
-        }
-      });
-
+    if (type !== "") {
+      firebaseDB
+        .child("Thesis")
+        .orderByChild("ThesisType")
+        .equalTo(type)
+        .once("value", (snapshot) => {
+          // productCategory
+          if (snapshot.val() !== null) {
+            setValues({ ...snapshot.val() });
+            console.log(snapshot.val());
+          } else {
+            setValues({});
+          }
+        });
     } else {
-      firebaseDB.child("Thesis").orderByChild("ThesisAllow").equalTo(true).on("value", (snapshot) => {
-        if (snapshot.val() !== null) {
-          setValues({ ...snapshot.val() });
-        } else {
-          setValues({});
-        }
-      });
+      firebaseDB
+        .child("Thesis")
+        .orderByChild("ThesisAllow")
+        .equalTo(true)
+        .once("value", (snapshot) => {
+          if (snapshot.val() !== null) {
+            setValues({ ...snapshot.val() });
+            console.log(snapshot.val());
+          } else {
+            setValues({});
+          }
+        });
     }
 
-    // return () => {
-    //   setValues({});
-    // };
+    return () => {
+      setValues({});
+    };
   }, [type]);
 
+  console.log(type);
 
   console.log("Type : ", type)
   return (
@@ -54,7 +65,7 @@ function ListThesis() {
       {user ? (
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
-            <Dropdown className="btn" onChange={e => setType(e.target.values)}>
+            {/* <Dropdown className="btn" onChange={e => setType(e.target.values)}>
               <Dropdown.Toggle variant="transprent">
                 <BsIcons.BsFilter size={25} /> เลือกประเภท
               </Dropdown.Toggle>
@@ -71,7 +82,7 @@ function ListThesis() {
                   );
                 })}
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
             <Link to={"/AddCollection"}>
               <button className="btn btn-outline-success" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
                 <i className="fas fa-plus-circle"></i> &nbsp; Add
@@ -86,9 +97,31 @@ function ListThesis() {
             </Link>
           </div>
         </div>
-      ) : ("")}<br />
+      ) : ("")}
 
-      <div className="flexbox">
+      <br />
+      <div style={{ width: "auto" }}>
+        <select
+          aria-label="Default select example"
+          id="ThesisType"
+          name="ThesisType"
+          className="form-select"
+          required
+          style={{ marginBottom: "20px", width: "auto" }}
+          onChange={(e) => setType(e.target.value)}
+        >
+          <option value="">ประเภทสินค้า</option>
+          {ThesisType.map((item, keys) => {
+            return (
+              <option name="ThesisType" key={keys} value={item.title}>
+                {item.title}
+              </option>
+            );
+          })}
+        </select>
+      </div>
+
+      <div className="flexbox" >
         {Object.keys(values).map((id, index) => {
           return (
             <div key={index} type="button" className="itemflex">

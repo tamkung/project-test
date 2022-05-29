@@ -29,9 +29,6 @@ function Report() {
   const handleOnChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
-
-
   const sendReport = (e) => {
     Swal.fire({
       title: 'ต้องการส่งรายงานนี้หรือไม่?',
