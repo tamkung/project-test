@@ -92,7 +92,7 @@ function ListThesis() {
             <Link to={"/MyThesis"}>
               <button className="btn btn-outline-primary" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "150px" }}>
                 <ImBooks style={{ fontSize: "150%" }} />
-                &nbsp; My Thesis
+                &nbsp; My Project
               </button>
             </Link>
           </div>
@@ -110,7 +110,7 @@ function ListThesis() {
           style={{ marginBottom: "20px", width: "auto" }}
           onChange={(e) => setType(e.target.value)}
         >
-          <option value="">ประเภทสินค้า</option>
+          <option value="">ประเภท</option>
           {ThesisType.map((item, keys) => {
             return (
               <option name="ThesisType" key={keys} value={item.title}>

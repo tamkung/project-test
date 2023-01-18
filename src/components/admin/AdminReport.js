@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Dropdown } from 'react-bootstrap';
-import { useParams } from "react-router-dom";
 import { MdReport } from 'react-icons/md';
 import * as AiIcons from 'react-icons/ai';
-// import { useParams } from "react-router-dom";
 import { firebaseDB } from "../../services/firebase";
 import Swal from 'sweetalert2'
-
 function AdminReport() {
     const [values, setValues] = useState({});
     useEffect(() => {
@@ -47,11 +43,6 @@ function AdminReport() {
                 )
             }
         })
-
-
-
-
-
     };
     return (
         <div className="container" style={{ minHeight: "835px" }}>
@@ -94,4 +85,3 @@ function AdminReport() {
     )
 }
 export default AdminReport;
-

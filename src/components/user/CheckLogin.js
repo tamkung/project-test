@@ -14,7 +14,7 @@ function CheckLogin() {
       setUser(user);
       if (user != null) {
 
-        if (reg.test(user.email) || regadmin.test(user.email)) {
+        if (user.email || regadmin.test(user.email)) {
         } else {
           // window.location.href = "/ListThesis";
           let timerInterval

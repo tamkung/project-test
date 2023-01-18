@@ -39,7 +39,7 @@ function Navbar() {
     <div>
       <nav className="navbar">
         <div className="navbar-container">
-          <Link to="/" className="navbar-logo  d-sm-none d-md-block d-none d-sm-block d-md-none d-lg-block" onClick={closeMobileMenu}><img src="./images/logo.png"/></Link>
+          <div  className="navbar-logo  d-sm-none d-md-block d-none d-sm-block d-md-none d-lg-block" onClick={closeMobileMenu}><img src="../images/logo.png"/></div>
           <div className="menu-icon" onClick={handleClick}><i className={click ? "fas fa-times" : "fas fa-bars"} /> </div>
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
@@ -59,7 +59,7 @@ function Navbar() {
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="drop-nav" style={{ width: "100%", alignItems: "center" }} >
                     <Dropdown.Item className="btn" style={{ textAlign: "center" }}>
-                      <Link to="/mythesis" className="btn"> My Thesis </Link>
+                      <Link to="/mythesis" className="btn"> My Project </Link>
                     </Dropdown.Item>
                     <Dropdown.Item className="btn" style={{ textAlign: "center" }}>
                       <Link to="/" className="btn" onClick={() => auth.signOut().then(() => { window.location.href = "/"; }).catch((error) => { console.error(error); })}>

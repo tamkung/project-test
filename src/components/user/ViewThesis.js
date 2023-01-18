@@ -56,13 +56,11 @@ function ViewThesis() {
             }
           });
       }
-
     });
     return () => {
       setValues({});
     };
   }, [id]);
-
   const btnLike = () => {
     if (Likes == null) {
       firebaseDB.child("Thesis").child(id).child("Like").child(0).set(user.uid);
@@ -73,7 +71,6 @@ function ViewThesis() {
   const btnUnLike = () => {
     firebaseDB.child("Thesis").child(id).child("Like").child(IndexLike).remove().then(() => console.log('unLike')).catch((err) => console.log(err));
   };
-
   const btnCommentThesis = () => {
     firebaseDB.child("Thesis").child(id).child("Comment").push({
       text: TextCom,
@@ -108,16 +105,8 @@ function ViewThesis() {
         }
       })
     ) {
-
     }
   };
-
-  console.log("User : ", user);
-  console.log("IndexLink : ", IndexLike);
-  console.log("CheckLike : ", CheckLike);
-  console.log("Comment : ", TextCom);
-  console.log("Comment Firbase : ", Comment);
-
   return (
     <div>
       <div className="container" style={{ width: "100%" }}>
@@ -156,7 +145,6 @@ function ViewThesis() {
             <a className="product-link">
               {values.ThesisType}
             </a>
-
             <div className="product-price d-none d-sm-block d-sm-none d-md-block" style={{ fontSize: "22px" }}>
               <span>ผู้พัฒนา</span>
               <br />
@@ -166,7 +154,6 @@ function ViewThesis() {
               <br />
               <span className="new-price">คนที่ 2 : {values.DevName2}</span>
             </div>
-
             <div className="product-price d-md-none d-lg-block d-lg-none d-xl-block d-xl-none" style={{ fontSize: "16px" }}>
               <span>ผู้พัฒนา</span>
               <br />
@@ -176,18 +163,13 @@ function ViewThesis() {
               <br />
               <span className="new-price">คนที่ 2 : {values.DevName2}</span>
             </div>
-
             <div className="product-price d-none d-sm-block d-sm-none d-md-block" style={{ fontSize: "22px" }}>
               <span className="new-price">Email : {values.Email}</span>
             </div>
-
             <div className="product-price d-md-none d-lg-block d-lg-none d-xl-block d-xl-none" style={{ fontSize: "16px" }}>
               <span className="new-price">Email : {values.Email}</span>
             </div>
-
             <div className="product-detail mb-5">รายละเอียด : {values.ThesisDetails}</div>
-
-
             {user ? (
               <div className="mt-3">
                 {CheckLike ? (
@@ -199,7 +181,6 @@ function ViewThesis() {
                     <AiIcons.AiOutlineLike /> {Likes ? (Likes.length) : (0)}
                   </button>
                 )}
-
                 <button className="btn-download" target="_blank" size="lg" onClick={() => (
                   (window.location.href = `${values.ThesisFile[0]}`),
                   firebaseDB.child("Thesis").child(id).update({ Download: values.Download + 1 })
@@ -218,7 +199,6 @@ function ViewThesis() {
                 </button>
               </div>
             )}
-
           </div>
         </div>
         <hr />
@@ -261,9 +241,7 @@ function ViewThesis() {
             </Button>
           </InputGroup>
         ) : (
-
           ""
-
         )}
       </div>
     </div>

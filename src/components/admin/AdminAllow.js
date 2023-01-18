@@ -28,7 +28,6 @@ function AdminAllow() {
       Promise.all(promises);
       console.log(promises);
     });
-
     Swal.fire({
       title: 'ไม่อนุมัติปริญญานิพนธ์นี้?',
       icon: 'warning',
@@ -55,13 +54,8 @@ function AdminAllow() {
         )
       }
     })
-
-
-
   };
-
   const onUpdateAllow = (id) => {
-
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'btn btn-success',
@@ -69,7 +63,6 @@ function AdminAllow() {
       },
       buttonsStyling: false
     })
-
     swalWithBootstrapButtons.fire({
       text: "ต้องการอนุมัติปริญญานิพนธ์นี้ใช้หรือไม่?",
       icon: 'warning',
@@ -99,15 +92,13 @@ function AdminAllow() {
         )
       }
     })
-
-
   }
 
 
   return (
     <div style={{ minHeight: "800px" }}>
       <div className="container mt-5" >
-        <h1>อนุมัติ Thesis</h1>
+        <h1>อนุมัติ Project</h1>
         <hr />
         {Object.keys(values).map((id, i) => {
           return (

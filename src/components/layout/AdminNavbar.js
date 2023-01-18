@@ -36,7 +36,7 @@ function AdminNavbar() {
     <div >
       <Navbar expand={false} >
         <Container fluid >
-          <Navbar.Brand href="/">Admin Thesis</Navbar.Brand>
+          <Navbar.Brand href="/">Admin Manage</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" />
           <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="end">
             <Offcanvas.Header closeButton>
@@ -48,7 +48,7 @@ function AdminNavbar() {
               <Nav.Link className="item-nav-admin" href="/">Home</Nav.Link>
               <Nav.Link className="item-nav-admin d-sm-none d-md-block d-none d-sm-block" href="/admin/report">Report</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
-              <Nav.Link className="item-nav-admin" href="/admin/add-thesis">Add Thesis</Nav.Link>
+              <Nav.Link className="item-nav-admin" href="/admin/add-thesis">Add Project</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/sign-up">Add Admin</Nav.Link>
 
               <Nav.Link className="item-nav-admin-logout"  onClick={() => auth.signOut()

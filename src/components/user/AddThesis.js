@@ -157,7 +157,7 @@ function AddThesis() {
   return (
     <div className="container">
       <br />
-      <h3>Add New Thesis</h3>
+      <h3>Add New Project</h3>
       <hr />
       <div className="container  p-5">
         <form className="was-validated">

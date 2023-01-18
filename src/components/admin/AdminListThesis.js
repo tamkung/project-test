@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { firebaseDB, firebaseStorage } from "../../services/firebase";
-import { getStorage, ref, deleteObject } from "firebase/storage";
 import { Card, Button } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai';
-import * as BsIcons from 'react-icons/bs';
 import Swal from 'sweetalert2'
 function AdminListThesis() {
   const [values, setValues] = useState({});
-
   useEffect(() => {
     firebaseDB
       .child("Thesis")
@@ -20,12 +17,10 @@ function AdminListThesis() {
           setValues({});
         }
       });
-
     return () => {
       setValues({});
     };
   }, []);
-
   const onDelete = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
@@ -78,8 +73,6 @@ function AdminListThesis() {
         )
       }
     })
-
-
   };
   return (
     <div className="container" style={{ marginTop: "50px" }}>

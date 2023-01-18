@@ -8,18 +8,12 @@ function SignUpAdmin() {
     password: "",
     confirm: "",
   });
-
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
     console.log(value);
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
-
-    
     try {
       firebase
         .auth()
@@ -57,13 +51,11 @@ function SignUpAdmin() {
       console.error();
     }
   };
-
   return (
     <div className="container p-5" style={{minHeight:"850px" }}>
       <div className="row">
         <div className="col-md-6 offset-md-3">
-          <h1>Register Page</h1>
-
+          <h1>Add Admin</h1>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label>Admin E-mail</label>
@@ -75,7 +67,6 @@ function SignUpAdmin() {
                 onChange={handleChange}
               />
             </div>
-
             <div className="form-group mt-3">
               <label>Password</label>
               <input
@@ -92,17 +83,6 @@ function SignUpAdmin() {
                 onChange={handleChange}
               />
             </div>
-            
-            {/* <div className="form-group">
-              <label>Confirm Password</label>
-              <input
-                className="form-control"
-                type="password"
-                name="password1"
-                onChange={handleChange}
-              />
-            </div> */}
-
             <br />
             <button
               className="btn btn-success"

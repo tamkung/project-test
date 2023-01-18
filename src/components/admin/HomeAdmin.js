@@ -35,7 +35,7 @@ function HomeAdmin() {
     <div className="container mt-3" >
       <div style={{ display: "flex", flexWrap: "wrap" }} >
         <div style={{ display: "block", width: "100%" }}>
-          <h1>ALL THESIS : {AllThesis.length}</h1>
+          <h1>ALL Project : {AllThesis.length}</h1>
         </div>
         <div className="itemflex" style={{ padding: "10px", maxWidth: "50%", marginTop: "0px", marginBottom: "0px" }}>
           <Card style={{ backgroundImage: "linear-gradient(to right, #DEDEDE, #CECECE)" }}>
@@ -108,15 +108,9 @@ function HomeAdmin() {
           </Card>
         </div>
       </div>
-
-
-
-
-
-
       <Container >
         <Row>
-          <h1>List Thesis ( Allowed )</h1>
+          <h1>List Project ( Allowed )</h1>
           <hr />
           <Row className="mt-3 mb-4 p-2">
             <Col>
@@ -140,9 +134,7 @@ function HomeAdmin() {
               </Card>
             </Col>
           </Row>
-
           <AdminListThesis />
-
         </Row>
       </Container>
     </div>

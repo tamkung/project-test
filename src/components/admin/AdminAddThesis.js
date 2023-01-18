@@ -157,7 +157,7 @@ function AdminAddThesis() {
   return (
     <div className="container">
       <br />
-      <h3>Add New Thesis</h3>
+      <h3>Add New Project</h3>
       <hr />
       <div className="container  p-5">
         <form className="was-validated">
@@ -168,7 +168,7 @@ function AdminAddThesis() {
               id="ThesisName"
               name="ThesisName"
               className="form-control is-valid"
-              placeholder="Thesis Name"
+              placeholder="Project Name"
               onChange={handleOnChange}
               required
             />

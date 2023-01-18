@@ -77,8 +77,7 @@ function Report() {
               <select
                 name="ReportType"
                 className="form-control"
-                onChange={handleOnChange}
-              >
+                onChange={handleOnChange}>
                 <option defaultValue="none">Choose...</option>
                 <option value="แจ้ง ลบ/แก้ไข ผลงาน">แจ้ง ลบ/แก้ไข ผลงาน</option>
                 <option value="ระบบมีปัญหา">ระบบมีปัญหา</option>
@@ -98,7 +97,6 @@ function Report() {
             />
             <br />
             <div className="row mt-3">
-
               <div type="button"
                 className="btn btn-success col mx-3"
                 onClick={() => {
@@ -106,24 +104,16 @@ function Report() {
                     Swal.fire({
                       icon: 'error',
                       title: 'กรุณากรอกให้ครบถ้วน',
-              
-                      
                     })
                   } else {
                     sendReport()
-
-                  }
-                }
-                }
-              >
+                  }}}>
                 Send
               </div>
-
               <button
                 type="reset"
                 className="btn btn-warning col mx-3"
-                style={{ color: "white" }}
-              >
+                style={{ color: "white" }} >
                 Clear
               </button>
             </div>

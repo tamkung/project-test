@@ -95,7 +95,7 @@ function MyThesis() {
         </div>
       </div>
       <br />
-      <h3 style={{ textAlign: "left"}} >My Thesis</h3>
+      <h3 style={{ textAlign: "left"}} >My Project</h3>
       <br />
       <div className="container">
         
