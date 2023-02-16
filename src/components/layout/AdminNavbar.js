@@ -49,8 +49,8 @@ function AdminNavbar() {
               <Nav.Link className="item-nav-admin d-sm-none d-md-block d-none d-sm-block" href="/admin/report">Report</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/allow">Waited Allow ( {NotAllowThesis.length} )</Nav.Link>
               <Nav.Link className="item-nav-admin" href="/admin/add-thesis">Add Project</Nav.Link>
-              <Nav.Link className="item-nav-admin" href="/admin/sign-up">Add Admin</Nav.Link>
-
+              {/* <Nav.Link className="item-nav-admin" href="/admin/sign-up">Add Admin</Nav.Link> */}
+              <Nav.Link className="item-nav-admin" href="/admin/manage">Manage Admin</Nav.Link>
               <Nav.Link className="item-nav-admin-logout"  onClick={() => auth.signOut()
                 .then(() => {
                   window.location.href = "/";

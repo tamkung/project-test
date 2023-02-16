@@ -8,6 +8,7 @@ import HomeAdmin from '../components/admin/HomeAdmin';
 import SignInAdmin from '../components/admin/SignInAdmin';
 import SignUpAdmin from '../components/admin/SignUpAdmin';
 import NotFound from "../error_404"
+import ManageAdmin from '../components/admin/ManageAdmin';
 
 
 
@@ -48,7 +49,10 @@ export const RouterAdmin = [
     path: "/admin/edit-thesis/:id",
     element: <AdminEditThesis />,
   },
+  {
+    path: "/admin/manage",
+    element: <ManageAdmin />,
+  },
 
- 
- 
+
 ];

@@ -12,9 +12,13 @@ import * as BiIcons from 'react-icons/bi';
 import * as GiIcons from 'react-icons/gi';
 import * as MdIcons from 'react-icons/md';
 import * as SiIcons from 'react-icons/si';
+
 function ListThesis() {
   const [user, setUser] = useState(null);
   const [type, setType] = useState("");
+
+  const [year, setYear] = useState(""); // ปีที่เลือก
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       setUser(user);
@@ -57,38 +61,74 @@ function ListThesis() {
     };
   }, [type]);
 
-  console.log(type);
+  const searchYear = () => {
+    console.log(year);
 
-  console.log("Type : ", type)
+    if (year !== "") {
+      try {
+        firebaseDB
+          .child("Thesis")
+          .orderByChild("year") // ใช้ orderByChild เพราะเราจะเรียงตาม year
+          .equalTo(year) // ใช้ equalTo เพราะเราจะเรียงตาม year
+          .once("value", (snapshot) => {
+            // productCategory
+            if (snapshot.val() !== null) {
+              setValues({ ...snapshot.val() });
+              console.log(snapshot.val());
+            } else {
+              setValues({});
+            }
+          });
+      } catch (error) {
+        console.error(error);
+        firebaseDB
+          .child("Thesis")
+          .orderByChild("ThesisAllow")
+          .equalTo(true)
+          .once("value", (snapshot) => {
+            if (snapshot.val() !== null) {
+              setValues({ ...snapshot.val() });
+              console.log(snapshot.val());
+            } else {
+              setValues({});
+            }
+          });
+      }
+    } else {
+      firebaseDB
+        .child("Thesis")
+        .orderByChild("ThesisAllow")
+        .equalTo(true)
+        .once("value", (snapshot) => {
+          if (snapshot.val() !== null) {
+            setValues({ ...snapshot.val() });
+            console.log(snapshot.val());
+          } else {
+            setValues({});
+          }
+        });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setYear(parseInt(e.target.value));
+    console.log(e.target.value);
+  };
+
+  // console.log(type);
+
+  // console.log("Type : ", type)
   return (
     <div className="container " style={{ width: "100%", textAlign: "center", marginTop: "1%" }} >
       {user ? (
         <div className="row" style={{ width: "100%", borderRadius: "30px 30px 30px 30px", margin: "2%" }}>
           <div className="col-lg" style={{ textAlign: "center" }}>
-            {/* <Dropdown className="btn" onChange={e => setType(e.target.values)}>
-              <Dropdown.Toggle variant="transprent">
-                <BsIcons.BsFilter size={25} /> เลือกประเภท
-              </Dropdown.Toggle>
-              <Dropdown.Menu style={{ width: "93%", background: '#FDF5E6', alignItems: "center", boxShadow: "0px 1px 5px black" }}>
-                <Dropdown.Item className="btn drop-item" style={{ textAlign: "left" }} onClick={() => setType(null)}>
-                  ทั้งหมด
-                </Dropdown.Item>
-                {ThesisType.map((item, index) => {
-                  return (
-                    // <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => window.location = (item.path)}>
-                    <Dropdown.Item key={index} className="btn drop-item" style={{ textAlign: "left" }} onClick={() => setType(item.title)}>
-                      {item.icons} {item.title}
-                    </Dropdown.Item>
-                  );
-                })}
-              </Dropdown.Menu>
-            </Dropdown> */}
             <Link to={"/AddCollection"}>
               <button className="btn btn-outline-success" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "120px", minWidth: "120px" }}>
                 <i className="fas fa-plus-circle"></i> &nbsp; Add
               </button>
             </Link>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+
             <Link to={"/MyThesis"}>
               <button className="btn btn-outline-primary" style={{ borderRadius: "15px", border: "0px", textAlign: "center", maxWidth: "150px", minWidth: "150px" }}>
                 <ImBooks style={{ fontSize: "150%" }} />
@@ -100,7 +140,7 @@ function ListThesis() {
       ) : ("")}
 
       <br />
-      <div style={{ width: "auto" }}>
+      <div style={{ width: "auto" }} className='flex'>
         <select
           aria-label="Default select example"
           id="ThesisType"
@@ -119,10 +159,15 @@ function ListThesis() {
             );
           })}
         </select>
+        <div className="mb-3 flex">
+          <input type="number" placeholder="Search" onChange={handleInputChange} />
+          <button class="btn btn-outline-secondary" type="submit" onClick={searchYear}>Search</button>
+        </div>
       </div>
 
       <div className="flexbox" >
         {Object.keys(values).map((id, index) => {
+          console.log("length : " + JSON.stringify(values));
           return (
             <div key={index} type="button" className="itemflex">
               {values[id].ThesisAllow ? (
@@ -133,6 +178,7 @@ function ListThesis() {
                   <div style={{ padding: "10px", paddingTop: "30px" }}>
                     <Card.Title style={{ fontWeight: "bold", height: "30px", fontSize: "16px", whiteSpace: "nowrap", textOverflow: "ellipsis", overflow: "hidden" }}>{values[id].ThesisName}</Card.Title>
                     <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].ThesisType}</Card.Text>
+                    <Card.Text style={{ height: "10px", fontSize: "12px" }} > {values[id].year}</Card.Text>
                     <AiIcons.AiOutlineEye /> {values[id].View} &nbsp;&nbsp;&nbsp;&nbsp;
                     {values[id].Like ? (<>
                       <AiIcons.AiOutlineLike /> {values[id].Like.length}</>) : (<>
